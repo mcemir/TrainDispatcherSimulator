@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="TrainDispatcherSimulator.Controls.RailwaySection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:TrainDispatcherSimulator.Converters"
+             mc:Ignorable="d" 
+             x:Name="mainContainer"
+             MinHeight="{StaticResource RailwayHeight}"
+             MinWidth="{StaticResource RailwayHeight}"
+             d:DesignHeight="40" d:DesignWidth="200">
+
+    <UserControl.Resources>
+        <converter:SectionDimensionsToPointConverter x:Key="SectionDimensionsToPointConverter" />
+    </UserControl.Resources>
+
+    <Polygon
+            Points="{Binding ElementName=mainContainer, Converter={StaticResource SectionDimensionsToPointConverter}}"
+            Stroke="Blue" 
+            FillRule="Nonzero"
+            Fill="LightGray"
+            StrokeThickness="0">
+
+    </Polygon>
+</UserControl>

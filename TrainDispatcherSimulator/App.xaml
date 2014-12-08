@@ -1,0 +1,9 @@
+﻿<Application x:Class="TrainDispatcherSimulator.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml"
+             xmlns:my="clr-namespace:System;assembly=mscorlib">
+    <Application.Resources>
+        <my:Double x:Key="RailwayHeight">30</my:Double>
+    </Application.Resources>
+</Application>
