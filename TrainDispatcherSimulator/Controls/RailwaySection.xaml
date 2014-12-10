@@ -4,22 +4,48 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converter="clr-namespace:TrainDispatcherSimulator.Converters"
+             xmlns:control="clr-namespace:TrainDispatcherSimulator.Controls"
              mc:Ignorable="d" 
              x:Name="mainContainer"
-             MinHeight="{StaticResource RailwayHeight}"
-             MinWidth="{StaticResource RailwayHeight}"
-             d:DesignHeight="40" d:DesignWidth="200">
+             Height="90"
+             MinHeight="90"
+             MaxHeight="90"
+             d:DesignHeight="114" d:DesignWidth="179">
 
     <UserControl.Resources>
         <converter:SectionDimensionsToPointConverter x:Key="SectionDimensionsToPointConverter" />
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </UserControl.Resources>
 
-    <Polygon
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <control:SemaphoreSignal 
+            Grid.Row="0" 
+            HorizontalAlignment="Left" 
+            Orientation="Left"
+            Visibility="{Binding LeftSemaphore, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        
+        <!--
+        <Polygon
+            Grid.Row="1"
             Points="{Binding ElementName=mainContainer, Converter={StaticResource SectionDimensionsToPointConverter}}"
             Stroke="Blue" 
             FillRule="Nonzero"
             Fill="LightGray"
             StrokeThickness="0">
+        </Polygon>-->
 
-    </Polygon>
+        <Border Background="LightGray" Grid.Row="1"/>
+
+        <control:SemaphoreSignal 
+            Grid.Row="2" 
+            HorizontalAlignment="Right" 
+            Orientation="Right"
+            Visibility="{Binding RightSemaphoreVisibility}"/>
+    </Grid>
 </UserControl>

@@ -21,8 +21,8 @@ namespace TrainDispatcherSimulator.Converters
                 double railwayHeight = (double)App.Current.Resources["RailwayHeight"];
                 points.Clear();
                 points.Add(new Point(0, 0));
-                points.Add(new Point(element.ActualWidth, element.ActualHeight - railwayHeight));
-                points.Add(new Point(element.ActualWidth, element.ActualHeight));
+                points.Add(new Point(element.ActualWidth, element.ActualHeight - railwayHeight - 30));
+                points.Add(new Point(element.ActualWidth, element.ActualHeight - 30));
                 points.Add(new Point(0, railwayHeight));
             };
             fillPoints();

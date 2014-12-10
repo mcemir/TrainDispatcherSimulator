@@ -5,6 +5,10 @@
         Title="MainWindow" Height="300" Width="525"
         Background="Black">
     <Grid>
-        <control:RailwaySection Margin="166,91,183,78"/>
+        <control:RailwaySection Width="300" LeftSemaphore="False"/>
+
+
+
+
     </Grid>
 </Window>

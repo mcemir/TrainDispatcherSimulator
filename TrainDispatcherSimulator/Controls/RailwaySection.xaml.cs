@@ -17,13 +17,56 @@ using System.Collections.ObjectModel;
 
 namespace TrainDispatcherSimulator.Controls
 {
-    /// <summary>
-    /// Interaction logic for TestCrossUserControl.xaml
-    /// </summary>
     public partial class RailwaySection : UserControl
     {
+
+        #region PROPERTIES
+
+
+
+
+
+        public Visibility LeftSemaphoreVisibility
+        {
+            get { return (Visibility)GetValue(LeftSemaphoreVisibilityProperty); }
+            set { SetValue(LeftSemaphoreVisibilityProperty, value); }
+        }
+        public static readonly DependencyProperty LeftSemaphoreVisibilityProperty =
+            DependencyProperty.Register("LeftSemaphoreVisibility", typeof(Visibility), typeof(RailwaySection), new PropertyMetadata(Visibility.Collapsed));
+
+
+        
+
+        public Visibility RightSemaphoreVisibility
+        {
+            get { return (Visibility)GetValue(RightSemaphoreVisibilityProperty); }
+            set { SetValue(RightSemaphoreVisibilityProperty, value); }
+        }
+        public static readonly DependencyProperty RightSemaphoreVisibilityProperty =
+            DependencyProperty.Register("RightSemaphoreVisibility", typeof(Visibility), typeof(RailwaySection), new PropertyMetadata(Visibility.Collapsed));
+
+
+
+
+
+        public bool LeftSemaphore
+        {
+            get { return (bool)GetValue(LeftSemaphoreProperty); }
+            set { SetValue(LeftSemaphoreProperty, value); }
+        }
+        public static readonly DependencyProperty LeftSemaphoreProperty =
+            DependencyProperty.Register("LeftSemaphore", typeof(bool), typeof(RailwaySection), new PropertyMetadata(false));
+
+        
+        
+
+        
+
+        #endregion PROPERTIES
+
         public RailwaySection()
         {
+            DataContext = this;
             InitializeComponent();
         }
 
