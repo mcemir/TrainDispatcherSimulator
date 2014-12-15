@@ -17,7 +17,7 @@ using System.Collections.ObjectModel;
 
 namespace TrainDispatcherSimulator.Controls
 {
-    public partial class RailwaySection : UserControl
+    public partial class RailwaySection : RailwayBase
     {
 
         #region PROPERTIES

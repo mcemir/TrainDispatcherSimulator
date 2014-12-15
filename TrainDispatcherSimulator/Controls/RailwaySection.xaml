@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TrainDispatcherSimulator.Controls.RailwaySection"
+﻿<control:RailwayBase x:Class="TrainDispatcherSimulator.Controls.RailwaySection"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,12 +10,13 @@
              Height="90"
              MinHeight="90"
              MaxHeight="90"
-             d:DesignHeight="114" d:DesignWidth="179">
+             d:DesignHeight="114" 
+             d:DesignWidth="100">
 
-    <UserControl.Resources>
+    <control:RailwayBase.Resources>
         <converter:SectionDimensionsToPointConverter x:Key="SectionDimensionsToPointConverter" />
         <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-    </UserControl.Resources>
+    </control:RailwayBase.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -48,4 +49,4 @@
             Orientation="Right"
             Visibility="{Binding RightSemaphoreVisibility}"/>
     </Grid>
-</UserControl>
+</control:RailwayBase>

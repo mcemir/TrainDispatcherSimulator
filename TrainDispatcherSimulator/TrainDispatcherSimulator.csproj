@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\RailwayBase.cs" />
     <Compile Include="Controls\SemaphoreSignal.xaml.cs">
       <DependentUpon>SemaphoreSignal.xaml</DependentUpon>
     </Compile>

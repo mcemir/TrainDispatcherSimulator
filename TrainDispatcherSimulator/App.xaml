@@ -5,5 +5,6 @@
              xmlns:my="clr-namespace:System;assembly=mscorlib">
     <Application.Resources>
         <my:Double x:Key="RailwayHeight">30</my:Double>
+        <my:Double x:Key="BlockDimension">90</my:Double>
     </Application.Resources>
 </Application>
