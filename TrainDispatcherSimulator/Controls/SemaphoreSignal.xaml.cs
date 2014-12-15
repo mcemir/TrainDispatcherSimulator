@@ -21,6 +21,12 @@ namespace TrainDispatcherSimulator.Controls
     public partial class SemaphoreSignal : UserControl
     {
         public enum SignalType { Red, Yellow, YellowYellow, Green };        // Vrste signalizacije na semaforu
+
+        //Signal type on the manoeuvre semaphore has only two states.
+        //Active - manoeuvre action in progress
+        //NotActive - traffic is controled by regular semaphores
+        public enum ManueuvreSignalStyle { Active, NotActive};
+
         public enum SemaphoreOrientation { Left, Right };                   // Ulazni ili izlazni semafor
 
 
@@ -28,6 +34,8 @@ namespace TrainDispatcherSimulator.Controls
 
         #region PROPERTIES
         private SignalType signal = SignalType.Red;     // Inicijalno crvena
+        private ManueuvreSignalStyle manueuvreSignal = ManueuvreSignalStyle.NotActive; // ManueuvareSignal is initaly disabled
+
         public SignalType Signal
         {
             get {return signal;}
@@ -55,6 +63,24 @@ namespace TrainDispatcherSimulator.Controls
                 {
                     upperSignal.Fill = new SolidColorBrush(Colors.LightGray);
                     lowerSignal.Fill = new SolidColorBrush(Colors.LightGreen);
+                }
+            }
+        }
+
+        public ManueuvreSignalStyle ManueuvreSignal
+        {
+            get { return  manueuvreSignal; }
+            set
+            {
+                manueuvreSignal = value;
+
+                if (value == ManueuvreSignalStyle.Active)
+                {
+                    manoeuvreSignal.Fill = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+                    manoeuvreSignal.Fill = new SolidColorBrush(Colors.LightGray);
                 }
             }
         }
@@ -98,6 +124,7 @@ namespace TrainDispatcherSimulator.Controls
         private void UserControl_MouseUp(object sender, MouseButtonEventArgs e)
         {
             semaphorePopup.IsOpen = !semaphorePopup.IsOpen;
+            manueuvreSemaphorePopup.IsOpen = !manueuvreSemaphorePopup.IsOpen;
         }
 
 
@@ -119,6 +146,16 @@ namespace TrainDispatcherSimulator.Controls
         private void greenSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Signal = SignalType.Green;
+        }
+
+        private void notActiveSignal_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ManueuvreSignal = ManueuvreSignalStyle.NotActive;
+        }
+
+        private void activeSignal_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ManueuvreSignal = ManueuvreSignalStyle.Active;
         }
         #endregion EVENT HANDLERS
     }
