@@ -1,0 +1,17 @@
+﻿<Window x:Class="TrainDispatcherSimulator.Data.DataView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:local="clr-namespace:TrainDispatcherSimulator.Data"
+        Title="DataView" Height="300" Width="300">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <oxy:PlotView Title="{Binding Title}" Margin="0,0,-206,-109">
+            <oxy:PlotView.Series>
+                <oxy:LineSeries ItemsSource="{Binding Points}"/>
+            </oxy:PlotView.Series>
+        </oxy:PlotView>
+    </Grid>
+</Window>

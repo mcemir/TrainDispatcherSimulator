@@ -127,6 +127,10 @@ namespace TrainDispatcherSimulator.Controls
         private void UserControl_MouseUp(object sender, MouseButtonEventArgs e)
         {
             semaphorePopup.IsOpen = !semaphorePopup.IsOpen;
+        }
+
+        private void manueuvrePopup_MouseUp(object sender, MouseButtonEventArgs e)
+        {
             manueuvreSemaphorePopup.IsOpen = !manueuvreSemaphorePopup.IsOpen;
         }
 

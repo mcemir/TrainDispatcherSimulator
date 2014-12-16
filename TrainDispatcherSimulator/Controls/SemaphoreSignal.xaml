@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              Height="20" 
              Width="90"
-             MouseUp="UserControl_MouseUp"
+
              >
 
     <UserControl.Resources>
@@ -30,7 +30,7 @@
         </TransformGroup>
     </UserControl.LayoutTransform>
 
-    <Grid>
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -39,46 +39,89 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-
-        <Popup 
+        <Grid Grid.Column="0" Grid.ColumnSpan="3" MouseUp="UserControl_MouseUp">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Popup 
             Name="semaphorePopup"
             AllowsTransparency="True"            
             PopupAnimation="Slide"
             Width="33">
 
-            <Border BorderBrush="Red" BorderThickness="2" Opacity="0.8">
-                <StackPanel Orientation="Vertical" Background="LightGray">
-                    <StackPanel Orientation="Horizontal" Margin="1" MouseUp="redSignal_MouseUp">
-                        <Ellipse Fill="LightGray" Style="{StaticResource SignalStyle}"/>
-                        <Ellipse Margin="3,0,0,0" Fill="Red" Style="{StaticResource SignalStyle}"/>
+                <Border BorderBrush="Red" BorderThickness="2" Opacity="0.8">
+                    <StackPanel Orientation="Vertical" Background="LightGray">
+                        <StackPanel Orientation="Horizontal" Margin="1" MouseUp="redSignal_MouseUp">
+                            <Ellipse Fill="LightGray" Style="{StaticResource SignalStyle}"/>
+                            <Ellipse Margin="3,0,0,0" Fill="Red" Style="{StaticResource SignalStyle}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="1" MouseUp="yellowSignal_MouseUp">
+                            <Ellipse Fill="LightGray" Style="{StaticResource SignalStyle}"/>
+                            <Ellipse Margin="3,0,0,0" Fill="Yellow" Style="{StaticResource SignalStyle}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="1" MouseUp="yellowYellowSignal_MouseUp">
+                            <Ellipse Fill="Yellow" Style="{StaticResource SignalStyle}" />
+                            <Ellipse Margin="3,0,0,0" Fill="Yellow" Style="{StaticResource SignalStyle}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="1" MouseUp="greenSignal_MouseUp">
+                            <Ellipse Fill="LightGray" Style="{StaticResource SignalStyle}"/>
+                            <Ellipse Margin="3,0,0,0" Fill="LightGreen" Style="{StaticResource SignalStyle}"/>
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="1" MouseUp="yellowSignal_MouseUp">
-                        <Ellipse Fill="LightGray" Style="{StaticResource SignalStyle}"/>
-                        <Ellipse Margin="3,0,0,0" Fill="Yellow" Style="{StaticResource SignalStyle}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="1" MouseUp="yellowYellowSignal_MouseUp">
-                        <Ellipse Fill="Yellow" Style="{StaticResource SignalStyle}" />
-                        <Ellipse Margin="3,0,0,0" Fill="Yellow" Style="{StaticResource SignalStyle}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="1" MouseUp="greenSignal_MouseUp">
-                        <Ellipse Fill="LightGray" Style="{StaticResource SignalStyle}"/>
-                        <Ellipse Margin="3,0,0,0" Fill="LightGreen" Style="{StaticResource SignalStyle}"/>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-        </Popup>
+                </Border>
+            </Popup>
+            
+            <Border 
+            Grid.ColumnSpan="2"
+            BorderThickness="2"
+            BorderBrush="Red"
+            Background="LightGray"
+            />
+            <Ellipse
+            x:Name="upperSignal"
+            Grid.Column="0"
+            Margin="2,0,0,0"
+            Fill="LightGray"
+            Style="{StaticResource SignalStyle}"/>
+            <Ellipse
+            x:Name="lowerSignal"
+            Grid.Column="1"
+            Margin="0,0,1,0"
+            Fill="Red"
+            Style="{StaticResource SignalStyle}"/>
+            <Line
+            Grid.Column="2"
+            X1="0" Y1="10"
+            X2="11" Y2="10"
+            Stroke="Red"
+            StrokeThickness="3"/>
+            <Line
+            Grid.Column="2"
+            X1="10" Y1="20"
+            X2="10" Y2="9"
+            Stroke="Red"
+            StrokeThickness="3"/>
 
-        <Popup 
-            HorizontalOffset="54"
+        </Grid>
+
+        <Grid Grid.Column="3" Grid.ColumnSpan="2" MouseUp="manueuvrePopup_MouseUp">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Popup 
             Name="manueuvreSemaphorePopup"
             AllowsTransparency="True"            
             PopupAnimation="Slide"
             Width="18">
 
-            <Border BorderBrush="Orange" BorderThickness="2" Opacity="0.8">
-                <StackPanel Orientation="Vertical" Background="LightGray">
-                    <StackPanel Orientation="Horizontal" Margin="1" MouseUp="notActiveSignal_MouseUp">
-                        <Rectangle
+                <Border BorderBrush="Orange" BorderThickness="2" Opacity="0.8" >
+                    <StackPanel Orientation="Vertical" Background="LightGray">
+                        <StackPanel Orientation="Horizontal" Margin="1" MouseUp="notActiveSignal_MouseUp">
+                            <Rectangle
                             Width="10"
                             Height="10"
                             Stroke="Black"
@@ -87,9 +130,9 @@
                             Margin="1,1,1,1"
                             Fill="LightGray"
                             />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="1" MouseUp="activeSignal_MouseUp">
-                        <Rectangle
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="1" MouseUp="activeSignal_MouseUp">
+                            <Rectangle
                             Width="10"
                             Height="10"
                             Stroke="Black"
@@ -98,71 +141,45 @@
                             Margin="1,1,1,1"
                             Fill="Red"
                             />
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </Border>
-        </Popup>
+                </Border>
+            </Popup>
 
-
-
-        <Border 
-            Grid.ColumnSpan="2"
-            BorderThickness="2"
-            BorderBrush="Red"
-            Background="LightGray"
-            />
-        <Ellipse
-            x:Name="upperSignal"
+            <Border
             Grid.Column="0"
-            Margin="2,0,0,0"
-            Fill="LightGray"
-            Style="{StaticResource SignalStyle}"/>
-        <Ellipse
-            x:Name="lowerSignal"
-            Grid.Column="1"
-            Margin="0,0,1,0"
-            Fill="Red"
-            Style="{StaticResource SignalStyle}"/>
-        <Line
-            Grid.Column="2"
-            X1="0" Y1="10"
-            X2="11" Y2="10"
-            Stroke="Red"
-            StrokeThickness="3"/>
-        <Line
-            Grid.Column="2"
-            X1="10" Y1="20"
-            X2="10" Y2="9"
-            Stroke="Red"
-            StrokeThickness="3"/>
-
-        <Border
-            Grid.Column="3"
             Grid.ColumnSpan="1"
             BorderThickness="2"
             BorderBrush="Orange"
             Background="LightGray"
+            
             />
-        <Rectangle
+            <Rectangle
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            MouseUp="manueuvrePopup_MouseUp"
+            />
+            <Rectangle
             x:Name="manoeuvreSignal"
             Height="12"
             Stroke="Black"
             StrokeThickness="0.3"
-            Grid.Column="3"
+            Grid.Column="0"
             Margin="4,3"
-            Fill="LightGray"
+            Fill="LightGray"            
             />
-        <Line
-            Grid.Column="4"
+            <Line
+            Grid.Column="1"
             X1="0" Y1="10"
             X2="11" Y2="10"
             Stroke="Orange"
             StrokeThickness="3"/>
-        <Line
-            Grid.Column="4"
+            <Line
+            Grid.Column="1"
             X1="10" Y1="20"
             X2="10" Y2="9"
             Stroke="Orange"
             StrokeThickness="3"/>
+        </Grid>
     </Grid>
 </UserControl>

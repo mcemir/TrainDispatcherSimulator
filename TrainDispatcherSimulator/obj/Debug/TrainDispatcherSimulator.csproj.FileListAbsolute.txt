@@ -35,3 +35,36 @@ D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatche
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.exe
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.pdb
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.csprojResolveAssemblyReference.cache
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\TrainDispatcherSimulator.exe.config
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\TrainDispatcherSimulator.exe
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\TrainDispatcherSimulator.pdb
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.dll
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.WindowsForms.dll
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.Wpf.dll
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.Xps.dll
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.pdb
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.xml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.WindowsForms.pdb
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.WindowsForms.xml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.Wpf.pdb
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.Wpf.xml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.Xps.pdb
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.Xps.xml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\App.baml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\SemaphoreSignal.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Data\DataView.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\MainWindow.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySection.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\App.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator_MarkupCompile.cache
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator_MarkupCompile.lref
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\SemaphoreSignal.baml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Data\DataView.baml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\MainWindow.baml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySection.baml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.g.resources
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.Properties.Resources.resources
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.csproj.GenerateResource.Cache
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.exe
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.pdb

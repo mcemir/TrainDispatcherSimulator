@@ -2,8 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:control="clr-namespace:TrainDispatcherSimulator.Controls"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:localData="clr-namespace:TrainDispatcherSimulator.Data"
         Title="MainWindow" Height="500" Width="525"
         Background="Black">
+    <Window.DataContext>
+        <localData:MainViewModel/>
+    </Window.DataContext>
+    
     <Grid>
         <Grid x:Name="railwayGrid">
             <Grid.RowDefinitions>
@@ -21,8 +27,12 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
         
-            <control:RailwaySection Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  LeftSemaphore="False"/>
-            <control:RailwaySection x:Name="section2" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"  LeftSemaphore="False"/>
+            <control:RailwaySection Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  LeftSemaphore="False"/>
+            <oxy:PlotView Title="{Binding Title}" Margin="0,0,-206,-109" Grid.Column="2" Grid.Row="2">
+                <oxy:PlotView.Series>
+                    <oxy:LineSeries ItemsSource="{Binding Points}"/>
+                </oxy:PlotView.Series>
+            </oxy:PlotView>
 
         </Grid>
         
