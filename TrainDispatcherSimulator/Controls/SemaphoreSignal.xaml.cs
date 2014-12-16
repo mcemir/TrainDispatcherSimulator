@@ -88,6 +88,9 @@ namespace TrainDispatcherSimulator.Controls
 
 
 
+        
+
+
 
         // Definiše da li je semafor ulazni ili izlazni, na custom način
         public SemaphoreOrientation Orientation

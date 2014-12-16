@@ -34,3 +34,4 @@ D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatche
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.csproj.GenerateResource.Cache
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.exe
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.pdb
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.csprojResolveAssemblyReference.cache
