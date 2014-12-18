@@ -41,7 +41,7 @@
             StrokeThickness="0">
         </Polygon>-->
 
-        <Border Background="LightGray" Grid.Row="1"/>
+        <Border Background="{Binding RailwayBrush}" Grid.Row="1"/>
 
         <control:SemaphoreSignal 
             Grid.Row="2" 

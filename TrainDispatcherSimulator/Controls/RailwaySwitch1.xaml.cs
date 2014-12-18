@@ -22,6 +22,7 @@ namespace TrainDispatcherSimulator.Controls
     {
         public RailwaySwitch1()
         {
+            DataContext = this;
             InitializeComponent();
             this.StateChanged += RailwaySwitch1_StateChanged;
         }

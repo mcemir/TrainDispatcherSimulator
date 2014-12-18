@@ -18,7 +18,7 @@
         <!--  Interfejs kada switch nije upaljen (horizontalni prolaz)   -->
         <Grid x:Name="switchStraight" Grid.Row="1" Visibility="Visible">
 
-            <Polygon Fill="LightGray">
+            <Polygon Fill="{Binding RailwayBrush}">
                 <Polygon.Points>
                     <Point X="0" Y="0" />
                     <Point X="90" Y="0" />
@@ -27,7 +27,7 @@
                 </Polygon.Points>
             </Polygon>
 
-            <Polygon Fill="LightGray">
+            <Polygon Fill="{Binding RailwayBrush}">
                 <Polygon.Points>
                     <Point X="10" Y="40" />
                     <Point X="40" Y="40" />
@@ -41,7 +41,7 @@
         <!--  Interfejs kada je switch upaljen (skretnica)   -->
         <Grid x:Name="switchSverve" Grid.Row="1" Visibility="Collapsed">
             
-            <Polygon Fill="LightGray">
+            <Polygon Fill="{Binding RailwayBrush}">
                 <Polygon.Points>
                     <Point X="10" Y="0" />
                     <Point X="90" Y="0" />
@@ -49,9 +49,9 @@
                     <Point X="40" Y="30" />
                 </Polygon.Points>
             </Polygon>
-            
 
-            <Polygon Fill="LightGray">
+
+            <Polygon Fill="{Binding RailwayBrush}">
                 <Polygon.Points>
                     <Point X="0" Y="30" />
                     <Point X="0" Y="0" />

@@ -6,5 +6,8 @@
     <Application.Resources>
         <my:Double x:Key="RailwayHeight">30</my:Double>
         <my:Double x:Key="BlockDimension">90</my:Double>
+        
+        <SolidColorBrush x:Key="RailwayBaseBrush" Color="LightGray"/>
+        <SolidColorBrush x:Key="RailwayMouseOverBrush" Color="WhiteSmoke"/>
     </Application.Resources>
 </Application>
