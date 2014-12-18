@@ -85,3 +85,13 @@ D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatche
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.csproj.GenerateResource.Cache
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.exe
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.pdb
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwayPrivola.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch1.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwayPrivola.baml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch1.baml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch2.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch3.baml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch3.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch2.baml
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch4.g.cs
+D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch4.baml

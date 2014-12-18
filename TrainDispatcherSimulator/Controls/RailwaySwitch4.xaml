@@ -1,0 +1,64 @@
+﻿<control:RailwaySwitchBase x:Class="TrainDispatcherSimulator.Controls.RailwaySwitch4"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:control="clr-namespace:TrainDispatcherSimulator.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="180" d:DesignWidth="90">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+
+        <!--  Interfejs kada switch nije upaljen (horizontalni prolaz)   -->
+        <Grid x:Name="switchStraight" Grid.Row="1" Visibility="Collapsed">
+
+            <Polygon Fill="{Binding RailwayBrush}">
+                <Polygon.Points>
+                    <Point X="0" Y="30" />
+                    <Point X="90" Y="30" />
+                    <Point X="90" Y="0" />
+                    <Point X="0" Y="0" />
+                </Polygon.Points>
+            </Polygon>
+
+            <Polygon Fill="{Binding RailwayBrush}">
+                <Polygon.Points>
+                    <Point X="80" Y="40" />
+                    <Point X="50" Y="40" />
+                    <Point X="0" Y="90" />
+                    <Point X="0" Y="120" />
+                </Polygon.Points>
+            </Polygon>
+        </Grid>
+
+
+        <!--  Interfejs kada je switch upaljen (skretnica)   -->
+        <Grid x:Name="switchSverve" Grid.Row="1" Visibility="Visible">
+
+            <Polygon Fill="{Binding RailwayBrush}">
+                <Polygon.Points>
+                    <Point X="80" Y="0" />
+                    <Point X="0" Y="0" />
+                    <Point X="0" Y="30" />
+                    <Point X="50" Y="30" />
+                </Polygon.Points>
+            </Polygon>
+
+
+            <Polygon Fill="{Binding RailwayBrush}">
+                <Polygon.Points>
+                    <Point X="90" Y="30" />
+                    <Point X="90" Y="0" />
+                    <Point X="0" Y="90" />
+                    <Point X="0" Y="120" />
+                </Polygon.Points>
+            </Polygon>
+        </Grid>
+
+    </Grid>
+</control:RailwaySwitchBase>

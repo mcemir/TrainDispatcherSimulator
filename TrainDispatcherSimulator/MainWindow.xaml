@@ -4,18 +4,44 @@
         xmlns:control="clr-namespace:TrainDispatcherSimulator.Controls"
         xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:localData="clr-namespace:TrainDispatcherSimulator.Data"
-        Title="MainWindow" Height="500" Width="525"
+        Title="MainWindow"  Width="800" Height="600"
         Background="Black">
-    
     
     <Window.DataContext>
         <localData:MainViewModel/>
     </Window.DataContext>
     
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="AxesStyle" TargetType="oxy:LinearAxis">
+                <Setter Property="AxisDistance" Value="5"/>
+                <Setter Property="AxislineStyle" Value="Solid"/>
+                <Setter Property="MajorGridlineStyle" Value="Solid"/>
+                <Setter Property="MinorGridlineStyle" Value="Solid"/>
+            </Style>
+
+            <Style x:Key="Dolazni" TargetType="oxy:LineSeries">
+                <Setter Property="Color" Value="Red"/>
+                <Setter Property="BrokenLineThickness" Value="2" />
+            </Style>
+
+            <Style x:Key="Odlazni" TargetType="oxy:LineSeries">
+                <Setter Property="Color" Value="Green"/>
+                <Setter Property="BrokenLineThickness" Value="2" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+
+    
     <Grid>
-        <Grid x:Name="railwayGrid">
+        <Grid x:Name="railwayGrid" Margin="10,-85,-10,85">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="90"/>
                 <RowDefinition Height="90"/>
                 <RowDefinition Height="90"/>
                 <RowDefinition Height="90"/>
@@ -27,23 +53,39 @@
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
         
-            <control:RailwayPrivola Grid.Row="1" Grid.Column="1"/>
-            <control:RailwaySection Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  LeftSemaphore="False"/>
-            <control:RailwaySwitch1 Grid.Row="1" Grid.Column="4" Grid.RowSpan="2"/>
+            <control:RailwayPrivola Grid.Row="3" Grid.Column="1"/>
+            <control:RailwaySection Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"  LeftSemaphore="False"/>
+            <control:RailwaySwitch1 Grid.Row="3" Grid.Column="4" Grid.RowSpan="2"/>
+            <control:RailwaySwitch2 Grid.Row="2" Grid.Column="5" Grid.RowSpan="2"/>
+            <control:RailwaySwitch3 Grid.Row="4" Grid.Column="5" Grid.RowSpan="2"/>
+            <control:RailwaySwitch4 Grid.Row="3" Grid.Column="6" Grid.RowSpan="2"/>
+            <control:RailwaySection Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4"  LeftSemaphore="False"/>
 
         </Grid>
         
         
         
         <Grid Visibility="Collapsed">
-            <oxy:PlotView Title="{Binding Title}" >
+            <oxy:Plot Title="{Binding Title}" Opacity="0.95" >
                 <oxy:PlotView.Series>
-                    <oxy:LineSeries ItemsSource="{Binding Points}"/>
+                    <oxy:LineSeries ItemsSource="{Binding Linija1}" Style="{StaticResource Odlazni}" />
+                    <oxy:LineSeries ItemsSource="{Binding Linija2}" Style="{StaticResource Odlazni}" />
+                    <oxy:LineSeries ItemsSource="{Binding Linija3}" Style="{StaticResource Dolazni}" />
+
                 </oxy:PlotView.Series>
-            </oxy:PlotView>
+                <oxy:Plot.Axes>
+                    <oxy:LinearAxis Position="Bottom" Minimum="6" Maximum="22" Style="{StaticResource AxesStyle}" MinorStep="0.5" MajorStep="1"   />
+                    <oxy:LinearAxis Position="Top" Minimum="6" Maximum="22" Style="{StaticResource AxesStyle}" MinorStep="0.5" MajorStep="1" />
+                    <oxy:CategoryAxis Labels="{Binding Stations}" Position="Right" Minimum="0" Maximum ="8" Style="{StaticResource AxesStyle}" MinorStep="1" MajorStep="1" IsTickCentered="True"  />
+                    <oxy:CategoryAxis Labels="{Binding Stations}" Position="Left" Minimum="0" Maximum ="8"  Style="{StaticResource AxesStyle}" MinorStep="1" MajorStep="1" IsTickCentered="True" />
+                </oxy:Plot.Axes>
+
+            </oxy:Plot>
         </Grid>
         
         
