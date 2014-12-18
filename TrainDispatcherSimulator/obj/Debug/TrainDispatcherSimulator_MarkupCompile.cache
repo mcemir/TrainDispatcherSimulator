@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\
 TrainDispatcherSimulator
 none
 false
 DEBUG;TRACE
-D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\App.xaml
-4-1864051783
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\App.xaml
+51706098757
 
-13-198108178
-18-1749947121
-Controls\SemaphoreSignal.xaml;Data\DataView.xaml;MainWindow.xaml;Controls\RailwaySection.xaml;
+15-1818477878
+18-1250332728
+Controls\RailwaySwitch1.xaml;Controls\SemaphoreSignal.xaml;Data\DataView.xaml;MainWindow.xaml;Controls\RailwaySection.xaml;
 
 False
 

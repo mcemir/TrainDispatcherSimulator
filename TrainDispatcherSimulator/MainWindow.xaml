@@ -6,6 +6,8 @@
         xmlns:localData="clr-namespace:TrainDispatcherSimulator.Data"
         Title="MainWindow" Height="500" Width="525"
         Background="Black">
+    
+    
     <Window.DataContext>
         <localData:MainViewModel/>
     </Window.DataContext>
@@ -27,17 +29,19 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
         
-            <control:RailwaySection Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  LeftSemaphore="False"/>
-            <oxy:PlotView Title="{Binding Title}" Margin="0,0,-206,-109" Grid.Column="2" Grid.Row="2">
+            <control:RailwaySection Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  LeftSemaphore="False"/>
+            
+
+        </Grid>
+        
+        
+        
+        <Grid Visibility="Collapsed">
+            <oxy:PlotView Title="{Binding Title}" >
                 <oxy:PlotView.Series>
                     <oxy:LineSeries ItemsSource="{Binding Points}"/>
                 </oxy:PlotView.Series>
             </oxy:PlotView>
-
-        </Grid>
-        
-        <Grid>
-            
         </Grid>
         
         

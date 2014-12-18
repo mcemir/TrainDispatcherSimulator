@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:control="clr-namespace:TrainDispatcherSimulator.Converters"
+             xmlns:converter="clr-namespace:TrainDispatcherSimulator.Converters"
              mc:Ignorable="d" 
              Height="20" 
              Width="90"
@@ -18,7 +18,7 @@
                 <Setter Property="StrokeThickness" Value="0.3"/>
                 <Setter Property="Stroke" Value="Black"/>
             </Style>
-            <control:SemaphoreOrientationToAngleConverter x:Key="SemaphoreOrientationToAngleConverter"/>
+            <converter:SemaphoreOrientationToAngleConverter x:Key="SemaphoreOrientationToAngleConverter"/>
 
         </ResourceDictionary>
     </UserControl.Resources>
