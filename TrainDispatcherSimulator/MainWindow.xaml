@@ -26,11 +26,13 @@
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
         
-            <control:RailwaySection Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  LeftSemaphore="False"/>
-            <control:RailwaySwitch1 x:Name="switch1" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2"/>
+            <control:RailwayPrivola Grid.Row="1" Grid.Column="1"/>
+            <control:RailwaySection Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  LeftSemaphore="False"/>
+            <control:RailwaySwitch1 Grid.Row="1" Grid.Column="4" Grid.RowSpan="2"/>
 
         </Grid>
         

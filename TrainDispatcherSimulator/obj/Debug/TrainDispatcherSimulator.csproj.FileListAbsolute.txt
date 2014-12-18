@@ -48,6 +48,17 @@ D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\
 D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.csproj.GenerateResource.Cache
 D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.exe
 D:\Documents\Code\VS\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator.pdb
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\App.baml
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwayPrivola.g.cs
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch1.g.cs
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\SemaphoreSignal.g.cs
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Data\DataView.g.cs
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\MainWindow.g.cs
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySection.g.cs
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\App.g.cs
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator_MarkupCompile.cache
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator_MarkupCompile.lref
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\TrainDispatcherSimulator.exe.config
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\TrainDispatcherSimulator.exe
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\TrainDispatcherSimulator.pdb
@@ -63,16 +74,7 @@ D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatche
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.Wpf.xml
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.Xps.pdb
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\bin\Debug\OxyPlot.Xps.xml
-D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\App.baml
-D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch1.g.cs
-D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\SemaphoreSignal.g.cs
-D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Data\DataView.g.cs
-D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\MainWindow.g.cs
-D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySection.g.cs
-D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\App.g.cs
-D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator_MarkupCompile.cache
-D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\TrainDispatcherSimulator_MarkupCompile.lref
+D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwayPrivola.baml
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\RailwaySwitch1.baml
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Controls\SemaphoreSignal.baml
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\obj\Debug\Data\DataView.baml

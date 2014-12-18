@@ -43,6 +43,7 @@ namespace TrainDispatcherSimulator.Controls
 
         public RailwayBase()
         {
+            DataContext = this;
             RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
 
             this.MouseEnter += RailwayBase_MouseEnter;

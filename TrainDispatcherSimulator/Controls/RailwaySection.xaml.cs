@@ -66,7 +66,6 @@ namespace TrainDispatcherSimulator.Controls
 
         public RailwaySection()
         {
-            DataContext = this;
             InitializeComponent();
         }
 

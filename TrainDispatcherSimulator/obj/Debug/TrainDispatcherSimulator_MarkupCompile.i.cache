@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Workspace\Visual Studio 2013\Projects\TrainDispatcherSimulator\TrainDispatcherSimulator\App.xaml
-51706098757
+61113211390
 
-192112333887
+201577622613
 18-1250332728
-Controls\RailwaySwitch1.xaml;Controls\SemaphoreSignal.xaml;Data\DataView.xaml;MainWindow.xaml;Controls\RailwaySection.xaml;
+Controls\RailwayPrivola.xaml;Controls\RailwaySwitch1.xaml;Controls\SemaphoreSignal.xaml;Data\DataView.xaml;MainWindow.xaml;Controls\RailwaySection.xaml;
 
-True
+False
 

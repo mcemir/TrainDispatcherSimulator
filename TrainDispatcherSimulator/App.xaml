@@ -9,5 +9,6 @@
         
         <SolidColorBrush x:Key="RailwayBaseBrush" Color="LightGray"/>
         <SolidColorBrush x:Key="RailwayMouseOverBrush" Color="WhiteSmoke"/>
+        <SolidColorBrush x:Key="RailwayActive" Color="GhostWhite"/>
     </Application.Resources>
 </Application>
