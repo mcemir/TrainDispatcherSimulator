@@ -22,9 +22,10 @@ namespace TrainDispatcherSimulator.Controls
         public enum RailwaySwitchState { Straight, Sverve };
 
 
+
+
+
         #region PROPERTIES
-
-
 
         public RailwaySwitchState State
         {
@@ -33,12 +34,12 @@ namespace TrainDispatcherSimulator.Controls
         }
         public static readonly DependencyProperty StateProperty =
             DependencyProperty.Register("State", typeof(RailwaySwitchState), typeof(RailwaySwitchBase), new PropertyMetadata(RailwaySwitchState.Straight, stateChanged));
-
-        
-
-        
+               
 
         #endregion PROPERTIES
+
+
+
 
 
 
@@ -46,17 +47,34 @@ namespace TrainDispatcherSimulator.Controls
         #region INITIALIZATION
         public RailwaySwitchBase()
         {
-
+            this.MouseUp += RailwaySwitchBase_MouseUp;
         }
+
         #endregion INITIALIZATION
 
 
 
 
+
+
+
         #region EVENT HANDLERS
+        public event EventHandler StateChanged;
+
         private static void stateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if ((d as RailwaySwitchBase).StateChanged != null) {
+                (d as RailwaySwitchBase).StateChanged(d, new EventArgs());
+            }
+        }
 
+
+        private void RailwaySwitchBase_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (State == RailwaySwitchState.Straight)
+                State = RailwaySwitchState.Sverve;
+            else
+                State = RailwaySwitchState.Straight;
         }
         #endregion EVENT HANDLERS
     }

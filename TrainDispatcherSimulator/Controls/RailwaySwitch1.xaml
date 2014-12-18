@@ -16,7 +16,7 @@
         
         
         <!--  Interfejs kada switch nije upaljen (horizontalni prolaz)   -->
-        <Grid x:Name="switchUp" Grid.Row="1" Visibility="Visible">
+        <Grid x:Name="switchStraight" Grid.Row="1" Visibility="Visible">
 
             <Polygon Fill="LightGray">
                 <Polygon.Points>
@@ -39,7 +39,7 @@
 
 
         <!--  Interfejs kada je switch upaljen (skretnica)   -->
-        <Grid x:Name="switchOn" Grid.Row="1" Visibility="Collapsed">
+        <Grid x:Name="switchSverve" Grid.Row="1" Visibility="Collapsed">
             
             <Polygon Fill="LightGray">
                 <Polygon.Points>
