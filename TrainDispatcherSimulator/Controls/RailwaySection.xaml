@@ -7,11 +7,9 @@
              xmlns:control="clr-namespace:TrainDispatcherSimulator.Controls"
              mc:Ignorable="d" 
              x:Name="mainContainer"
-             Height="90"
-             MinHeight="90"
-             MaxHeight="90"
-             d:DesignHeight="114" 
-             d:DesignWidth="100">
+             Height="{StaticResource BlockDimensionD}"
+             MinHeight="{StaticResource BlockDimensionD}"
+             MaxHeight="{StaticResource BlockDimensionD}">
 
     <control:RailwayBase.Resources>
         <converter:SectionDimensionsToPointConverter x:Key="SectionDimensionsToPointConverter" />
@@ -21,7 +19,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
@@ -30,16 +28,6 @@
             HorizontalAlignment="Left" 
             Orientation="Left"
             Visibility="{Binding LeftSemaphore, Converter={StaticResource BoolToVisibilityConverter}}"/>
-        
-        <!--
-        <Polygon
-            Grid.Row="1"
-            Points="{Binding ElementName=mainContainer, Converter={StaticResource SectionDimensionsToPointConverter}}"
-            Stroke="Blue" 
-            FillRule="Nonzero"
-            Fill="LightGray"
-            StrokeThickness="0">
-        </Polygon>-->
 
         <Border Background="{Binding RailwayBrush}" Grid.Row="1"/>
 

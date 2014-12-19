@@ -34,6 +34,33 @@ namespace TrainDispatcherSimulator.Controls
         }
         public static readonly DependencyProperty StateProperty =
             DependencyProperty.Register("State", typeof(RailwaySwitchState), typeof(RailwaySwitchBase), new PropertyMetadata(RailwaySwitchState.Straight, stateChanged));
+
+
+
+
+
+        public Visibility RailwaySwitchStraightVisibility
+        {
+            get { return (Visibility)GetValue(RailwaySwitchStraightVisibilityProperty); }
+            set { SetValue(RailwaySwitchStraightVisibilityProperty, value); }
+        }
+        public static readonly DependencyProperty RailwaySwitchStraightVisibilityProperty =
+            DependencyProperty.Register("RailwaySwitchStraightVisibility", typeof(Visibility), typeof(RailwayBase), new PropertyMetadata(Visibility.Visible));
+
+
+
+
+        public Visibility RailwaySwitchSverveVisibility
+        {
+            get { return (Visibility)GetValue(RailwaySwitchSverveVisibilityProperty); }
+            set { SetValue(RailwaySwitchSverveVisibilityProperty, value); }
+        }
+        public static readonly DependencyProperty RailwaySwitchSverveVisibilityProperty =
+            DependencyProperty.Register("RailwaySwitchSverveVisibility", typeof(Visibility), typeof(RailwayBase), new PropertyMetadata(Visibility.Collapsed));
+
+        
+
+        
                
 
         #endregion PROPERTIES
@@ -48,6 +75,8 @@ namespace TrainDispatcherSimulator.Controls
         public RailwaySwitchBase()
         {
             this.MouseUp += RailwaySwitchBase_MouseUp;
+            this.Width = (double)App.Current.Resources["BlockDimensionD"];
+            this.Height = (double)App.Current.Resources["BlockDoubleDimensionD"];
         }
 
         #endregion INITIALIZATION
@@ -64,7 +93,7 @@ namespace TrainDispatcherSimulator.Controls
         private static void stateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if ((d as RailwaySwitchBase).StateChanged != null) {
-                (d as RailwaySwitchBase).StateChanged(d, new EventArgs());
+                (d as RailwaySwitchBase).StateChanged(d, new EventArgs());  // Raise state changed event
             }
         }
 
@@ -72,9 +101,17 @@ namespace TrainDispatcherSimulator.Controls
         private void RailwaySwitchBase_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (State == RailwaySwitchState.Straight)
+            {
                 State = RailwaySwitchState.Sverve;
+                RailwaySwitchStraightVisibility = Visibility.Collapsed;
+                RailwaySwitchSverveVisibility = Visibility.Visible;
+            }
             else
+            {
                 State = RailwaySwitchState.Straight;
+                RailwaySwitchStraightVisibility = Visibility.Visible;
+                RailwaySwitchSverveVisibility = Visibility.Collapsed;
+            }
         }
         #endregion EVENT HANDLERS
     }

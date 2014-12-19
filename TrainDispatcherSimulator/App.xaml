@@ -4,9 +4,13 @@
              StartupUri="MainWindow.xaml"
              xmlns:my="clr-namespace:System;assembly=mscorlib">
     <Application.Resources>
-        <my:Double x:Key="RailwayHeight">30</my:Double>
-        <my:Double x:Key="BlockDimension">90</my:Double>
-        
+        <my:Double x:Key="RailwayHeightD">20</my:Double>
+
+        <my:Double x:Key="BlockDimensionD">80</my:Double>
+        <my:Double x:Key="BlockDoubleDimensionD">160</my:Double>
+
+        <GridLength x:Key="RailwayHeightGL">20</GridLength>
+
         <SolidColorBrush x:Key="RailwayBaseBrush" Color="LightGray"/>
         <SolidColorBrush x:Key="RailwayMouseOverBrush" Color="WhiteSmoke"/>
         <SolidColorBrush x:Key="RailwayActive" Color="GhostWhite"/>

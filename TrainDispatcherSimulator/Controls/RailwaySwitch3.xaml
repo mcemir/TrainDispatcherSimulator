@@ -15,22 +15,22 @@
 
 
         <!--  Interfejs kada switch nije upaljen (horizontalni prolaz)   -->
-        <Grid x:Name="switchStraight" Grid.Row="1" Visibility="Collapsed">
+        <Grid x:Name="switchStraight" Grid.Row="1" Visibility="{Binding RailwaySwitchStraightVisibility}">
 
             <Polygon Fill="{Binding RailwayBrush}">
                 <Polygon.Points>
-                    <Point X="0" Y="90" />
-                    <Point X="90" Y="90" />
-                    <Point X="90" Y="120" />
-                    <Point X="0" Y="120" />
+                    <Point X="0" Y="80" />
+                    <Point X="80" Y="80" />
+                    <Point X="80" Y="100" />
+                    <Point X="0" Y="100" />
                 </Polygon.Points>
             </Polygon>
 
             <Polygon Fill="{Binding RailwayBrush}">
                 <Polygon.Points>
-                    <Point X="80" Y="80" />
-                    <Point X="50" Y="80" />
-                    <Point X="0" Y="30" />
+                    <Point X="70" Y="70" />
+                    <Point X="50" Y="70" />
+                    <Point X="0" Y="20" />
                     <Point X="0" Y="0" />
                 </Polygon.Points>
             </Polygon>
@@ -38,23 +38,23 @@
 
 
         <!--  Interfejs kada je switch upaljen (skretnica)   -->
-        <Grid x:Name="switchSverve" Grid.Row="1" Visibility="Visible">
+        <Grid x:Name="switchSverve" Grid.Row="1" Visibility="{Binding RailwaySwitchSverveVisibility}">
 
             <Polygon Fill="{Binding RailwayBrush}">
                 <Polygon.Points>
-                    <Point X="80" Y="120" />
-                    <Point X="0" Y="120" />
-                    <Point X="0" Y="90" />
-                    <Point X="50" Y="90" />
+                    <Point X="70" Y="100" />
+                    <Point X="0" Y="100" />
+                    <Point X="0" Y="80" />
+                    <Point X="50" Y="80" />
                 </Polygon.Points>
             </Polygon>
 
 
             <Polygon Fill="{Binding RailwayBrush}">
                 <Polygon.Points>
-                    <Point X="90" Y="90" />
-                    <Point X="90" Y="120" />
-                    <Point X="0" Y="30" />
+                    <Point X="80" Y="80" />
+                    <Point X="80" Y="100" />
+                    <Point X="0" Y="20" />
                     <Point X="0" Y="0" />
                 </Polygon.Points>
             </Polygon>

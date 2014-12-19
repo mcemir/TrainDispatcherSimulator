@@ -23,21 +23,6 @@ namespace TrainDispatcherSimulator.Controls
         public RailwaySwitch3()
         {
             InitializeComponent();
-            this.StateChanged += RailwaySwitch3_StateChanged;
-        }
-
-        void RailwaySwitch3_StateChanged(object sender, EventArgs e)
-        {
-            if (State == RailwaySwitchState.Straight)
-            {
-                switchStraight.Visibility = Visibility.Visible;
-                switchSverve.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                switchStraight.Visibility = Visibility.Collapsed;
-                switchSverve.Visibility = Visibility.Visible;
-            }
         }
     }
 }
