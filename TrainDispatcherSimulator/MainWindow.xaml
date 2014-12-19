@@ -73,10 +73,11 @@
             <control:RailwaySwitch2 Grid.Row="2" Grid.Column="5" Grid.RowSpan="2"/>
             <control:RailwaySwitch3 Grid.Row="4" Grid.Column="5" Grid.RowSpan="2"/>
             <control:RailwayCurve1 Grid.Row="3" Grid.Column="6" Grid.RowSpan="2"/>
-            <control:RailwaySwitch4 Grid.Row="4" Grid.Column="7" Grid.RowSpan="2"/>
+            <control:RailwaySwitch5 Grid.Row="4" Grid.Column="7" Grid.RowSpan="2"/>
             <control:RailwaySection Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3"  LeftSemaphore="False"/>
             <control:RailwayPrivolaOut Grid.Row="5" Grid.Column="1"/>
             <control:RailwaySection Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="1"  LeftSemaphore="False"/>
+            <control:RailwaySwitch6 Grid.Row="4" Grid.Column="8" Grid.RowSpan="2"/>
 
         </Grid>
         

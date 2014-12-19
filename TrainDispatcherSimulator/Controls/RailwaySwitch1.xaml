@@ -5,9 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:control="clr-namespace:TrainDispatcherSimulator.Controls"
-    mc:Ignorable="d"
-    d:DesignHeight="{StaticResource BlockDoubleDimensionD}" 
-    d:DesignWidth="{StaticResource BlockDimensionD}">
+    mc:Ignorable="d">
     
     <Grid>
         <Grid.RowDefinitions>

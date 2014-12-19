@@ -90,6 +90,12 @@
     <Compile Include="Controls\RailwaySwitch4.xaml.cs">
       <DependentUpon>RailwaySwitch4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RailwaySwitch5.xaml.cs">
+      <DependentUpon>RailwaySwitch5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RailwaySwitch6.xaml.cs">
+      <DependentUpon>RailwaySwitch6.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RailwaySwitchBase.cs" />
     <Compile Include="Controls\SemaphoreSignal.xaml.cs">
       <DependentUpon>SemaphoreSignal.xaml</DependentUpon>
@@ -124,6 +130,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\RailwaySwitch4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RailwaySwitch5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RailwaySwitch6.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
