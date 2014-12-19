@@ -19,10 +19,10 @@ namespace TrainDispatcherSimulator.Controls
     /// <summary>
     /// Interaction logic for RailwayPrivola.xaml
     /// </summary>
-    public partial class RailwayPrivola : RailwayBase
+    public partial class RailwayPrivolaIn : RailwayBase
     {
 
-        public RailwayPrivola()
+        public RailwayPrivolaIn()
         {
             InitializeComponent();
 
