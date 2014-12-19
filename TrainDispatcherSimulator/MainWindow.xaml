@@ -4,7 +4,8 @@
         xmlns:control="clr-namespace:TrainDispatcherSimulator.Controls"
         xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:localData="clr-namespace:TrainDispatcherSimulator.Data"
-        Title="MainWindow"  Width="800" Height="600"
+        Title="MainWindow"  
+        Width="1300" Height="600"
         Background="Black">
     
     <Window.DataContext>
@@ -56,6 +57,13 @@
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
         
@@ -64,9 +72,11 @@
             <control:RailwaySwitch1 Grid.Row="3" Grid.Column="4" Grid.RowSpan="2"/>
             <control:RailwaySwitch2 Grid.Row="2" Grid.Column="5" Grid.RowSpan="2"/>
             <control:RailwaySwitch3 Grid.Row="4" Grid.Column="5" Grid.RowSpan="2"/>
-            <control:RailwaySwitch4 Grid.Row="3" Grid.Column="6" Grid.RowSpan="2"/>
+            <control:RailwayCurve1 Grid.Row="3" Grid.Column="6" Grid.RowSpan="2"/>
+            <control:RailwaySwitch4 Grid.Row="4" Grid.Column="7" Grid.RowSpan="2"/>
             <control:RailwaySection Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3"  LeftSemaphore="False"/>
             <control:RailwayPrivolaOut Grid.Row="5" Grid.Column="1"/>
+            <control:RailwaySection Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="1"  LeftSemaphore="False"/>
 
         </Grid>
         

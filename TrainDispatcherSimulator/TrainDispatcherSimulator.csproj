@@ -68,6 +68,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\RailwayBase.cs" />
+    <Compile Include="Controls\RailwayCurve1.xaml.cs">
+      <DependentUpon>RailwayCurve1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RailwayCurveBase.cs" />
     <Compile Include="Controls\RailwayPrivolaIn.xaml.cs">
       <DependentUpon>RailwayPrivolaIn.xaml</DependentUpon>
     </Compile>
@@ -95,6 +99,10 @@
     <Compile Include="Controls\RailwaySection.xaml.cs">
       <DependentUpon>RailwaySection.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\RailwayCurve1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\RailwayPrivolaIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
