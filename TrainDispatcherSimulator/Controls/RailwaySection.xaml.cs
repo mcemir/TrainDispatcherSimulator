@@ -32,7 +32,7 @@ namespace TrainDispatcherSimulator.Controls
             set { SetValue(LeftSemaphoreVisibilityProperty, value); }
         }
         public static readonly DependencyProperty LeftSemaphoreVisibilityProperty =
-            DependencyProperty.Register("LeftSemaphoreVisibility", typeof(Visibility), typeof(RailwaySection), new PropertyMetadata(Visibility.Collapsed));
+            DependencyProperty.Register("LeftSemaphoreVisibility", typeof(Visibility), typeof(RailwaySection), new PropertyMetadata(Visibility.Visible));
 
 
         
@@ -43,23 +43,23 @@ namespace TrainDispatcherSimulator.Controls
             set { SetValue(RightSemaphoreVisibilityProperty, value); }
         }
         public static readonly DependencyProperty RightSemaphoreVisibilityProperty =
-            DependencyProperty.Register("RightSemaphoreVisibility", typeof(Visibility), typeof(RailwaySection), new PropertyMetadata(Visibility.Collapsed));
+            DependencyProperty.Register("RightSemaphoreVisibility", typeof(Visibility), typeof(RailwaySection), new PropertyMetadata(Visibility.Visible));
 
 
 
 
 
-        public bool LeftSemaphore
+
+
+        public Visibility ManuverSemaphoreVisibility
         {
-            get { return (bool)GetValue(LeftSemaphoreProperty); }
-            set { SetValue(LeftSemaphoreProperty, value); }
+            get { return (Visibility)GetValue(ManuverSemaphoreVisibilityProperty); }
+            set { SetValue(ManuverSemaphoreVisibilityProperty, value); }
         }
-        public static readonly DependencyProperty LeftSemaphoreProperty =
-            DependencyProperty.Register("LeftSemaphore", typeof(bool), typeof(RailwaySection), new PropertyMetadata(false));
+        public static readonly DependencyProperty ManuverSemaphoreVisibilityProperty =
+            DependencyProperty.Register("ManuverSemaphoreVisibility", typeof(Visibility), typeof(RailwaySection), new PropertyMetadata(Visibility.Collapsed));
 
         
-        
-
         
 
         #endregion PROPERTIES
@@ -69,7 +69,15 @@ namespace TrainDispatcherSimulator.Controls
             InitializeComponent();
         }
 
-        
+
+
+
+        #region EVENT HANDLERS
+
+
+        #endregion EVENT HANDLERS
+
+
 
 
 

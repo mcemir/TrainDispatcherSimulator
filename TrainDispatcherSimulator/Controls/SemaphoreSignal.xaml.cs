@@ -46,21 +46,25 @@ namespace TrainDispatcherSimulator.Controls
                 // Promijeni boje
                 if (value == SignalType.Red)
                 {
+                    upperSignal.Visibility = Visibility.Hidden;
                     upperSignal.Fill = new SolidColorBrush(Colors.LightGray);
                     lowerSignal.Fill = new SolidColorBrush(Colors.Red);
                 }
                 else if (value == SignalType.Yellow)
                 {
+                    upperSignal.Visibility = Visibility.Hidden;
                     upperSignal.Fill = new SolidColorBrush(Colors.LightGray);
                     lowerSignal.Fill = new SolidColorBrush(Colors.Yellow);
                 }
                 else if (value == SignalType.YellowYellow)
                 {
+                    upperSignal.Visibility = Visibility.Visible;
                     upperSignal.Fill = new SolidColorBrush(Colors.Yellow);
                     lowerSignal.Fill = new SolidColorBrush(Colors.Yellow);
                 }
                 else
                 {
+                    upperSignal.Visibility = Visibility.Hidden;
                     upperSignal.Fill = new SolidColorBrush(Colors.LightGray);
                     lowerSignal.Fill = new SolidColorBrush(Colors.LightGreen);
                 }
@@ -76,19 +80,14 @@ namespace TrainDispatcherSimulator.Controls
 
                 if (value == ManueuvreSignalStyle.Active)
                 {
-                    manoeuvreSignal.Fill = new SolidColorBrush(Colors.Red);
+                    manoeuvreSignal.Fill = new SolidColorBrush(Colors.LightGreen);
                 }
                 else
                 {
-                    manoeuvreSignal.Fill = new SolidColorBrush(Colors.LightGray);
+                    manoeuvreSignal.Fill = new SolidColorBrush(Colors.DarkGray);
                 }
             }
-        }
-
-
-
-
-        
+        }        
 
 
 
@@ -101,6 +100,19 @@ namespace TrainDispatcherSimulator.Controls
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(SemaphoreOrientation), typeof(SemaphoreSignal), new PropertyMetadata(SemaphoreOrientation.Left));
 
+
+
+
+
+
+        public Visibility ManuverSemaphoreVisibility
+        {
+            get { return (Visibility)GetValue(ManuverSemaphoreVisibilityProperty); }
+            set { SetValue(ManuverSemaphoreVisibilityProperty, value); }
+        }
+        public static readonly DependencyProperty ManuverSemaphoreVisibilityProperty =
+            DependencyProperty.Register("ManuverSemaphoreVisibility", typeof(Visibility), typeof(SemaphoreSignal), new PropertyMetadata(Visibility.Collapsed));
+
         
 
         
@@ -110,7 +122,6 @@ namespace TrainDispatcherSimulator.Controls
         public SemaphoreSignal()
         {
             InitializeComponent();
-            DataContext = this;
         }
 
 
@@ -131,7 +142,12 @@ namespace TrainDispatcherSimulator.Controls
 
         private void manueuvrePopup_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            manueuvreSemaphorePopup.IsOpen = !manueuvreSemaphorePopup.IsOpen;
+            //manueuvreSemaphorePopup.IsOpen = !manueuvreSemaphorePopup.IsOpen;
+
+            if (ManueuvreSignal == ManueuvreSignalStyle.NotActive)
+                ManueuvreSignal = ManueuvreSignalStyle.Active;
+            else
+                ManueuvreSignal = ManueuvreSignalStyle.NotActive;
         }
 
 
@@ -164,6 +180,20 @@ namespace TrainDispatcherSimulator.Controls
         {
             ManueuvreSignal = ManueuvreSignalStyle.Active;
         }
+
+
+
+        private void Semaphore_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Orientation == SemaphoreOrientation.Right)
+            {
+                RotateTransform rotateTransform = new RotateTransform(180);
+                this.LayoutTransform = rotateTransform;
+            }
+        }
+
         #endregion EVENT HANDLERS
+
+        
     }
 }
