@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converter="clr-namespace:TrainDispatcherSimulator.Converters"
              mc:Ignorable="d" 
-             Loaded="Semaphore_Loaded"
              Height="20" 
              Width="80"
              >
@@ -42,7 +41,7 @@
                 Name="semaphorePopup"
                 AllowsTransparency="True"            
                 PopupAnimation="Slide"
-                Placement="Top" >
+                Placement="Top">
 
                 <Border Background="#50FFFFFF">
                     <StackPanel Orientation="Vertical">

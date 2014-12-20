@@ -91,14 +91,19 @@ namespace TrainDispatcherSimulator.Controls
 
 
 
-        // Definiše da li je semafor ulazni ili izlazni, na custom način
+        // Definiše da li je semafor ulazni ili izlazni
         public SemaphoreOrientation Orientation
         {
             get { return (SemaphoreOrientation)GetValue(OrientationProperty); }
             set { SetValue(OrientationProperty, value); }
         }
         public static readonly DependencyProperty OrientationProperty =
-            DependencyProperty.Register("Orientation", typeof(SemaphoreOrientation), typeof(SemaphoreSignal), new PropertyMetadata(SemaphoreOrientation.Left));
+            DependencyProperty.Register("Orientation", typeof(SemaphoreOrientation), typeof(SemaphoreSignal), new PropertyMetadata(SemaphoreOrientation.Left, SemaphoreOrientation_Changed));
+
+        private static void SemaphoreOrientation_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as SemaphoreSignal).ApplyOrientation();
+        }
 
 
 
@@ -128,7 +133,17 @@ namespace TrainDispatcherSimulator.Controls
 
 
         #region PUBLIC METHODS
-        
+        public void ApplyOrientation()
+        {
+            if (Orientation == SemaphoreOrientation.Right)
+            {
+                this.LayoutTransform = new RotateTransform(180);
+            }
+            else
+            {
+                this.LayoutTransform = new RotateTransform(0);
+            }
+        }
         #endregion PUBLIC METHODS
 
 
@@ -180,18 +195,7 @@ namespace TrainDispatcherSimulator.Controls
         {
             ManueuvreSignal = ManueuvreSignalStyle.Active;
         }
-
-
-
-        private void Semaphore_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (Orientation == SemaphoreOrientation.Right)
-            {
-                RotateTransform rotateTransform = new RotateTransform(180);
-                this.LayoutTransform = rotateTransform;
-            }
-        }
-
+        
         #endregion EVENT HANDLERS
 
         
