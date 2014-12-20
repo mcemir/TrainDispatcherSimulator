@@ -166,7 +166,11 @@
             <control:RailwayPrivolaOut Grid.Row="5" Grid.Column="1"/>
             <control:RailwaySection Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="1" LeftSemaphoreVisibility="Collapsed"  />
             <control:RailwaySwitch6 Grid.Row="4" Grid.Column="8" Grid.RowSpan="2"/>
-
+            <control:RailwaySection Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="2"  ManuverSemaphoreVisibility="Visible"/>
+            <control:RailwaySection Grid.Row="5" Grid.Column="9" Grid.ColumnSpan="2"  ManuverSemaphoreVisibility="Visible"/>
+            <control:RailwayCross Grid.Row="4" Grid.Column="11" Grid.ColumnSpan="1" Grid.RowSpan="2" />
+            <control:RailwaySection Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"  ManuverSemaphoreVisibility="Visible"/>
+            <control:RailwaySection Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2"  ManuverSemaphoreVisibility="Visible"/>
             <control:Platform x:Name="platform1" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3" Title="P1"/>
 
         </Grid>

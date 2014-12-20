@@ -22,9 +22,6 @@ namespace TrainDispatcherSimulator.Controls
         public enum RailwaySwitchState { Straight, Sverve };
 
 
-
-
-
         #region PROPERTIES
 
         public RailwaySwitchState State

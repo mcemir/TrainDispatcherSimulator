@@ -1,0 +1,28 @@
+﻿<control:RailwayCurveBase 
+    x:Class="TrainDispatcherSimulator.Controls.RailwayCurve2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"     
+    xmlns:control="clr-namespace:TrainDispatcherSimulator.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    mc:Ignorable="d" 
+    Height="160"
+    Width="80">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Polygon Fill="{Binding RailwayBrush}" Grid.Row="1">
+            <Polygon.Points>
+                <Point X="0" Y="80" />
+                <Point X="0" Y="100" />
+                <Point X="80" Y="20" />
+                <Point X="80" Y="0" />
+            </Polygon.Points>
+        </Polygon>
+
+    </Grid>
+</control:RailwayCurveBase>

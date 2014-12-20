@@ -71,6 +71,18 @@
       <DependentUpon>Platform.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RailwayBase.cs" />
+    <Compile Include="Controls\RailwayCross.xaml.cs">
+      <DependentUpon>RailwayCross.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RailwayCurve4.xaml.cs">
+      <DependentUpon>RailwayCurve4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RailwayCurve2.xaml.cs">
+      <DependentUpon>RailwayCurve2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RailwayCurve3.xaml.cs">
+      <DependentUpon>RailwayCurve3.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RailwayCurve1.xaml.cs">
       <DependentUpon>RailwayCurve1.xaml</DependentUpon>
     </Compile>
@@ -111,6 +123,22 @@
     <Page Include="Controls\Platform.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RailwayCross.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RailwayCurve4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\RailwayCurve2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\RailwayCurve3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\RailwayCurve1.xaml">
       <SubType>Designer</SubType>
