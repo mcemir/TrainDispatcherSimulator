@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\Platform.xaml.cs">
+      <DependentUpon>Platform.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RailwayBase.cs" />
     <Compile Include="Controls\RailwayCurve1.xaml.cs">
       <DependentUpon>RailwayCurve1.xaml</DependentUpon>
@@ -105,6 +108,10 @@
     <Compile Include="Controls\RailwaySection.xaml.cs">
       <DependentUpon>RailwaySection.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\Platform.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\RailwayCurve1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
