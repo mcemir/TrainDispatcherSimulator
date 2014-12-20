@@ -25,5 +25,18 @@ namespace TrainDispatcherSimulator
             InitializeComponent();
         }
 
+        private void graphButton_Click(object sender, RoutedEventArgs e)
+        {
+            railwayGrid.Visibility = Visibility.Collapsed;
+            graphGrid.Visibility = Visibility.Visible;
+        }
+
+        private void trainButton_Click(object sender, RoutedEventArgs e)
+        {
+            railwayGrid.Visibility = Visibility.Visible;
+            graphGrid.Visibility = Visibility.Collapsed;
+
+        }
+
     }
 }
