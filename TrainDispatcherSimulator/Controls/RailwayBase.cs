@@ -30,6 +30,18 @@ namespace TrainDispatcherSimulator.Controls
         public static readonly DependencyProperty RailwayBrushProperty =
             DependencyProperty.Register("RailwayBrush", typeof(SolidColorBrush), typeof(RailwayBase), new PropertyMetadata((App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush) ));
 
+
+
+
+        public Platform Platform
+        {
+            get { return (Platform)GetValue(PlatformProperty); }
+            set { SetValue(PlatformProperty, value); }
+        }
+        public static readonly DependencyProperty PlatformProperty =
+            DependencyProperty.Register("Platform", typeof(Platform), typeof(RailwayBase), new PropertyMetadata(null));
+
+        
         #endregion PROPERTIES
 
 

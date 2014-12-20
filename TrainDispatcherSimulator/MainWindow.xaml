@@ -70,16 +70,16 @@
             <control:RailwayPrivolaIn Grid.Row="3" Grid.Column="1"/>
             <control:RailwaySection Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"  ManuverSemaphoreVisibility="Visible"/>
             <control:RailwaySwitch1 Grid.Row="3" Grid.Column="4" Grid.RowSpan="2"/>
-            <control:RailwaySwitch2 Grid.Row="2" Grid.Column="5" Grid.RowSpan="2"/>
+            <control:RailwaySwitch2 Grid.Row="2" Grid.Column="5" Grid.RowSpan="2" Platform="{Binding ElementName=platform1}"/>
             <control:RailwaySwitch3 Grid.Row="4" Grid.Column="5" Grid.RowSpan="2"/>
             <control:RailwayCurve1 Grid.Row="3" Grid.Column="6" Grid.RowSpan="2"/>
             <control:RailwaySwitch5 Grid.Row="4" Grid.Column="7" Grid.RowSpan="2"/>
-            <control:RailwaySection Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" />
+            <control:RailwaySection Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" Platform="{Binding ElementName=platform1}" />
             <control:RailwayPrivolaOut Grid.Row="5" Grid.Column="1"/>
-            <control:RailwaySection Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="1" LeftSemaphoreVisibility="Collapsed" />
+            <control:RailwaySection Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="1" LeftSemaphoreVisibility="Collapsed"  />
             <control:RailwaySwitch6 Grid.Row="4" Grid.Column="8" Grid.RowSpan="2"/>
 
-            <control:Platform x:Name="platform1" Grid.Row="6" Grid.Column="7" Title="P1"/>
+            <control:Platform x:Name="platform1" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3" Title="P1"/>
 
         </Grid>
         
