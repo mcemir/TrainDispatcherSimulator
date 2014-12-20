@@ -39,5 +39,12 @@ namespace TrainDispatcherSimulator
 
         }
 
+        private void logButton_Click(object sender, RoutedEventArgs e)
+        {
+            railwayGrid.Visibility = Visibility.Visible;
+            graphGrid.Visibility = Visibility.Collapsed;
+
+        }
+
     }
 }
