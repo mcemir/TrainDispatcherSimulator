@@ -23,6 +23,7 @@ namespace TrainDispatcherSimulator
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void graphButton_Click(object sender, RoutedEventArgs e)
