@@ -109,6 +109,7 @@
     <Compile Include="Controls\SemaphoreSignal.xaml.cs">
       <DependentUpon>SemaphoreSignal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Train.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\SectionDimensionsToPointConverter.cs" />
     <Compile Include="Controls\RailwaySection.xaml.cs">

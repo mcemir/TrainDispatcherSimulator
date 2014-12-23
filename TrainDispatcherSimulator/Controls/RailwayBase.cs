@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.Windows.Threading;
 
 namespace TrainDispatcherSimulator.Controls
 {
@@ -60,7 +61,9 @@ namespace TrainDispatcherSimulator.Controls
         public static readonly DependencyProperty PlatformProperty =
             DependencyProperty.Register("Platform", typeof(Platform), typeof(RailwayBase), new PropertyMetadata(null));
 
-        
+
+        public List<Train> Trains { get; set; }
+        public int Length  { get; set; }            // Dužina sekcije u metrima
         #endregion PROPERTIES
 
 
@@ -76,6 +79,7 @@ namespace TrainDispatcherSimulator.Controls
         {
             DataContext = this;
             RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+            Trains = new List<Train>();
 
             this.MouseEnter += RailwayBase_MouseEnter;
             this.MouseLeave += RailwayBase_MouseLeave;
@@ -89,6 +93,7 @@ namespace TrainDispatcherSimulator.Controls
         }
 
 
+        // Get left and right railways
         private void populateRailwayJoints()
         {
             // Get position
@@ -138,7 +143,7 @@ namespace TrainDispatcherSimulator.Controls
 
 
 
-        #region PRIVATE METHODS
+        #region PUBLIC METHODS
 
         public virtual RailwayBase GetLeftRailway()
         {
@@ -154,7 +159,41 @@ namespace TrainDispatcherSimulator.Controls
             return null;
         }
 
-        #endregion PRIVATE METHODS
+
+
+
+        public virtual void EnterRailway(Train train)
+        {
+            Trains.Add(train);
+            RailwayBrush = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
+            startTimerDriving(train);
+        }
+
+        public virtual void LeaveRailway(Train train)
+        {
+            RailwayBase nextRailway;
+
+
+            if (train.Orientation == TrainOrientation.Left)
+            {
+                // Provjeri lijevi semafor
+                nextRailway = this.GetLeftRailway();
+            }
+            else
+            {
+                // Provjeri desni semafor semafor
+                nextRailway = this.GetRightRailway();
+            }
+
+            if (nextRailway != null)
+            {
+                Trains.Remove(train);
+                nextRailway.EnterRailway(train);
+                startTimerLeaving(train);
+            }
+        }
+
+        #endregion PUBLIC METHODS
 
 
 
@@ -170,17 +209,86 @@ namespace TrainDispatcherSimulator.Controls
 
         #region EVENT HANDLERS
 
+        
+
+        #endregion EVENT HANDLERS
+
+
+
+
+
+
+        #region DISPATCHER TIMERS
+        private void startTimerDriving(Train train)
+        {
+            int drivingTime = (this.Length / train.MaxSpeed * 1000)*3600;
+
+            DispatcherTimer timerDriving = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
+            timerDriving.Interval = new TimeSpan(0, 0, 0, drivingTime, 0);
+
+
+            timerDriving.Tick += (s, args) =>
+            {
+                LeaveRailway(train);
+                timerDriving.Stop();
+            };
+
+            timerDriving.Start();
+        }
+
+
+        private void startTimerLeaving(Train train)
+        {
+            int leavingTime = (train.Length / train.MaxSpeed * 1000) * 3600;
+
+            DispatcherTimer timerDriving = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
+            timerDriving.Interval = new TimeSpan(0, 0, 0, leavingTime, 0);
+
+
+            timerDriving.Tick += (s, args) =>
+            {
+                RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+                timerDriving.Stop();
+            };
+
+            timerDriving.Start();
+        }
+
+
+
+        #endregion DISPATCHER TIMERS
+
+
+
+
+
+
+
+        #region MOUSE OVER
+        private SolidColorBrush tmpRailwayBrush;
+        private int brightnesIntensity = 40;
         void RailwayBase_MouseEnter(object sender, MouseEventArgs e)
         {
-            RailwayBrush = App.Current.Resources["RailwayMouseOverBrush"] as SolidColorBrush;
+            tmpRailwayBrush = RailwayBrush;
+
+            byte R = (byte)(RailwayBrush.Color.R + brightnesIntensity);
+            R = RailwayBrush.Color.R < R ? R : (byte)255;
+
+            byte G = (byte)(RailwayBrush.Color.G + brightnesIntensity);
+            G = RailwayBrush.Color.G < G ? G : (byte)255;
+
+            byte B = (byte)(RailwayBrush.Color.B + brightnesIntensity);
+            B = RailwayBrush.Color.B < B ? B : (byte)255;
+
+            RailwayBrush = new SolidColorBrush(Color.FromArgb(255, R, G, B));
         }
 
         void RailwayBase_MouseLeave(object sender, MouseEventArgs e)
         {
-            RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+            RailwayBrush = tmpRailwayBrush;
         }
+        #endregion MOUSE OVER
 
-        #endregion EVENT HANDLERS
     }
 
 

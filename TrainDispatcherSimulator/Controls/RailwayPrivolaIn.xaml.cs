@@ -16,30 +16,51 @@ using System.Windows.Threading;
 
 namespace TrainDispatcherSimulator.Controls
 {
-    /// <summary>
-    /// Interaction logic for RailwayPrivola.xaml
-    /// </summary>
+    public enum RailwayPrivolaOrientation { Left, Right };
+
     public partial class RailwayPrivolaIn : RailwayBase
     {
 
+
+        #region PROPERTIES
+
+
+
+        public RailwayPrivolaOrientation Orientation
+        {
+            get { return (RailwayPrivolaOrientation)GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OrientationProperty =
+            DependencyProperty.Register("Orientation", typeof(RailwayPrivolaOrientation), typeof(RailwayPrivolaIn), new PropertyMetadata(RailwayPrivolaOrientation.Left));
+
+        
+
+        #endregion PROPERTIES
+
+
+        #region INITIALIZATION
         public RailwayPrivolaIn()
         {
             InitializeComponent();
 
-
-            // TEST 
-            GenerateTrain(5,0);
         }
+
+        #endregion INITIALIZATION
 
 
 
 
         #region PUBLIC METHODS
 
-        // Metoda koja će generisati voz na prvoj šini za onoliko vremena koliko je zadato sa offset-om
-        public void GenerateTrain(int minutes, int seconds)
+
+        public void DispatchTrain(int minutes, int seconds, Train train)
         {
-            startTimer(minutes, seconds);
+            Trains.Add(train);
+            RailwayBrush = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
+            startTimer(minutes, seconds, train);
         }
         #endregion PUBLIC METHODS
 
@@ -49,10 +70,6 @@ namespace TrainDispatcherSimulator.Controls
 
         #region PRIVATE METHODS
 
-        private void generateTrain()
-        {
-
-        }
 
         #endregion PRIVATE METHODS
 
@@ -64,24 +81,24 @@ namespace TrainDispatcherSimulator.Controls
         private DispatcherTimer timer;
         private int minutes, seconds;
 
-        private void startTimer(int minutes, int seconds) 
+        private void startTimer(int minutes, int seconds, Train train) 
         {
             this.minutes = minutes;
             this.seconds = seconds;
 
             timer = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
-            timer.Tick += new EventHandler(timer_Tick);
+            timer.Tick += (s, args) => timer_Tick(train);
             timer.Interval = new TimeSpan(0, 0, 0, 1, 0);           // Tick every second
             timer.Start();
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void timer_Tick(Train train)
         {
             if (minutes <= 0 && seconds <= 0)    // If offset is in the past
             {
                 timerTextBlock.Text = "";
+                this.LeaveRailway(train);
                 timer.Stop();
-                generateTrain();
             }
             else
             {
