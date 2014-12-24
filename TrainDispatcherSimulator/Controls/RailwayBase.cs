@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Windows.Threading;
+using TrainDispatcherSimulator.Helpers;
 
 namespace TrainDispatcherSimulator.Controls
 {
@@ -23,6 +24,8 @@ namespace TrainDispatcherSimulator.Controls
         public List<RailwayBase> LeftRailways = new List<RailwayBase>();
         public List<RailwayBase> RightRailways = new List<RailwayBase>();
 
+        public static PathReservation pathFind = new PathReservation();
+        
 
 
 
@@ -90,7 +93,20 @@ namespace TrainDispatcherSimulator.Controls
             this.MouseEnter += RailwayBase_MouseEnter;
             this.MouseLeave += RailwayBase_MouseLeave;
             this.Loaded += RailwayBase_Loaded;
+            this.MouseDown += RailwayBase_MouseDown;
+            this.MouseUp += RailwayBase_MouseUp;
 
+        }
+
+        void RailwayBase_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            pathFind.finalPoint = this;
+            pathFind.activate();
+        }
+
+        void RailwayBase_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            pathFind.startingPoint = this;
         }
 
         void RailwayBase_Loaded(object sender, RoutedEventArgs e)
@@ -166,6 +182,10 @@ namespace TrainDispatcherSimulator.Controls
             return null;
         }
 
+        public List<RailwayBase> GetNeighbors()
+        {
+            return RightRailways;
+        }
 
 
 
