@@ -41,7 +41,10 @@ namespace TrainDispatcherSimulator.Controls
         {
             get { return (RailwayCrossState)GetValue(StateProperty); }
             set 
-            { 
+            {
+                if (Trains.Count > 0)
+                    return;
+
                 SetValue(StateProperty, value);
 
                 if (value == RailwayCrossState.Straight)

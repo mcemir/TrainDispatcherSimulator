@@ -24,5 +24,27 @@ namespace TrainDispatcherSimulator.Controls
         {
             InitializeComponent();
         }
+
+
+        #region PUBLIC METHODS
+
+        // Ovo nije dobro treba mijenjat
+        public override RailwayBase GetRightRailway()
+        {
+            if (State == RailwaySwitchState.Straight)
+                return RightRailways[0];
+            else
+                return RightRailways[1];
+        }
+
+        // Ovo nije dobro treba mijenjat
+        public override RailwayBase GetLeftRailway()
+        {
+            if (State == RailwaySwitchState.Straight)
+                return RightRailways[0];
+            else
+                return RightRailways[1];
+        }
+        #endregion PUBLIC METHODS
     }
 }

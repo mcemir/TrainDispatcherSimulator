@@ -28,8 +28,12 @@ namespace TrainDispatcherSimulator.Controls
         {
             get { return (RailwaySwitchState)GetValue(StateProperty); }
             set 
-            { 
+            {
+                if (Trains.Count > 0)
+                    return;
+
                 SetValue(StateProperty, value);
+
                 if (value == RailwaySwitchState.Sverve)
                 {
                     RailwaySwitchStraightVisibility = Visibility.Collapsed;
