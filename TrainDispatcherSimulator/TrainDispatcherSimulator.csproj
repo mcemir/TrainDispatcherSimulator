@@ -81,11 +81,8 @@
       <DependentUpon>RailwayCurve1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RailwayCurveBase.cs" />
-    <Compile Include="Controls\RailwayPrivolaIn.xaml.cs">
-      <DependentUpon>RailwayPrivolaIn.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\RailwayPrivolaOut.xaml.cs">
-      <DependentUpon>RailwayPrivolaOut.xaml</DependentUpon>
+    <Compile Include="Controls\RailwayPrivola.xaml.cs">
+      <DependentUpon>RailwayPrivola.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RailwaySwitch1.xaml.cs">
       <DependentUpon>RailwaySwitch1.xaml</DependentUpon>
@@ -131,11 +128,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\RailwayPrivolaIn.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\RailwayPrivolaOut.xaml">
+    <Page Include="Controls\RailwayPrivola.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

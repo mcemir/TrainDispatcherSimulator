@@ -172,8 +172,8 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <control:RailwayPrivolaIn Grid.Row="5" Grid.Column="0"/>
-                <control:RailwayPrivolaOut Grid.Row="6" Grid.Column="0"/>
+                <control:RailwayPrivola Grid.Row="5" Grid.Column="0" RailwayName="P1"/>
+                <control:RailwayPrivola Grid.Row="6" Grid.Column="0" RailwayName="P2"/>
             
                 <control:RailwaySection Grid.Row="5" Grid.Column="1"/>
                 <control:RailwaySection Grid.Row="6" Grid.Column="1"/>
@@ -212,7 +212,7 @@
 
 
 
-                <control:RailwaySection Grid.Row="8" Grid.Column="19" Grid.ColumnSpan="2"/>
+                <control:RailwaySection Grid.Row="8" Grid.Column="19" Grid.ColumnSpan="2" RightSemaphoreVisibility="Collapsed"/>
                 <control:RailwaySwitch2 Grid.Row="8" Grid.Column="17" Grid.RowSpan="2"/>
                 <control:RailwaySwitch3 Grid.Row="7" Grid.Column="18" Grid.RowSpan="2"/>
                 <control:RailwayCurve1 Grid.Row="6" Grid.Column="17" Grid.RowSpan="2"/>

@@ -1,0 +1,44 @@
+﻿<control:RailwayBase
+    x:Class="TrainDispatcherSimulator.Controls.RailwayPrivola"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:converter="clr-namespace:TrainDispatcherSimulator.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:control="clr-namespace:TrainDispatcherSimulator.Controls"
+    mc:Ignorable="d" 
+    Height="80" 
+    Width="80">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Polygon x:Name="leftTriangle" Grid.Row="0" Fill="{StaticResource RailwayBaseBrush}" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Polygon.Points>
+                <Point X="30" Y="0" />
+                <Point X="0" Y="7.5" />
+                <Point X="30" Y="15" />
+            </Polygon.Points>
+        </Polygon>
+        
+        <TextBlock Grid.Row="0" x:Name="timerTextBlock" FontSize="18" Foreground="Red" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Border Grid.Row="1" Background="{Binding RailwayBrush}"/>
+
+        <TextBlock Grid.Row="1" Text="{Binding CurrentTrainName}" FontSize="18" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Text="{Binding RailwayName}" Margin="10,0,0,0" FontSize="14" Foreground="LightGray" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+        <Polygon x:Name="rightTriangle"  Grid.Row="2" Fill="{StaticResource RailwayBaseBrush}" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Polygon.Points>
+                <Point X="0" Y="0" />
+                <Point X="30" Y="7.5" />
+                <Point X="0" Y="15" />
+            </Polygon.Points>
+        </Polygon>
+
+    </Grid>
+</control:RailwayBase>

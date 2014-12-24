@@ -20,8 +20,8 @@ namespace TrainDispatcherSimulator.Controls
 {
     public class RailwayBase : UserControl
     {
-        private List<RailwayBase> leftRailways = new List<RailwayBase>();
-        private List<RailwayBase> rightRailways = new List<RailwayBase>();
+        public List<RailwayBase> LeftRailways = new List<RailwayBase>();
+        public List<RailwayBase> RightRailways = new List<RailwayBase>();
 
 
 
@@ -60,6 +60,12 @@ namespace TrainDispatcherSimulator.Controls
         }
         public static readonly DependencyProperty PlatformProperty =
             DependencyProperty.Register("Platform", typeof(Platform), typeof(RailwayBase), new PropertyMetadata(null));
+
+
+
+        
+
+        
 
 
         public List<Train> Trains { get; set; }
@@ -105,33 +111,34 @@ namespace TrainDispatcherSimulator.Controls
             Grid parentGrid = this.Parent as Grid;
 
 
+            if (parentGrid != null)
+            {
+                LeftRailways = parentGrid.Children.Cast<UserControl>().Where(c => c != this && c is RailwayBase && (
+                    (Grid.GetRow(c) == row - 1 && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && Grid.GetRowSpan(c) == 2 && !(c is RailwaySwitch4)) ||
+                    (Grid.GetRow(c) == row && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col) ||
+                    (rowSpan == 2 && Grid.GetRow(c) == row + 1 && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && !(c is RailwaySwitch3))))
+                    .OrderBy(c => Grid.GetRow(c)).Cast<RailwayBase>().ToList();
 
-            leftRailways = parentGrid.Children.Cast<UserControl>().Where(c => c != this && c is RailwayBase && (
-                (Grid.GetRow(c) == row - 1 && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && Grid.GetRowSpan(c) == 2 && !(c is RailwaySwitch4)) ||     
-                (Grid.GetRow(c) == row && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col) ||
-                (rowSpan == 2 && Grid.GetRow(c) == row + 1 && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && !(c is RailwaySwitch3))))
-                .OrderBy(c => Grid.GetRow(c)).Cast<RailwayBase>().ToList();
-
-            leftRailways = parentGrid.Children.Cast<UserControl>().Where(c => c != this && c is RailwayBase && (
-                (Grid.GetRow(c) == row - 1 && Grid.GetColumn(c) == col + colSpan && Grid.GetRowSpan(c) == 2 && !(c is RailwaySwitch1)) ||    
-                (Grid.GetRow(c) == row && Grid.GetColumn(c) == col + colSpan) ||
-                (rowSpan == 2 && Grid.GetRow(c) == row + 1 && Grid.GetColumn(c) == col + colSpan && !(c is RailwaySwitch2))))
-                .OrderBy(c => Grid.GetRow(c)).Cast<RailwayBase>().ToList();
-
+                RightRailways = parentGrid.Children.Cast<UserControl>().Where(c => c != this && c is RailwayBase && (
+                    (Grid.GetRow(c) == row - 1 && Grid.GetColumn(c) == col + colSpan && Grid.GetRowSpan(c) == 2 && !(c is RailwaySwitch1)) ||
+                    (Grid.GetRow(c) == row && Grid.GetColumn(c) == col + colSpan) ||
+                    (rowSpan == 2 && Grid.GetRow(c) == row + 1 && Grid.GetColumn(c) == col + colSpan && !(c is RailwaySwitch2))))
+                    .OrderBy(c => Grid.GetRow(c)).Cast<RailwayBase>().ToList();
+            }
             
 
             // Ako je rowSpan 2 imaju specijalni slučajevi, ali ih nema na našem čvoru
-            if (rowSpan == 2 && leftRailways.Count == 1 && 
-                Grid.GetRowSpan(leftRailways[0]) == 2 &&
-                Grid.GetRow(leftRailways[0]) == row)
+            if (rowSpan == 2 && LeftRailways.Count == 1 && 
+                Grid.GetRowSpan(LeftRailways[0]) == 2 &&
+                Grid.GetRow(LeftRailways[0]) == row)
             {
-                leftRailways.Add(leftRailways[0]); // Dodaj još jednu instancu
+                LeftRailways.Add(LeftRailways[0]); // Dodaj još jednu instancu
             }
-            if (rowSpan == 2 && rightRailways.Count == 1 &&
-                Grid.GetRowSpan(rightRailways[0]) == 2 &&
-                Grid.GetRow(rightRailways[0]) == row)
+            if (rowSpan == 2 && RightRailways.Count == 1 &&
+                Grid.GetRowSpan(RightRailways[0]) == 2 &&
+                Grid.GetRow(RightRailways[0]) == row)
             {
-                leftRailways.Add(rightRailways[0]); // Dodaj još jednu instancu
+                RightRailways.Add(RightRailways[0]); // Dodaj još jednu instancu
             }
 
         }
@@ -147,15 +154,15 @@ namespace TrainDispatcherSimulator.Controls
 
         public virtual RailwayBase GetLeftRailway()
         {
-            if (leftRailways.Count > 0)
-                return leftRailways[0];
+            if (LeftRailways.Count > 0)
+                return LeftRailways[0];
             return null;
         }
 
         public virtual RailwayBase GetRightRailway()
         {
-            if (rightRailways.Count > 0)
-                return rightRailways[0];
+            if (RightRailways.Count > 0)
+                return RightRailways[0];
             return null;
         }
 
@@ -219,39 +226,39 @@ namespace TrainDispatcherSimulator.Controls
 
 
         #region DISPATCHER TIMERS
-        private void startTimerDriving(Train train)
+        protected virtual void startTimerDriving(Train train)
         {
-            int drivingTime = (this.Length / train.MaxSpeed * 1000)*3600;
+            int drivingTimeSec = 7;
 
-            DispatcherTimer timerDriving = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
-            timerDriving.Interval = new TimeSpan(0, 0, 0, drivingTime, 0);
+            DispatcherTimer timer = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
+            timer.Interval = new TimeSpan(0, 0, 0, drivingTimeSec, 0);
 
 
-            timerDriving.Tick += (s, args) =>
+            timer.Tick += (s, args) =>
             {
                 LeaveRailway(train);
-                timerDriving.Stop();
+                timer.Stop();
             };
 
-            timerDriving.Start();
+            timer.Start();
         }
 
 
-        private void startTimerLeaving(Train train)
+        protected virtual void startTimerLeaving(Train train)
         {
-            int leavingTime = (train.Length / train.MaxSpeed * 1000) * 3600;
+            int leavingTimeSec = 2;
 
-            DispatcherTimer timerDriving = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
-            timerDriving.Interval = new TimeSpan(0, 0, 0, leavingTime, 0);
+            DispatcherTimer timer = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
+            timer.Interval = new TimeSpan(0, 0, 0, leavingTimeSec, 0);
 
 
-            timerDriving.Tick += (s, args) =>
+            timer.Tick += (s, args) =>
             {
                 RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
-                timerDriving.Stop();
+                timer.Stop();
             };
 
-            timerDriving.Start();
+            timer.Start();
         }
 
 
@@ -267,7 +274,7 @@ namespace TrainDispatcherSimulator.Controls
         #region MOUSE OVER
         private SolidColorBrush tmpRailwayBrush;
         private int brightnesIntensity = 40;
-        void RailwayBase_MouseEnter(object sender, MouseEventArgs e)
+        private void RailwayBase_MouseEnter(object sender, MouseEventArgs e)
         {
             tmpRailwayBrush = RailwayBrush;
 
@@ -283,7 +290,7 @@ namespace TrainDispatcherSimulator.Controls
             RailwayBrush = new SolidColorBrush(Color.FromArgb(255, R, G, B));
         }
 
-        void RailwayBase_MouseLeave(object sender, MouseEventArgs e)
+        private void RailwayBase_MouseLeave(object sender, MouseEventArgs e)
         {
             RailwayBrush = tmpRailwayBrush;
         }

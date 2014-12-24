@@ -16,25 +16,13 @@ using System.Windows.Threading;
 
 namespace TrainDispatcherSimulator.Controls
 {
-    public enum RailwayPrivolaOrientation { Left, Right };
 
-    public partial class RailwayPrivolaIn : RailwayBase
+    public partial class RailwayPrivola : RailwayBase
     {
 
 
         #region PROPERTIES
 
-
-
-        public RailwayPrivolaOrientation Orientation
-        {
-            get { return (RailwayPrivolaOrientation)GetValue(OrientationProperty); }
-            set { SetValue(OrientationProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty OrientationProperty =
-            DependencyProperty.Register("Orientation", typeof(RailwayPrivolaOrientation), typeof(RailwayPrivolaIn), new PropertyMetadata(RailwayPrivolaOrientation.Left));
 
         
 
@@ -42,10 +30,27 @@ namespace TrainDispatcherSimulator.Controls
 
 
         #region INITIALIZATION
-        public RailwayPrivolaIn()
+        public RailwayPrivola()
         {
             InitializeComponent();
 
+
+            // TEST 
+            this.Loaded += RailwayPrivola_Loaded;
+            
+
+        }
+
+        // TEST 
+        private void RailwayPrivola_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.RailwayName == "P1")
+            {
+                Train t = new Train();
+                t.Orientation = TrainOrientation.Right;
+                t.Name = "P104";
+                this.DispatchTrain(0, 3, t);
+            }
         }
 
         #endregion INITIALIZATION
@@ -61,7 +66,49 @@ namespace TrainDispatcherSimulator.Controls
             Trains.Add(train);
             RailwayBrush = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
             startTimer(minutes, seconds, train);
+
+            if (train.Orientation == TrainOrientation.Left)
+                leftTriangle.Fill = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
+            else
+                rightTriangle.Fill = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
         }
+
+
+
+        public override void EnterRailway(Train train)
+        {
+            base.EnterRailway(train);
+
+            if (train.Orientation == TrainOrientation.Left)
+                leftTriangle.Fill = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
+            else
+                rightTriangle.Fill = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
+        }
+
+
+        // Overide-amo leaving jer ne treba provjeravat semafore i ako je null sljedeći treba opet sve resetat
+        public override void LeaveRailway(Train train)
+        {
+            RailwayBase nextRailway;
+
+            if (train.Orientation == TrainOrientation.Left)
+                nextRailway = this.GetLeftRailway();
+            else
+                nextRailway = this.GetRightRailway();
+
+            if (nextRailway != null)        // Ukoliko nema sljedećeg railway-a ne radi dalje ništa jer train izlazi napolje
+                nextRailway.EnterRailway(train);
+
+
+            Trains.Remove(train);
+            this.startTimerLeaving(train);
+
+            // Reset triangle color
+            leftTriangle.Fill = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+            rightTriangle.Fill = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+            
+        }
+
         #endregion PUBLIC METHODS
 
 
