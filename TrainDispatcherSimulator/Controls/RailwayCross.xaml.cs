@@ -46,11 +46,11 @@ namespace TrainDispatcherSimulator.Controls
 
                 if (value == RailwayCrossState.Straight)
                 {
-                    RailwayCrossStraightVisibility = Visibility.Collapsed;
-                    RailwayCrossSverveFirstVisibility = Visibility.Visible;
+                    RailwayCrossStraightVisibility = Visibility.Visible;
+                    RailwayCrossSverveFirstVisibility = Visibility.Collapsed;
                     RailwayCrossSverveSecondVisibility = Visibility.Collapsed;
                 }
-                else if (value == RailwayCrossState.SverveFirst)
+                else if (value == RailwayCrossState.SverveSecond)
                 {
                     RailwayCrossStraightVisibility = Visibility.Collapsed;
                     RailwayCrossSverveFirstVisibility = Visibility.Collapsed;
@@ -58,8 +58,8 @@ namespace TrainDispatcherSimulator.Controls
                 }
                 else
                 {
-                    RailwayCrossStraightVisibility = Visibility.Visible;
-                    RailwayCrossSverveFirstVisibility = Visibility.Collapsed;
+                    RailwayCrossStraightVisibility = Visibility.Collapsed;
+                    RailwayCrossSverveFirstVisibility = Visibility.Visible;
                     RailwayCrossSverveSecondVisibility = Visibility.Collapsed;
                 }
             }
