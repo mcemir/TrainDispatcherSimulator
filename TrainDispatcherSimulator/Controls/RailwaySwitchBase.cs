@@ -27,7 +27,20 @@ namespace TrainDispatcherSimulator.Controls
         public RailwaySwitchState State
         {
             get { return (RailwaySwitchState)GetValue(StateProperty); }
-            set { SetValue(StateProperty, value); }
+            set 
+            { 
+                SetValue(StateProperty, value);
+                if (value == RailwaySwitchState.Sverve)
+                {
+                    RailwaySwitchStraightVisibility = Visibility.Collapsed;
+                    RailwaySwitchSverveVisibility = Visibility.Visible;
+                }
+                else
+                {
+                    RailwaySwitchStraightVisibility = Visibility.Visible;
+                    RailwaySwitchSverveVisibility = Visibility.Collapsed;
+                }
+            }
         }
         public static readonly DependencyProperty StateProperty =
             DependencyProperty.Register("State", typeof(RailwaySwitchState), typeof(RailwaySwitchBase), new PropertyMetadata(RailwaySwitchState.Straight, stateChanged));
@@ -80,6 +93,17 @@ namespace TrainDispatcherSimulator.Controls
 
 
 
+        #region PUBLIC METHODS
+
+        public void ToggleState()
+        {
+            if (State == RailwaySwitchState.Straight)
+                State = RailwaySwitchState.Sverve;
+            else
+                State = RailwaySwitchState.Straight;
+        }
+
+        #endregion PUBLIC METHODS
 
 
 
@@ -97,18 +121,7 @@ namespace TrainDispatcherSimulator.Controls
 
         private void RailwaySwitchBase_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (State == RailwaySwitchState.Straight)
-            {
-                State = RailwaySwitchState.Sverve;
-                RailwaySwitchStraightVisibility = Visibility.Collapsed;
-                RailwaySwitchSverveVisibility = Visibility.Visible;
-            }
-            else
-            {
-                State = RailwaySwitchState.Straight;
-                RailwaySwitchStraightVisibility = Visibility.Visible;
-                RailwaySwitchSverveVisibility = Visibility.Collapsed;
-            }
+            ToggleState();
         }
         #endregion EVENT HANDLERS
     }

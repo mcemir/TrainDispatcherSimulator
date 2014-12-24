@@ -15,12 +15,11 @@ using System.Windows.Shapes;
 
 namespace TrainDispatcherSimulator.Controls
 {
-    /// <summary>
-    /// Interaction logic for RailwayCross.xaml
-    /// </summary>
+    public enum RailwayCrossState { Straight, SverveFirst, SverveSecond };
+
     public partial class RailwayCross : RailwayBase
     {
-        public enum RailwayCrossState { Straight, SverveFirst, SverveSecond };
+        
 
         #region INITIALIZATION
         public RailwayCross()
@@ -33,12 +32,37 @@ namespace TrainDispatcherSimulator.Controls
         }
         #endregion INITIALIZATION
 
+
+
+
         #region PROPERTIES
 
         public RailwayCrossState State
         {
             get { return (RailwayCrossState)GetValue(StateProperty); }
-            set { SetValue(StateProperty, value); }
+            set 
+            { 
+                SetValue(StateProperty, value);
+
+                if (value == RailwayCrossState.Straight)
+                {
+                    RailwayCrossStraightVisibility = Visibility.Collapsed;
+                    RailwayCrossSverveFirstVisibility = Visibility.Visible;
+                    RailwayCrossSverveSecondVisibility = Visibility.Collapsed;
+                }
+                else if (value == RailwayCrossState.SverveFirst)
+                {
+                    RailwayCrossStraightVisibility = Visibility.Collapsed;
+                    RailwayCrossSverveFirstVisibility = Visibility.Collapsed;
+                    RailwayCrossSverveSecondVisibility = Visibility.Visible;
+                }
+                else
+                {
+                    RailwayCrossStraightVisibility = Visibility.Visible;
+                    RailwayCrossSverveFirstVisibility = Visibility.Collapsed;
+                    RailwayCrossSverveSecondVisibility = Visibility.Collapsed;
+                }
+            }
         }
         public static readonly DependencyProperty StateProperty =
             DependencyProperty.Register("RailwayCrossState", typeof(RailwayCrossState), typeof(RailwayBase), new PropertyMetadata(RailwayCrossState.Straight, stateChanged));
@@ -81,6 +105,34 @@ namespace TrainDispatcherSimulator.Controls
         #endregion PROPERTIES
 
 
+
+
+
+        #region PUBLIC METHODS
+
+        public void ToggleState()
+        {
+            if (State == RailwayCrossState.Straight)
+            {
+                State = RailwayCrossState.SverveFirst;
+            }
+            else if (State == RailwayCrossState.SverveFirst)
+            {
+                State = RailwayCrossState.SverveSecond;
+            }
+            else
+            {
+                State = RailwayCrossState.Straight;
+            }
+        }
+
+        #endregion PUBLIC METHODS
+
+
+
+
+
+
         #region EVENT HANDLERS
         public event EventHandler StateChanged;
 
@@ -95,27 +147,7 @@ namespace TrainDispatcherSimulator.Controls
 
         private void RailwayCross_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (State == RailwayCrossState.Straight)
-            {
-                State = RailwayCrossState.SverveFirst;
-                RailwayCrossStraightVisibility = Visibility.Collapsed;
-                RailwayCrossSverveFirstVisibility = Visibility.Visible;
-                RailwayCrossSverveSecondVisibility = Visibility.Collapsed;
-            }
-            else if(State == RailwayCrossState.SverveFirst)
-            {
-                State = RailwayCrossState.SverveSecond;
-                RailwayCrossStraightVisibility = Visibility.Collapsed;
-                RailwayCrossSverveFirstVisibility = Visibility.Collapsed;
-                RailwayCrossSverveSecondVisibility = Visibility.Visible;
-            }
-            else
-            {
-                State = RailwayCrossState.Straight;
-                RailwayCrossStraightVisibility = Visibility.Visible;
-                RailwayCrossSverveFirstVisibility = Visibility.Collapsed;
-                RailwayCrossSverveSecondVisibility = Visibility.Collapsed;
-            }
+            ToggleState();
         }
         #endregion EVENT HANDLERS
     }
