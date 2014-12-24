@@ -190,22 +190,24 @@
                 <control:RailwaySection Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="3" RightSemaphoreVisibility="Collapsed"/>
                 <control:RailwaySection Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="3" RightSemaphoreVisibility="Collapsed"/>
 
-                <control:RailwaySection Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="10"  ManuverSemaphoreVisibility="Visible"/>
-                <control:RailwaySection Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="8"  ManuverSemaphoreVisibility="Visible"/>
+                <control:RailwaySection Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="10" Platform="{Binding ElementName=platform3}"  ManuverSemaphoreVisibility="Visible"/>
+                <control:RailwaySection Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="8" Platform="{Binding ElementName=platform2}"  ManuverSemaphoreVisibility="Visible"/>
                 <control:RailwayCurve1 Grid.Row="6" Grid.Column="13" Grid.RowSpan="2"/>
                 <control:RailwaySwitch3 Grid.Row="7" Grid.Column="14" Grid.RowSpan="2"/>
 
-                <control:Platform Grid.Row="7" Grid.Column="9" Grid.ColumnSpan="3" Title="P1"/>
-                <control:Platform Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="3" Title="P2"/>
+                <control:Platform Grid.Row="6" Grid.Column="9" Grid.ColumnSpan="3" Title="P2" x:Name="platform2" Grid.RowSpan="2"  Height="50" Margin="0,0,0,50" VerticalAlignment="Bottom"/>
+                <control:Platform Grid.Row="7" Grid.Column="9" Grid.ColumnSpan="3" Title="P1" x:Name="platform1" Grid.RowSpan="2"  Height="50" Margin="0,50,0,0" VerticalAlignment="Top"/>
+                <control:Platform Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="3" Title="P4" x:Name="platform4" Grid.RowSpan="2"  Height="50" Margin="0,0,0,50" VerticalAlignment="Bottom"/>
+                <control:Platform Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="3" Title="P3" x:Name="platform3" Grid.RowSpan="2"  Height="50" Margin="0,50,0,0" VerticalAlignment="Top"/>
 
-                <control:RailwaySection Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="8"  ManuverSemaphoreVisibility="Visible"/>
+                <control:RailwaySection Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="8" Platform="{Binding ElementName=platform1}"  ManuverSemaphoreVisibility="Visible"/>
                 <control:RailwaySwitch1 Grid.Row="8" Grid.Column="5" Grid.RowSpan="2"/>
                 <control:RailwaySection Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="9"  ManuverSemaphoreVisibility="Visible"/>
                 <control:RailwaySwitch3 Grid.Row="8" Grid.Column="15" Grid.RowSpan="2"/>
                 <control:RailwaySection Grid.Row="9" Grid.Column="16" Grid.ColumnSpan="1" RightSemaphoreVisibility="Collapsed" LeftSemaphoreVisibility="Collapsed"/>
 
                 <control:RailwaySwitch2 Grid.Row="2" Grid.Column="5" Grid.RowSpan="2"/>
-                <control:RailwaySection Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="8" ManuverSemaphoreVisibility="Visible"/>
+                <control:RailwaySection Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="8" Platform="{Binding ElementName=platform4}" ManuverSemaphoreVisibility="Visible"/>
                 <control:RailwaySwitch5 Grid.Row="4" Grid.Column="15" Grid.RowSpan="2"/>
                 <control:RailwayCurve1 Grid.Row="3" Grid.Column="14" Grid.RowSpan="2"/>
                 <control:RailwaySection Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="3" RightSemaphoreVisibility="Collapsed"/>

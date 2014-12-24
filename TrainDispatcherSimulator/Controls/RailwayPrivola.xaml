@@ -29,7 +29,7 @@
         <TextBlock Grid.Row="0" x:Name="timerTextBlock" FontSize="18" Foreground="Red" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <Border Grid.Row="1" Background="{Binding RailwayBrush}"/>
 
-        <TextBlock Grid.Row="1" Text="{Binding CurrentTrainName}" FontSize="18" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Text="{Binding CurrentTrainName}" Style="{StaticResource railwayNameTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="2" Text="{Binding RailwayName}" Margin="10,0,0,0" FontSize="14" Foreground="LightGray" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <Polygon x:Name="rightTriangle"  Grid.Row="2" Fill="{StaticResource RailwayBaseBrush}" VerticalAlignment="Center" HorizontalAlignment="Right">
