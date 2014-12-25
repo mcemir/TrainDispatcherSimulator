@@ -8,7 +8,7 @@ using TrainDispatcherSimulator.Controls;
 
 namespace TrainDispatcherSimulator.Helpers
 {
-    public class PathReservation : Controler
+    public class PathReservation : Controller
     {
         private HashSet<RailwayBase> visitedSections = new HashSet<RailwayBase>();
         private Dictionary<RailwayBase, RailwayBase> parentSections = new Dictionary<RailwayBase, RailwayBase>();
