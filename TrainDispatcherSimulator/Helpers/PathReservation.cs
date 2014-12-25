@@ -10,25 +10,52 @@ namespace TrainDispatcherSimulator.Helpers
 {
     public class PathReservation : Controler
     {
-        private Stack<RailwayBase> path = new Stack<RailwayBase>();
+        private HashSet<RailwayBase> visitedSections = new HashSet<RailwayBase>();
+        private Dictionary<RailwayBase, RailwayBase> parentSections = new Dictionary<RailwayBase, RailwayBase>();
+        private Stack<RailwayBase> sectionStack = new Stack<RailwayBase>();
+
         public void activate(){
+
             findPathBetweenSections();
+            iluminatePath();
+            parentSections.Clear();
+        }
+
+        private void iluminatePath()
+        {
+            RailwayBase parent = parentSections[finalPoint];
+            while (parent != startingPoint)
+            {
+                parent.RailwayBrush = parent.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 222, 0));
+                parent = parentSections[parent];
+            }
         }
 
         private void findPathBetweenSections()
         {
-            path.Push(startingPoint);
-            while (path.Any())
+            sectionStack.Push(startingPoint);
+
+            while (sectionStack.Any())
             {
-                RailwayBase current = path.Pop();
                 
-                if(finalPoint == current){
-                    finalPoint.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 222, 0));
+                RailwayBase current = sectionStack.Pop();
+
+                if (!visitedSections.Add(current))
+                    continue;
+
+                if (finalPoint == current)
+                {
+                    sectionStack.Clear();
+                    visitedSections.Clear();
                     return;
                 }
-                foreach (RailwayBase child in current.GetNeighbors())
+
+                List<RailwayBase> neighbors = current.GetNeighbors().Where(n => !visitedSections.Contains(n)).ToList();
+
+                foreach (RailwayBase child in neighbors)
                 {
-                    path.Push(child);
+                    parentSections[child] = current;
+                    sectionStack.Push(child);
                 }
             }
 
