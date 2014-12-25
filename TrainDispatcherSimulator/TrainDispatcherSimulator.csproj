@@ -67,7 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\Controler.cs" />
+    <Compile Include="Helpers\Controller.cs" />
     <Compile Include="Helpers\PathReservation.cs" />
     <Compile Include="Controls\Platform.xaml.cs">
       <DependentUpon>Platform.xaml</DependentUpon>

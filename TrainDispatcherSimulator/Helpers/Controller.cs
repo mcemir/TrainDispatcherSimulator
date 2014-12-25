@@ -21,17 +21,9 @@ namespace TrainDispatcherSimulator.Helpers
                 return instance;
             }
         }
+        public RailwayBase startingPoint { get; set; }
 
-
-        public static void RegisterMouseUp(RailwayBase railway) 
-        {
-
-        }
-
-        public static void RegisterMouseDown(RailwayBase railway)
-        {
-
-        }
+        public RailwayBase finalPoint { get; set; }
 
     }
 }
