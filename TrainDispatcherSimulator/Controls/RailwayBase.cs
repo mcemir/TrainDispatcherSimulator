@@ -156,14 +156,15 @@ namespace TrainDispatcherSimulator.Controls
 
         #region PUBLIC METHODS
 
-        public virtual RailwayBase GetLeftRailway()
+        // Parametar "referent" je referentni railway nad kojim se racuna sljedeći (prethodni). Ovaj parametar se koristi samo kod Cross-a i Switch-a 5 i 6 
+        public virtual RailwayBase GetLeftRailway(RailwayBase referent = null)
         {
             if (LeftRailways.Count > 0)
                 return LeftRailways[0];
             return null;
         }
 
-        public virtual RailwayBase GetRightRailway()
+        public virtual RailwayBase GetRightRailway(RailwayBase referent = null)
         {
             if (RightRailways.Count > 0)
                 return RightRailways[0];

@@ -30,7 +30,7 @@ namespace TrainDispatcherSimulator.Controls
         #region PUBLIC METHODS
 
         // Ovo nije dobro treba mijenjat
-        public override RailwayBase GetRightRailway()
+        public override RailwayBase GetRightRailway(RailwayBase referent = null)
         {
             if (State == RailwaySwitchState.Straight)
                 return RightRailways[0];
@@ -39,7 +39,7 @@ namespace TrainDispatcherSimulator.Controls
         }
 
         // Ovo nije dobro treba mijenjat
-        public override RailwayBase GetLeftRailway()
+        public override RailwayBase GetLeftRailway(RailwayBase referent = null)
         {
             if (State == RailwaySwitchState.Straight)
                 return RightRailways[0];

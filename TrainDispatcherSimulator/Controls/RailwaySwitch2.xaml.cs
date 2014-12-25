@@ -31,7 +31,7 @@ namespace TrainDispatcherSimulator.Controls
 
         #region PUBLIC METHODS
 
-        public override RailwayBase GetRightRailway()
+        public override RailwayBase GetRightRailway(RailwayBase referent = null)
         {
             if (State == RailwaySwitchState.Straight)
                 return RightRailways[1];

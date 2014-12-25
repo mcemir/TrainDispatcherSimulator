@@ -129,6 +129,38 @@ namespace TrainDispatcherSimulator.Controls
             }
         }
 
+
+        public override RailwayBase GetRightRailway(RailwayBase referent = null)
+        {
+            if (State == RailwayCrossState.Straight)
+            {
+                return RightRailways[0];    // Treba popravit
+            }
+            else if (State == RailwayCrossState.SverveFirst)
+            {
+                return RightRailways[1];
+            }
+            else
+            {
+                return RightRailways[0];
+            }
+        }
+
+        public override RailwayBase GetLeftRailway(RailwayBase referent = null)
+        {
+            if (State == RailwayCrossState.Straight) 
+            {
+                return LeftRailways[0]; // Treba popravit
+            }
+            else if (State == RailwayCrossState.SverveFirst)
+            {
+                return LeftRailways[0];
+            }
+            else
+            {
+                return LeftRailways[1];
+            }
+        }
         #endregion PUBLIC METHODS
 
 

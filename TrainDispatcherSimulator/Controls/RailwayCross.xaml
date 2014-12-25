@@ -23,7 +23,7 @@
                 </Polygon.Points>
             </Polygon>
 
-            <Polygon Fill="{Binding RailwayBrush}">
+            <Polygon Fill="{StaticResource RailwayBaseBrush}">
                 <Polygon.Points>
                     <Point X="10" Y="70" />
                     <Point X="30" Y="70" />
@@ -32,7 +32,7 @@
                 </Polygon.Points>
             </Polygon>
 
-            <Polygon Fill="{Binding RailwayBrush}">
+            <Polygon Fill="{StaticResource RailwayBaseBrush}">
                 <Polygon.Points>
                     <Point X="10" Y="30" />
                     <Point X="30" Y="30" />
@@ -54,12 +54,23 @@
 
         <!--  Interfejs kada je aktivan SverveFirst   -->
         <Grid x:Name="crossSverveFirst" Grid.Row="1" Visibility="{Binding RailwayCrossSverveFirstVisibility}">
-            <Polygon Fill="{Binding RailwayBrush}">
+            <Polygon Fill="{StaticResource RailwayBaseBrush}">
                 <Polygon.Points>
                     <Point X="10" Y="0" />
                     <Point X="80" Y="0" />
                     <Point X="80" Y="20" />
                     <Point X="30" Y="20" />
+                </Polygon.Points>
+            </Polygon>
+
+            
+            
+            <Polygon Fill="{StaticResource RailwayBaseBrush}">
+                <Polygon.Points>
+                    <Point X="10" Y="70" />
+                    <Point X="30" Y="70" />
+                    <Point X="70" Y="30" />
+                    <Point X="50" Y="30" />
                 </Polygon.Points>
             </Polygon>
 
@@ -71,17 +82,8 @@
                     <Point X="80" Y="100" />
                 </Polygon.Points>
             </Polygon>
-            
-            <Polygon Fill="{Binding RailwayBrush}">
-                <Polygon.Points>
-                    <Point X="10" Y="70" />
-                    <Point X="30" Y="70" />
-                    <Point X="70" Y="30" />
-                    <Point X="50" Y="30" />
-                </Polygon.Points>
-            </Polygon>
 
-            <Polygon Fill="{Binding RailwayBrush}">
+            <Polygon Fill="{StaticResource RailwayBaseBrush}">
                 <Polygon.Points>
                     <Point X="0" Y="100" />
                     <Point X="0" Y="80" />
@@ -97,12 +99,21 @@
         <!--  Interfejs kada je aktivan SverveSecond   -->
         <Grid x:Name="crossSverveSecond" Grid.Row="1" Visibility="{Binding RailwayCrossSverveSecondVisibility}">
 
-            <Polygon Fill="{Binding RailwayBrush}">
+            <Polygon Fill="{StaticResource RailwayBaseBrush}">
                 <Polygon.Points>
                     <Point X="0" Y="0" />
                     <Point X="70" Y="0" />
                     <Point X="50" Y="20" />
                     <Point X="0" Y="20" />
+                </Polygon.Points>
+            </Polygon>            
+
+            <Polygon Fill="{StaticResource RailwayBaseBrush}">
+                <Polygon.Points>
+                    <Point X="10" Y="30" />
+                    <Point X="30" Y="30" />
+                    <Point X="70" Y="70" />
+                    <Point X="50" Y="70" />
                 </Polygon.Points>
             </Polygon>
 
@@ -115,16 +126,7 @@
                 </Polygon.Points>
             </Polygon>
 
-            <Polygon Fill="{Binding RailwayBrush}">
-                <Polygon.Points>
-                    <Point X="10" Y="30" />
-                    <Point X="30" Y="30" />
-                    <Point X="70" Y="70" />
-                    <Point X="50" Y="70" />
-                </Polygon.Points>
-            </Polygon>
-
-            <Polygon Fill="{Binding RailwayBrush}">
+            <Polygon Fill="{StaticResource RailwayBaseBrush}">
                 <Polygon.Points>
                     <Point X="10" Y="100" />
                     <Point X="80" Y="100" />
