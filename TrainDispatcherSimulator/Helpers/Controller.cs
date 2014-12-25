@@ -10,6 +10,10 @@ namespace TrainDispatcherSimulator.Helpers
     public class Controller
     {
 
+
+
+        #region INITIALIZATION
+
         private static Controller instance;
         public static Controller Instance
         {
@@ -21,9 +25,33 @@ namespace TrainDispatcherSimulator.Helpers
                 return instance;
             }
         }
-        public RailwayBase startingPoint { get; set; }
 
-        public RailwayBase finalPoint { get; set; }
+        private Controller()
+        {
+
+        }
+
+        #endregion INITIALIZATION
+
+
+
+
+
+        #region PUBLIC METHODS
+
+        public void RegisterMouseUp(RailwayBase railway)
+        {
+
+        }
+
+        public void RegisterMouseDown(RailwayBase railway)
+        {
+
+        }
+
+        #endregion PUBLIC METHODS
+
+
 
     }
 }

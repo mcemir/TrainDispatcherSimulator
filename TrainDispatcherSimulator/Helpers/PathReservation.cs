@@ -8,8 +8,12 @@ using TrainDispatcherSimulator.Controls;
 
 namespace TrainDispatcherSimulator.Helpers
 {
-    public class PathReservation : Controller
+    public class PathReservation
     {
+        public RailwayBase startingPoint { get; set; }
+        public RailwayBase finalPoint { get; set; }
+
+
         private HashSet<RailwayBase> visitedSections = new HashSet<RailwayBase>();
         private Dictionary<RailwayBase, RailwayBase> parentSections = new Dictionary<RailwayBase, RailwayBase>();
         private Queue<RailwayBase> sectionStack = new Queue<RailwayBase>();
