@@ -215,7 +215,7 @@
 
 
                 <control:RailwaySection Grid.Row="8" Grid.Column="19" Grid.ColumnSpan="2" RightSemaphoreVisibility="Collapsed"/>
-                <control:RailwaySwitch2 Grid.Row="8" Grid.Column="17" Grid.RowSpan="2"/>
+                <control:RailwayCurve2 Grid.Row="8" Grid.Column="17" Grid.RowSpan="2"/>
                 <control:RailwaySwitch3 Grid.Row="7" Grid.Column="18" Grid.RowSpan="2"/>
                 <control:RailwayCurve1 Grid.Row="6" Grid.Column="17" Grid.RowSpan="2"/>
                 <control:RailwayCurve1 Grid.Row="5" Grid.Column="16" Grid.RowSpan="2"/>
