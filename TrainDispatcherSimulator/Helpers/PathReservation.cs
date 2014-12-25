@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media;
 using TrainDispatcherSimulator.Controls;
 
@@ -12,18 +13,29 @@ namespace TrainDispatcherSimulator.Helpers
     {
         public RailwayBase startingPoint { get; set; }
         public RailwayBase finalPoint { get; set; }
-
+        public PathDirection pathDirection { get; set; }
 
         private HashSet<RailwayBase> visitedSections = new HashSet<RailwayBase>();
         private Dictionary<RailwayBase, RailwayBase> parentSections = new Dictionary<RailwayBase, RailwayBase>();
         private Queue<RailwayBase> sectionStack = new Queue<RailwayBase>();
 
-        public void activate(){
-            if (startingPoint == null || finalPoint == null || startingPoint==finalPoint) return;
-            findPathBetweenSections();
-            iluminatePath();
-            parentSections.Clear();
+        public PathReservation()
+        {
+            pathDirection = PathDirection.Both;
         }
+        public void activate(){
+            
+            if (startingPoint == null || finalPoint == null || startingPoint==finalPoint) return;
+            if (startingPoint.GetType() != typeof(RailwaySection) || finalPoint.GetType() != typeof(RailwaySection)) return;
+            int distance = Grid.GetColumn(startingPoint) - Grid.GetColumn(finalPoint);
+            pathDirection = distance >= 0 ? PathDirection.RightToLeft : PathDirection.LeftToRight;
+            if(findPathBetweenSections())
+                iluminatePath();
+            parentSections.Clear();
+            sectionStack.Clear();
+            visitedSections.Clear();
+            }
+        
 
         private void iluminatePath()
         {
@@ -37,7 +49,7 @@ namespace TrainDispatcherSimulator.Helpers
             }
         }
 
-        private void findPathBetweenSections()
+        private bool findPathBetweenSections()
         {
             sectionStack.Enqueue(startingPoint);
 
@@ -50,13 +62,14 @@ namespace TrainDispatcherSimulator.Helpers
                     continue;
 
                 if (finalPoint == current)
-                {
-                    sectionStack.Clear();
-                    visitedSections.Clear();
-                    return;
-                }
+                    return true;
 
-                List<RailwayBase> neighbors = current.GetNeighbors().Where(n => !visitedSections.Contains(n)).ToList();
+                List<RailwayBase> neighbors = new List<RailwayBase>();
+                if(pathDirection == PathDirection.RightToLeft)
+                    neighbors = current.LeftRailways.Where(n => !visitedSections.Contains(n)).ToList();
+                else if(pathDirection == PathDirection.LeftToRight)
+                    neighbors = current.RightRailways.Where(n => !visitedSections.Contains(n)).ToList();
+
 
                 foreach (RailwayBase child in neighbors)
                 {
@@ -64,12 +77,7 @@ namespace TrainDispatcherSimulator.Helpers
                     sectionStack.Enqueue(child);
                 }
             }
-
+            return false;
         }
-
-    }
-
-
-
-    
+    }   
 }

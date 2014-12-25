@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using TrainDispatcherSimulator.Controls;
 
 namespace TrainDispatcherSimulator.Helpers
 {
+    public enum PathDirection {RightToLeft, LeftToRight, Both};
     public class Controller
     {
         private PathReservation pathFinder = new PathReservation();
@@ -49,6 +51,7 @@ namespace TrainDispatcherSimulator.Helpers
         public void RegisterMouseDown(RailwayBase railway)
         {
             pathFinder.startingPoint = railway;
+            
         }
 
         #endregion PUBLIC METHODS
