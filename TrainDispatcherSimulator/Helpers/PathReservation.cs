@@ -12,7 +12,7 @@ namespace TrainDispatcherSimulator.Helpers
     {
         private HashSet<RailwayBase> visitedSections = new HashSet<RailwayBase>();
         private Dictionary<RailwayBase, RailwayBase> parentSections = new Dictionary<RailwayBase, RailwayBase>();
-        private Stack<RailwayBase> sectionStack = new Stack<RailwayBase>();
+        private Queue<RailwayBase> sectionStack = new Queue<RailwayBase>();
 
         public void activate(){
             if (startingPoint == null || finalPoint == null || startingPoint==finalPoint) return;
@@ -35,12 +35,12 @@ namespace TrainDispatcherSimulator.Helpers
 
         private void findPathBetweenSections()
         {
-            sectionStack.Push(startingPoint);
+            sectionStack.Enqueue(startingPoint);
 
             while (sectionStack.Any())
             {
                 
-                RailwayBase current = sectionStack.Pop();
+                RailwayBase current = sectionStack.Dequeue();
 
                 if (!visitedSections.Add(current))
                     continue;
@@ -57,7 +57,7 @@ namespace TrainDispatcherSimulator.Helpers
                 foreach (RailwayBase child in neighbors)
                 {
                     parentSections[child] = current;
-                    sectionStack.Push(child);
+                    sectionStack.Enqueue(child);
                 }
             }
 
