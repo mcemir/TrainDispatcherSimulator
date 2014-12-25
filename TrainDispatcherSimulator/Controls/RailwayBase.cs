@@ -185,8 +185,8 @@ namespace TrainDispatcherSimulator.Controls
         public List<RailwayBase> GetNeighbors()
         {
             List<RailwayBase> sectionNeighbors = new List<RailwayBase>(LeftRailways.Count + RightRailways.Count);
-            sectionNeighbors.AddRange(LeftRailways);
             sectionNeighbors.AddRange(RightRailways);
+            sectionNeighbors.AddRange(LeftRailways);
            
             return sectionNeighbors;
         }

@@ -15,7 +15,7 @@ namespace TrainDispatcherSimulator.Helpers
         private Stack<RailwayBase> sectionStack = new Stack<RailwayBase>();
 
         public void activate(){
-
+            if (startingPoint == null || finalPoint == null || startingPoint==finalPoint) return;
             findPathBetweenSections();
             iluminatePath();
             parentSections.Clear();
@@ -23,6 +23,8 @@ namespace TrainDispatcherSimulator.Helpers
 
         private void iluminatePath()
         {
+            startingPoint.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 200));
+            finalPoint.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 200));
             RailwayBase parent = parentSections[finalPoint];
             while (parent != startingPoint)
             {
