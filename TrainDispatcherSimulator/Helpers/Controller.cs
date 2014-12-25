@@ -9,6 +9,7 @@ namespace TrainDispatcherSimulator.Helpers
 {
     public class Controller
     {
+        private PathReservation pathFinder = new PathReservation();
 
 
 
@@ -41,12 +42,13 @@ namespace TrainDispatcherSimulator.Helpers
 
         public void RegisterMouseUp(RailwayBase railway)
         {
-
+            pathFinder.finalPoint = railway;
+            pathFinder.activate();
         }
 
         public void RegisterMouseDown(RailwayBase railway)
         {
-
+            pathFinder.startingPoint = railway;
         }
 
         #endregion PUBLIC METHODS

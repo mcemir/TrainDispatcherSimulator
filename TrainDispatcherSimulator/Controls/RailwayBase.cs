@@ -23,8 +23,6 @@ namespace TrainDispatcherSimulator.Controls
     {
         public List<RailwayBase> LeftRailways = new List<RailwayBase>();
         public List<RailwayBase> RightRailways = new List<RailwayBase>();
-
-        public static PathReservation pathFind = new PathReservation();
         
 
 
@@ -232,15 +230,11 @@ namespace TrainDispatcherSimulator.Controls
 
         void RailwayBase_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            pathFind.finalPoint = this;
-            pathFind.activate();
-
             Controller.Instance.RegisterMouseUp(this);
         }
 
         void RailwayBase_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            pathFind.startingPoint = this;
             Controller.Instance.RegisterMouseDown(this);
         }
         
