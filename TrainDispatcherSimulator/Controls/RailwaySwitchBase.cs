@@ -97,6 +97,9 @@ namespace TrainDispatcherSimulator.Controls
 
 
 
+
+
+
         #region PUBLIC METHODS
 
         public void ToggleState()
@@ -106,6 +109,8 @@ namespace TrainDispatcherSimulator.Controls
             else
                 State = RailwaySwitchState.Straight;
         }
+
+
 
         #endregion PUBLIC METHODS
 

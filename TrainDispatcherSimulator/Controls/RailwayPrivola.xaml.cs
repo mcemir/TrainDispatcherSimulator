@@ -36,7 +36,7 @@ namespace TrainDispatcherSimulator.Controls
 
 
             // TEST 
-            this.Loaded += RailwayPrivola_Loaded;
+            //this.Loaded += RailwayPrivola_Loaded;
             
 
         }

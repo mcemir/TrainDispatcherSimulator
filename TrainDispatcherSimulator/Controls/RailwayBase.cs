@@ -63,14 +63,10 @@ namespace TrainDispatcherSimulator.Controls
             DependencyProperty.Register("Platform", typeof(Platform), typeof(RailwayBase), new PropertyMetadata(null));
 
 
-
         
-
-        
-
-
         public List<Train> Trains { get; set; }
         public int Length  { get; set; }            // Dužina sekcije u metrima
+        public bool Reserved { get; set; }
         #endregion PROPERTIES
 
 
@@ -210,6 +206,34 @@ namespace TrainDispatcherSimulator.Controls
                 nextRailway.EnterRailway(train);
                 startTimerLeaving(train);
                 Trains.Remove(train);
+            }
+        }
+
+
+        // Vraća true ukoliko je rezervacija uspešna
+        // previousRailway je prethodnik trenutnom
+        // nextRailway je sljedbenik trenutnom
+        public virtual bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway)
+        {
+            if (Trains.Count == 0)
+            {
+                // Ukoliko nema vozova na traci ona se može rezervisati
+                Reserved = true;
+                RailwayBrush = App.Current.Resources["RailwayReservedBrush"] as SolidColorBrush;
+                return true;
+            }
+
+            return false;   
+        }
+
+
+        public virtual void Reset()
+        {
+            // Moze se resetovat samo ukoliko je prazan railway
+            if (Trains.Count == 0)
+            {
+                Reserved = false;
+                RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
             }
         }
 

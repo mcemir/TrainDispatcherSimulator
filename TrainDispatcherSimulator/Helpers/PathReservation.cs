@@ -39,14 +39,22 @@ namespace TrainDispatcherSimulator.Helpers
 
         private void iluminatePath()
         {
-            startingPoint.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 200));
-            finalPoint.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 200));
-            RailwayBase parent = parentSections[finalPoint];
-            while (parent != startingPoint)
+            //startingPoint.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 200));
+            //finalPoint.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 200));
+            RailwayBase current = finalPoint;
+            RailwayBase previous = null;
+            RailwayBase next = null;
+
+            while (current != startingPoint)
             {
-                parent.RailwayBrush = parent.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 222, 0));
-                parent = parentSections[parent];
+                next = parentSections[current];
+
+                current.Reserve(previous, next);
+
+                previous = current;
+                current = next;
             }
+            current.Reserve(previous, null);
         }
 
         private bool findPathBetweenSections()

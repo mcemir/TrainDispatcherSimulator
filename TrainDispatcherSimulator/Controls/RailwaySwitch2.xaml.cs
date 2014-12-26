@@ -40,6 +40,43 @@ namespace TrainDispatcherSimulator.Controls
         }
 
 
+        public override bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway)
+        {
+            if (base.Reserve(previousRailway, nextRailway))
+            {
+                int indexR = 0;
+                int indexL = 0;
+                bool found = false;
+
+                if (RightRailways.Contains(previousRailway) && LeftRailways.Contains(nextRailway))
+                {
+                    indexR = RightRailways.IndexOf(previousRailway);
+                    found = true;
+                }
+                else if (RightRailways.Contains(nextRailway) && LeftRailways.Contains(previousRailway))
+                {
+                    indexR = RightRailways.IndexOf(nextRailway);
+                    found = true;
+                }
+
+                if (found)
+                {
+                    if (indexR == 0)
+                        State = RailwaySwitchState.Sverve;
+                    else
+                        State = RailwaySwitchState.Straight;
+                }
+                else
+                {
+                    Reset();
+                }
+
+                return found;
+            }
+
+            return false;
+        }
+
         #endregion PUBLIC METHODS
     }
 }
