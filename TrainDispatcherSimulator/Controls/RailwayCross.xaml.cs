@@ -154,7 +154,7 @@ namespace TrainDispatcherSimulator.Controls
         
 
 
-        public override RailwayBase GetRightRailway(RailwayBase referent = null)
+        public override RailwayBase GetRightRailway()
         {
             if (State == RailwayCrossState.Straight)
             {
@@ -173,7 +173,7 @@ namespace TrainDispatcherSimulator.Controls
             }
         }
 
-        public override RailwayBase GetLeftRailway(RailwayBase referent = null)
+        public override RailwayBase GetLeftRailway()
         {
             if (State == RailwayCrossState.Straight) 
             {
