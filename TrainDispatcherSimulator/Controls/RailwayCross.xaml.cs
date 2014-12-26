@@ -16,10 +16,10 @@ using System.Windows.Shapes;
 namespace TrainDispatcherSimulator.Controls
 {
     public enum RailwayCrossState { Straight, SverveFirst, SverveSecond };
-
     public partial class RailwayCross : RailwayBase
     {
-        
+        private bool straightUpperTrainOccupied = false;
+        private bool straightLowerTrainOccupied = false;
 
         #region INITIALIZATION
         public RailwayCross()
@@ -130,11 +130,38 @@ namespace TrainDispatcherSimulator.Controls
         }
 
 
+
+        public override void EnterRailway(Train train)
+        {
+            base.EnterRailway(train);
+
+            if (State == RailwayCrossState.Straight)
+            {
+                if (RightRailways[0].Trains.Contains(train) ||
+                    LeftRailways[0].Trains.Contains(train))
+                {
+                    straightUpperTrainOccupied = true;
+                    straightLowerPolygon.Fill = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+                }
+                else
+                {
+                    straightLowerTrainOccupied = true;
+                    straightUpperPolygon.Fill = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+                }
+            }
+        }
+        
+        
+
+
         public override RailwayBase GetRightRailway(RailwayBase referent = null)
         {
             if (State == RailwayCrossState.Straight)
             {
-                return RightRailways[0];    // Treba popravit
+                if (straightUpperTrainOccupied)
+                    return RightRailways[0];
+                else
+                    return RightRailways[1]; 
             }
             else if (State == RailwayCrossState.SverveFirst)
             {
@@ -150,7 +177,10 @@ namespace TrainDispatcherSimulator.Controls
         {
             if (State == RailwayCrossState.Straight) 
             {
-                return LeftRailways[0]; // Treba popravit
+                if (straightUpperTrainOccupied)
+                    return LeftRailways[0];
+                else
+                    return LeftRailways[1]; 
             }
             else if (State == RailwayCrossState.SverveFirst)
             {
@@ -162,6 +192,31 @@ namespace TrainDispatcherSimulator.Controls
             }
         }
         #endregion PUBLIC METHODS
+
+
+
+
+
+
+
+
+        #region PRIVATE METHODS
+
+        protected override void trainLeft(Train train)
+        {
+            if (straightUpperTrainOccupied)
+            {
+                straightUpperTrainOccupied = false;
+                straightLowerPolygon.SetBinding(Polygon.FillProperty, new Binding("RailwayBrush"));
+            }
+            else
+            {
+                straightLowerTrainOccupied = false;
+                straightUpperPolygon.SetBinding(Polygon.FillProperty, new Binding("RailwayBrush"));
+            }
+        }
+        #endregion PRIVATE METHODS
+
 
 
 

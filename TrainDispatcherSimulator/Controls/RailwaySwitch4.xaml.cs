@@ -20,6 +20,7 @@ namespace TrainDispatcherSimulator.Controls
     /// </summary>
     public partial class RailwaySwitch4 : RailwaySwitchBase
     {
+
         public RailwaySwitch4()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace TrainDispatcherSimulator.Controls
 
 
         #region PUBLIC METHODS
+
 
         public override RailwayBase GetLeftRailway(RailwayBase referent = null)
         {

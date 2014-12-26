@@ -207,9 +207,9 @@ namespace TrainDispatcherSimulator.Controls
 
             if (nextRailway != null)
             {
-                Trains.Remove(train);
                 nextRailway.EnterRailway(train);
                 startTimerLeaving(train);
+                Trains.Remove(train);
             }
         }
 
@@ -250,7 +250,7 @@ namespace TrainDispatcherSimulator.Controls
         #region DISPATCHER TIMERS
         protected virtual void startTimerDriving(Train train)
         {
-            int drivingTimeSec = 7;
+            int drivingTimeSec = 1;
 
             DispatcherTimer timer = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
             timer.Interval = new TimeSpan(0, 0, 0, drivingTimeSec, 0);
@@ -268,7 +268,7 @@ namespace TrainDispatcherSimulator.Controls
 
         protected virtual void startTimerLeaving(Train train)
         {
-            int leavingTimeSec = 2;
+            int leavingTimeSec = 1;
 
             DispatcherTimer timer = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
             timer.Interval = new TimeSpan(0, 0, 0, leavingTimeSec, 0);
@@ -278,11 +278,16 @@ namespace TrainDispatcherSimulator.Controls
             {
                 RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
                 timer.Stop();
+                trainLeft(train);
             };
 
             timer.Start();
         }
 
+        protected virtual void trainLeft(Train train)
+        {
+
+        }
 
 
         #endregion DISPATCHER TIMERS
@@ -296,25 +301,32 @@ namespace TrainDispatcherSimulator.Controls
         #region MOUSE OVER
         private SolidColorBrush tmpRailwayBrush;
         private int brightnesIntensity = 40;
+
+
+        private SolidColorBrush brightBrush(SolidColorBrush brush)
+        {
+            byte R = (byte)(brush.Color.R + brightnesIntensity);
+            R = brush.Color.R < R ? R : (byte)255;
+
+            byte G = (byte)(brush.Color.G + brightnesIntensity);
+            G = brush.Color.G < G ? G : (byte)255;
+
+            byte B = (byte)(brush.Color.B + brightnesIntensity);
+            B = brush.Color.B < B ? B : (byte)255;
+
+            return new SolidColorBrush(Color.FromArgb(255, R, G, B));
+        }
+
         private void RailwayBase_MouseEnter(object sender, MouseEventArgs e)
         {
             tmpRailwayBrush = RailwayBrush;
-
-            byte R = (byte)(RailwayBrush.Color.R + brightnesIntensity);
-            R = RailwayBrush.Color.R < R ? R : (byte)255;
-
-            byte G = (byte)(RailwayBrush.Color.G + brightnesIntensity);
-            G = RailwayBrush.Color.G < G ? G : (byte)255;
-
-            byte B = (byte)(RailwayBrush.Color.B + brightnesIntensity);
-            B = RailwayBrush.Color.B < B ? B : (byte)255;
-
-            RailwayBrush = new SolidColorBrush(Color.FromArgb(255, R, G, B));
+            RailwayBrush = brightBrush(RailwayBrush);
         }
 
         private void RailwayBase_MouseLeave(object sender, MouseEventArgs e)
         {
-            RailwayBrush = tmpRailwayBrush;
+            if (RailwayBrush.Color == brightBrush(tmpRailwayBrush).Color)
+                RailwayBrush = tmpRailwayBrush;
         }
         #endregion MOUSE OVER
 
