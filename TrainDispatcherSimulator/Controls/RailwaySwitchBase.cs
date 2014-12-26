@@ -111,6 +111,12 @@ namespace TrainDispatcherSimulator.Controls
         }
 
 
+        public override void Reset()
+        {
+            base.Reset();
+            State = RailwaySwitchState.Straight;
+        }
+
 
         #endregion PUBLIC METHODS
 

@@ -302,6 +302,7 @@ namespace TrainDispatcherSimulator.Controls
             {
                 RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
                 timer.Stop();
+                Reset();
                 trainLeft(train);
             };
 
@@ -310,7 +311,6 @@ namespace TrainDispatcherSimulator.Controls
 
         protected virtual void trainLeft(Train train)
         {
-
         }
 
 

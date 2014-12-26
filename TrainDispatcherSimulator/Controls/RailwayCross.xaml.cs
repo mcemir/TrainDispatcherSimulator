@@ -196,6 +196,12 @@ namespace TrainDispatcherSimulator.Controls
         }
 
 
+        public override void Reset()
+        {
+            base.Reset();
+            State = RailwayCrossState.Straight;
+        }
+
 
 
         public override RailwayBase GetRightRailway()

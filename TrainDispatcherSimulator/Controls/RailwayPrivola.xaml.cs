@@ -36,7 +36,7 @@ namespace TrainDispatcherSimulator.Controls
 
 
             // TEST 
-            //this.Loaded += RailwayPrivola_Loaded;
+            this.Loaded += RailwayPrivola_Loaded;
             
 
         }
@@ -49,7 +49,7 @@ namespace TrainDispatcherSimulator.Controls
                 Train t = new Train();
                 t.Orientation = TrainOrientation.Right;
                 t.Name = "P104";
-                this.DispatchTrain(0, 3, t);
+                this.DispatchTrain(0, 10, t);
             }
         }
 
