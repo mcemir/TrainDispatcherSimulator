@@ -59,8 +59,8 @@ namespace TrainDispatcherSimulator.Controls
         public static readonly DependencyProperty ManuverSemaphoreVisibilityProperty =
             DependencyProperty.Register("ManuverSemaphoreVisibility", typeof(Visibility), typeof(RailwaySection), new PropertyMetadata(Visibility.Collapsed));
 
-        
-        
+
+
 
         #endregion PROPERTIES
 
@@ -69,6 +69,36 @@ namespace TrainDispatcherSimulator.Controls
             InitializeComponent();
         }
 
+
+
+
+        #region PUBLIC METHODS  
+
+        public override bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway)
+        {
+            if (base.Reserve(previousRailway, nextRailway))
+            {
+                if (previousRailway != null && (nextRailway == null || RightRailways.Contains(nextRailway)) && LeftRailways.Contains(previousRailway) && leftSemaphore.Visibility == Visibility.Visible)
+                {
+                    leftSemaphore.Signal = SemaphoreSignalType.Green;
+                }
+                else if (previousRailway != null && RightRailways.Contains(previousRailway) && (nextRailway == null || LeftRailways.Contains(nextRailway)) && rightSemaphore.Visibility == Visibility.Visible)
+                {
+                    rightSemaphore.Signal = SemaphoreSignalType.Green;
+                }
+            }
+
+            return false;
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+            leftSemaphore.Signal = SemaphoreSignalType.Red;
+            rightSemaphore.Signal = SemaphoreSignalType.Red;
+        }
+
+        #endregion PUBLIC METHODS
 
 
 

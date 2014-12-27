@@ -15,12 +15,11 @@ using System.Windows.Shapes;
 
 namespace TrainDispatcherSimulator.Controls
 {
-    /// <summary>
-    /// Interaction logic for SemaphoreSignal.xaml
-    /// </summary>
+    public enum SemaphoreSignalType { Red, Yellow, YellowYellow, Green };        // Vrste signalizacije na semaforu
+
     public partial class SemaphoreSignal : UserControl
     {
-        public enum SignalType { Red, Yellow, YellowYellow, Green };        // Vrste signalizacije na semaforu
+        
 
         //Signal type on the manoeuvre semaphore has only two states.
         //Active - manoeuvre action in progress
@@ -33,10 +32,10 @@ namespace TrainDispatcherSimulator.Controls
 
 
         #region PROPERTIES
-        private SignalType signal = SignalType.Red;     // Inicijalno crvena
+        private SemaphoreSignalType signal = SemaphoreSignalType.Red;     // Inicijalno crvena
         private ManueuvreSignalStyle manueuvreSignal = ManueuvreSignalStyle.NotActive; // ManueuvareSignal is initaly disabled
 
-        public SignalType Signal
+        public SemaphoreSignalType Signal
         {
             get {return signal;}
             set
@@ -44,19 +43,19 @@ namespace TrainDispatcherSimulator.Controls
                 signal = value;
 
                 // Promijeni boje
-                if (value == SignalType.Red)
+                if (value == SemaphoreSignalType.Red)
                 {
                     upperSignal.Visibility = Visibility.Hidden;
                     upperSignal.Fill = new SolidColorBrush(Colors.LightGray);
                     lowerSignal.Fill = new SolidColorBrush(Colors.Red);
                 }
-                else if (value == SignalType.Yellow)
+                else if (value == SemaphoreSignalType.Yellow)
                 {
                     upperSignal.Visibility = Visibility.Hidden;
                     upperSignal.Fill = new SolidColorBrush(Colors.LightGray);
                     lowerSignal.Fill = new SolidColorBrush(Colors.Yellow);
                 }
-                else if (value == SignalType.YellowYellow)
+                else if (value == SemaphoreSignalType.YellowYellow)
                 {
                     upperSignal.Visibility = Visibility.Visible;
                     upperSignal.Fill = new SolidColorBrush(Colors.Yellow);
@@ -170,20 +169,20 @@ namespace TrainDispatcherSimulator.Controls
 
         private void redSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Signal = SignalType.Red;
+            Signal = SemaphoreSignalType.Red;
         }
 
         private void yellowSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Signal = SignalType.Yellow;
+            Signal = SemaphoreSignalType.Yellow;
         }
         private void yellowYellowSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Signal = SignalType.YellowYellow;
+            Signal = SemaphoreSignalType.YellowYellow;
         }
         private void greenSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Signal = SignalType.Green;
+            Signal = SemaphoreSignalType.Green;
         }
 
         private void notActiveSignal_MouseUp(object sender, MouseButtonEventArgs e)
