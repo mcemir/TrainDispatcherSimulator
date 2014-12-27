@@ -5,6 +5,7 @@
         xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:localData="clr-namespace:TrainDispatcherSimulator.Data"
         Title="MainWindow"  
+        Loaded="Window_Loaded"
         Width="1900" Height="1080"
         Background="Black"
         WindowStartupLocation="CenterScreen" 

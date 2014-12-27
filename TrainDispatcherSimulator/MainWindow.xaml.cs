@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TrainDispatcherSimulator.Controls;
+using TrainDispatcherSimulator.Helpers;
 
 namespace TrainDispatcherSimulator
 {
@@ -44,6 +46,11 @@ namespace TrainDispatcherSimulator
             railwayGrid.Visibility = Visibility.Visible;
             graphGrid.Visibility = Visibility.Collapsed;
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Controller.Instance.Railways = railwayGrid.Children.Cast<UIElement>().Where(p => p is RailwayBase).Cast<RailwayBase>().ToList();
         }
 
     }

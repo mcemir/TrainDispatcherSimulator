@@ -13,7 +13,7 @@ namespace TrainDispatcherSimulator.Helpers
     {
         private PathReservation pathFinder = new PathReservation();
 
-
+        public List<RailwayBase> Railways = new List<RailwayBase>();
 
         #region INITIALIZATION
 
