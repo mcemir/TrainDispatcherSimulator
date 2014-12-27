@@ -25,7 +25,13 @@ namespace TrainDispatcherSimulator
         public MainWindow()
         {
             InitializeComponent();
+            this.KeyUp += new KeyEventHandler(keyboardKey_Up);
 
+        }
+
+        private void keyboardKey_Up(object sender, KeyEventArgs e)
+        {
+            Controller.Instance.RegisterKeyPressed(e);
         }
 
         private void graphButton_Click(object sender, RoutedEventArgs e)

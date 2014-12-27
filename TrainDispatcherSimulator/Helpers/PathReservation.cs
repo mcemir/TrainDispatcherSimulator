@@ -27,10 +27,13 @@ namespace TrainDispatcherSimulator.Helpers
             
             if (startingPoint == null || finalPoint == null || startingPoint==finalPoint) return;
             if (startingPoint.GetType() != typeof(RailwaySection) || finalPoint.GetType() != typeof(RailwaySection)) return;
+
             int distance = Grid.GetColumn(startingPoint) - Grid.GetColumn(finalPoint);
             pathDirection = distance >= 0 ? PathDirection.RightToLeft : PathDirection.LeftToRight;
+
             if(findPathBetweenSections())
                 iluminatePath();
+
             parentSections.Clear();
             sectionStack.Clear();
             visitedSections.Clear();

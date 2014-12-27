@@ -9,7 +9,8 @@
         Width="1900" Height="1080"
         Background="Black"
         WindowStartupLocation="CenterScreen" 
-        WindowState="Maximized">
+        WindowState="Maximized"
+        >
 
     <Window.DataContext>
         <localData:MainViewModel/>
