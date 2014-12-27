@@ -9,6 +9,9 @@ using TrainDispatcherSimulator.Controls;
 
 namespace TrainDispatcherSimulator.Helpers
 {
+    //TO DO
+    //Pogresno rezervise path ka ovoj sekciji sa najkracim putem
+    //Nalazi se izmedju ovih dugih sa peronima.
     public class PathReservation
     {
         public RailwayBase startingPoint { get; set; }
@@ -23,6 +26,8 @@ namespace TrainDispatcherSimulator.Helpers
         {
             pathDirection = PathDirection.Both;
         }
+
+
         public void activate(){
             
             if (startingPoint == null || finalPoint == null || startingPoint==finalPoint) return;
@@ -34,15 +39,27 @@ namespace TrainDispatcherSimulator.Helpers
             if(findPathBetweenSections())
                 iluminatePath();
 
-            parentSections.Clear();
+            //parentSections.Clear();
             sectionStack.Clear();
             visitedSections.Clear();
             }
-        
+
+        public void clearPath()
+        {
+            RailwayBase current = finalPoint;
+            while (current != startingPoint)
+            {
+                current.Reset();
+                current = parentSections[current]; 
+            }
+            current.Reset();
+            parentSections.Clear();
+
+        }
 
         private void iluminatePath()
         {
-            //startingPoint.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 200));
+            //startingPoint.RailwayBrush =  
             //finalPoint.RailwayBrush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 200));
             RailwayBase current = finalPoint;
             RailwayBase previous = null;

@@ -13,8 +13,9 @@ namespace TrainDispatcherSimulator.Helpers
     public enum KeyboardEvents {Reserve, Clear, ShowRailway, ShowGraph, ShowLog };
     public class Controller
     {
-        private PathReservation pathFinder = new PathReservation();
-        private KeyboardInput keyboardEvent = new KeyboardInput();
+        //Promijenio sam ovo u public accessibility samo radi testriranja.
+        public PathReservation pathFinder = new PathReservation();
+        public KeyboardInput keyboardEvent = new KeyboardInput();
 
         public List<RailwayBase> Railways = new List<RailwayBase>();
 
@@ -59,7 +60,7 @@ namespace TrainDispatcherSimulator.Helpers
 
         public void RegisterKeyPressed(KeyEventArgs e)
         {
-            keyboardEvent.parseKeyboardInput(e);
+            keyboardEvent.captureKeyboardInput(e);
         }
 
         #endregion PUBLIC METHODS
