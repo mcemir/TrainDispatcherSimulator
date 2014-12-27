@@ -29,6 +29,7 @@
             Grid.Row="0" 
             HorizontalAlignment="Left" 
             Orientation="Left"
+            StateChanged="semaphore_StateChanged"
             ManuverSemaphoreVisibility="{Binding ManuverSemaphoreVisibility}"
             Visibility="{Binding LeftSemaphoreVisibility}"/>
 
@@ -39,6 +40,7 @@
             Grid.Row="2" 
             HorizontalAlignment="Right" 
             Orientation="Right"
+            StateChanged="semaphore_StateChanged"
             ManuverSemaphoreVisibility="{Binding ManuverSemaphoreVisibility}"
             Visibility="{Binding RightSemaphoreVisibility}"/>
     </Grid>

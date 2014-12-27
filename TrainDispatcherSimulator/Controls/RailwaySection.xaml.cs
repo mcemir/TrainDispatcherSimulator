@@ -20,11 +20,8 @@ namespace TrainDispatcherSimulator.Controls
     public partial class RailwaySection : RailwayBase
     {
 
+
         #region PROPERTIES
-
-
-
-
 
         public Visibility LeftSemaphoreVisibility
         {
@@ -98,12 +95,56 @@ namespace TrainDispatcherSimulator.Controls
             rightSemaphore.Signal = SemaphoreSignalType.Red;
         }
 
+
+
+        public override void LeaveRailway(Train train)
+        {
+            RailwayBase nextRailway = getNextRailway(train);
+
+            if (nextRailway != null && validateSemaphoreSignal(train))
+            {
+                nextRailway.EnterRailway(train);
+                startTimerLeaving(train);
+                Trains.Remove(train);
+            }
+        }
         #endregion PUBLIC METHODS
 
 
 
-        #region EVENT HANDLERS
 
+        #region PRIVATE METHODS
+
+        private bool validateSemaphoreSignal(Train train)
+        {
+            if (train.Orientation == TrainOrientation.Left && leftSemaphore.Visibility == Visibility.Visible && leftSemaphore.Signal == SemaphoreSignalType.Red)
+                return false;
+
+            if (train.Orientation == TrainOrientation.Right && rightSemaphore.Visibility == Visibility.Visible && rightSemaphore.Signal == SemaphoreSignalType.Red)
+                return false;
+
+            return true;
+        }
+
+        #endregion PRIVATE METHODS
+
+        
+
+
+
+        #region EVENT HANDLERS
+        private void semaphore_StateChanged(object sender, EventArgs e)
+        {
+            if (Trains.Count > 0 && (sender as SemaphoreSignal).Signal != SemaphoreSignalType.Red)
+            {
+                if ((sender == leftSemaphore && Trains.First().Orientation == TrainOrientation.Left) ||
+                    (sender == rightSemaphore && Trains.First().Orientation == TrainOrientation.Right) &&
+                    !drivingTimer.IsEnabled)
+                {
+                    LeaveRailway(Trains.First());
+                }
+            }
+        }
 
         #endregion EVENT HANDLERS
 

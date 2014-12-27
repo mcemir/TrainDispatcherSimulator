@@ -29,6 +29,10 @@ namespace TrainDispatcherSimulator.Controls
         public enum SemaphoreOrientation { Left, Right };                   // Ulazni ili izlazni semafor
 
 
+        // When the state changes this event is fired
+        public event EventHandler StateChanged;
+
+
 
 
         #region PROPERTIES
@@ -66,6 +70,11 @@ namespace TrainDispatcherSimulator.Controls
                     upperSignal.Visibility = Visibility.Hidden;
                     upperSignal.Fill = new SolidColorBrush(Colors.LightGray);
                     lowerSignal.Fill = new SolidColorBrush(Colors.LightGreen);
+                }
+
+                if (StateChanged != null)
+                {
+                    StateChanged(this, new EventArgs());  // Raise state changed event3
                 }
             }
         }
@@ -149,6 +158,9 @@ namespace TrainDispatcherSimulator.Controls
 
 
         #region EVENT HANDLERS
+
+
+
         private void UserControl_MouseUp(object sender, MouseButtonEventArgs e)
         {
             semaphorePopup.IsOpen = !semaphorePopup.IsOpen;
@@ -194,6 +206,11 @@ namespace TrainDispatcherSimulator.Controls
         {
             ManueuvreSignal = ManueuvreSignalStyle.Active;
         }
+
+
+
+
+
         
         #endregion EVENT HANDLERS
 

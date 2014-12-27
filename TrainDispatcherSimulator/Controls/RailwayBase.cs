@@ -187,19 +187,7 @@ namespace TrainDispatcherSimulator.Controls
 
         public virtual void LeaveRailway(Train train)
         {
-            RailwayBase nextRailway;
-
-
-            if (train.Orientation == TrainOrientation.Left)
-            {
-                // Provjeri lijevi semafor
-                nextRailway = this.GetLeftRailway();
-            }
-            else
-            {
-                // Provjeri desni semafor semafor
-                nextRailway = this.GetRightRailway();
-            }
+            RailwayBase nextRailway = getNextRailway(train);
 
             if (nextRailway != null)
             {
@@ -215,15 +203,11 @@ namespace TrainDispatcherSimulator.Controls
         // nextRailway je sljedbenik trenutnom
         public virtual bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway)
         {
+            Reserved = true;
             if (Trains.Count == 0)
-            {
-                // Ukoliko nema vozova na traci ona se može rezervisati
-                Reserved = true;
                 RailwayBrush = App.Current.Resources["RailwayReservedBrush"] as SolidColorBrush;
-                return true;
-            }
 
-            return false;   
+            return true;
         }
 
 
@@ -244,6 +228,22 @@ namespace TrainDispatcherSimulator.Controls
 
 
         #region PRIVATE METHODS
+
+        protected RailwayBase getNextRailway(Train train)
+        {
+            RailwayBase nextRailway;
+
+            if (train.Orientation == TrainOrientation.Left)
+            {
+                nextRailway = this.GetLeftRailway();
+            }
+            else
+            {
+                nextRailway = this.GetRightRailway();
+            }
+
+            return nextRailway;
+        }
 
         #endregion PRIVATE METHODS
 
@@ -272,21 +272,22 @@ namespace TrainDispatcherSimulator.Controls
 
 
         #region DISPATCHER TIMERS
+        protected DispatcherTimer drivingTimer = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
         protected virtual void startTimerDriving(Train train)
         {
-            int drivingTimeSec = 1;
+            int drivingTimeSec = 2;
 
-            DispatcherTimer timer = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
-            timer.Interval = new TimeSpan(0, 0, 0, drivingTimeSec, 0);
+            
+            drivingTimer.Interval = new TimeSpan(0, 0, 0, drivingTimeSec, 0);
 
 
-            timer.Tick += (s, args) =>
+            drivingTimer.Tick += (s, args) =>
             {
                 LeaveRailway(train);
-                timer.Stop();
+                drivingTimer.Stop();
             };
 
-            timer.Start();
+            drivingTimer.Start();
         }
 
 
