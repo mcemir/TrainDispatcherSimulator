@@ -12,6 +12,7 @@
         <GridLength x:Key="RailwayHeightGL">20</GridLength>
 
         <SolidColorBrush x:Key="RailwayBaseBrush" Color="LightGray"/>
+        <SolidColorBrush x:Key="RailwayStrokeBrush" Color="Red"/>
         <SolidColorBrush x:Key="RailwayReservedBrush" Color="Green"/>
         <SolidColorBrush x:Key="RailwayVisited" Color="Red"/>
         

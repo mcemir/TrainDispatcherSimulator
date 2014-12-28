@@ -14,38 +14,48 @@ namespace TrainDispatcherSimulator.Helpers
     //Nalazi se izmedju ovih dugih sa peronima.
     public class PathReservation
     {
-        public RailwayBase startingPoint { get; set; }
-        public RailwayBase finalPoint { get; set; }
+        public RailwayBase firstPoint { get; set; }
+        public RailwayBase secondPoint { get; set; }
+
+        private RailwayBase startingPoint;
+        private RailwayBase finalPoint;
         public PathDirection pathDirection { get; set; }
+        public Boolean railwayClear { get; set; }
 
         private HashSet<RailwayBase> visitedSections = new HashSet<RailwayBase>();
         private Dictionary<RailwayBase, RailwayBase> parentSections = new Dictionary<RailwayBase, RailwayBase>();
-        private Queue<RailwayBase> sectionStack = new Queue<RailwayBase>();
+        private Queue<RailwayBase> sectionQueue = new Queue<RailwayBase>();
 
         public PathReservation()
         {
             pathDirection = PathDirection.Both;
+            railwayClear = true;
         }
 
 
         public void activate(){
-            
-            if (startingPoint == null || finalPoint == null || startingPoint==finalPoint) return;
-            if (startingPoint.GetType() != typeof(RailwaySection) || finalPoint.GetType() != typeof(RailwaySection)) return;
 
+            if (firstPoint == null || secondPoint == null || firstPoint == secondPoint) return;
+            if (firstPoint.GetType() != typeof(RailwaySection) || secondPoint.GetType() != typeof(RailwaySection)) return;
+            if (!railwayClear) return;
+            startingPoint = firstPoint;
+            finalPoint = secondPoint;
             int distance = Grid.GetColumn(startingPoint) - Grid.GetColumn(finalPoint);
             pathDirection = distance >= 0 ? PathDirection.RightToLeft : PathDirection.LeftToRight;
 
-            if(findPathBetweenSections())
+            if (findPathBetweenSections())
+            {
                 iluminatePath();
-
-            //parentSections.Clear();
-            sectionStack.Clear();
+                railwayClear = false;
+            }
+            
+            sectionQueue.Clear();
             visitedSections.Clear();
             }
 
         public void clearPath()
         {
+            if (!parentSections.Any()) return;
             RailwayBase current = finalPoint;
             while (current != startingPoint)
             {
@@ -54,6 +64,7 @@ namespace TrainDispatcherSimulator.Helpers
             }
             current.Reset();
             parentSections.Clear();
+            railwayClear = true;
 
         }
 
@@ -79,12 +90,12 @@ namespace TrainDispatcherSimulator.Helpers
 
         private bool findPathBetweenSections()
         {
-            sectionStack.Enqueue(startingPoint);
+            sectionQueue.Enqueue(startingPoint);
 
-            while (sectionStack.Any())
+            while (sectionQueue.Any())
             {
                 
-                RailwayBase current = sectionStack.Dequeue();
+                RailwayBase current = sectionQueue.Dequeue();
 
                 if (!visitedSections.Add(current))
                     continue;
@@ -102,7 +113,7 @@ namespace TrainDispatcherSimulator.Helpers
                 foreach (RailwayBase child in neighbors)
                 {
                     parentSections[child] = current;
-                    sectionStack.Enqueue(child);
+                    sectionQueue.Enqueue(child);
                 }
             }
             return false;

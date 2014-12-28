@@ -14,7 +14,7 @@
 
         <!--  Interfejs kada prelaz nije upaljen"  -->
         <Grid x:Name="crossStraight" Grid.Row="1" Visibility="{Binding RailwayCrossStraightVisibility}" >
-            <Polygon x:Name="straightUpperPolygon" Fill="{Binding RailwayBrush}">
+            <Polygon  x:Name="straightUpperPolygon" Fill="{Binding RailwayBrush}">
                 <Polygon.Points>
                     <Point X="0" Y="0" />
                     <Point X="{StaticResource BlockDimensionD}" Y="0" />

@@ -26,9 +26,9 @@
                 <Setter Property="MajorGridlineStyle" Value="Solid"/>
                 <Setter Property="MinorGridlineStyle" Value="Solid"/>
                 
-                <Setter Property="AxislineColor" Value="White"/>
-                <Setter Property="MinorGridlineColor" Value="Gray"/>
-                <Setter Property="MajorGridlineColor" Value="Gray"/>
+                <Setter Property="AxislineColor" Value="Black"/>
+                <Setter Property="MinorGridlineColor" Value="LightGray"/>
+                <Setter Property="MajorGridlineColor" Value="LightGray"/>
             </Style>
 
             <Style x:Key="Dolazni" TargetType="oxy:LineSeries">
@@ -115,7 +115,7 @@
 
         
             <Grid x:Name="graphGrid" Background="Black" Opacity="0.9">
-                <oxy:Plot Title="{Binding Title}" Background="Black">
+                <oxy:Plot Title="{Binding Title}" Background="Gray">
                     <oxy:PlotView.Series>
                         <oxy:LineSeries ItemsSource="{Binding Linija1}" Style="{StaticResource Odlazni}" />
                         <oxy:LineSeries ItemsSource="{Binding Linija2}" Style="{StaticResource Odlazni}" />

@@ -33,7 +33,7 @@
             ManuverSemaphoreVisibility="{Binding ManuverSemaphoreVisibility}"
             Visibility="{Binding LeftSemaphoreVisibility}"/>
 
-        <Border Background="{Binding RailwayBrush}" Grid.Row="1"/>
+        <Border Background="{Binding RailwayBrush}" BorderBrush="{Binding RailwayStrokeBrush}" BorderThickness="2" Grid.Row="1"/>
 
         <control:SemaphoreSignal 
             x:Name="rightSemaphore"

@@ -53,6 +53,19 @@ namespace TrainDispatcherSimulator.Controls
 
 
 
+        public SolidColorBrush RailwayStrokeBrush
+        {
+            get { return (SolidColorBrush)GetValue(RailwayStrokeProperty); }
+            set { SetValue(RailwayStrokeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for RailwayStroke.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RailwayStrokeProperty =
+            DependencyProperty.Register("RailwayStroke", typeof(SolidColorBrush), typeof(RailwayBase), new PropertyMetadata(App.Current.Resources["RailwayStrokeBrush"] as SolidColorBrush));
+
+        
+        
+
         // The platform that is bound to the railway
         public Platform Platform
         {
