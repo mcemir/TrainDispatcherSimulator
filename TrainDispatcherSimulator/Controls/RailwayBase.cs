@@ -114,15 +114,15 @@ namespace TrainDispatcherSimulator.Controls
             if (parentGrid != null)
             {
                 LeftRailways = parentGrid.Children.Cast<UserControl>().Where(c => c != this && c is RailwayBase && (
-                    (Grid.GetRow(c) == row - 1 && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && Grid.GetRowSpan(c) == 2 && !(c is RailwaySwitch4)) ||
-                    (Grid.GetRow(c) == row && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col) ||
-                    (rowSpan == 2 && Grid.GetRow(c) == row + 1 && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && !(c is RailwaySwitch3))))
+                    (Grid.GetRow(c) == row - 1 && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && Grid.GetRowSpan(c) == 2 && !(c is RailwaySwitch4)) && !(c is RailwayCurve2) ||
+                    (Grid.GetRow(c) == row && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && !(c is RailwayCurve1) && (!(this is RailwayCurve2) && !(c is RailwaySwitch3))) ||
+                    (rowSpan == 2 && Grid.GetRow(c) == row + 1 && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && !(c is RailwaySwitch3) && !(c is RailwayCurve1))))
                     .OrderBy(c => Grid.GetRow(c)).Cast<RailwayBase>().ToList();
 
                 RightRailways = parentGrid.Children.Cast<UserControl>().Where(c => c != this && c is RailwayBase && (
-                    (Grid.GetRow(c) == row - 1 && Grid.GetColumn(c) == col + colSpan && Grid.GetRowSpan(c) == 2 && !(c is RailwaySwitch1)) ||
-                    (Grid.GetRow(c) == row && Grid.GetColumn(c) == col + colSpan) ||
-                    (rowSpan == 2 && Grid.GetRow(c) == row + 1 && Grid.GetColumn(c) == col + colSpan && !(c is RailwaySwitch2))))
+                    (Grid.GetRow(c) == row - 1 && Grid.GetColumn(c) == col + colSpan && Grid.GetRowSpan(c) == 2 && !(c is RailwaySwitch1)) && !(c is RailwayCurve1) ||
+                    (Grid.GetRow(c) == row && Grid.GetColumn(c) == col + colSpan && !(c is RailwayCurve2) && (!(this is RailwayCurve1) && !(c is RailwaySwitch2))) ||
+                    (rowSpan == 2 && Grid.GetRow(c) == row + 1 && Grid.GetColumn(c) == col + colSpan && !(c is RailwaySwitch2) && !(c is RailwayCurve2))))
                     .OrderBy(c => Grid.GetRow(c)).Cast<RailwayBase>().ToList();
             }
             
