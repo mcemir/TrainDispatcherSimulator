@@ -115,7 +115,15 @@
 
         
             <Grid x:Name="graphGrid" Background="Black" Opacity="0.9">
-                <oxy:Plot Title="{Binding Title}" Background="Gray">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                
+                <oxy:Plot Grid.Row="1" Title="{Binding Title}" Background="Gray">
                     <oxy:PlotView.Series>
                         <oxy:LineSeries ItemsSource="{Binding Linija1}" Style="{StaticResource Odlazni}" />
                         <oxy:LineSeries ItemsSource="{Binding Linija2}" Style="{StaticResource Odlazni}" />
@@ -132,10 +140,20 @@
                 </oxy:Plot>
             </Grid>
 
+            <Grid x:Name="logGrid" Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
 
-        
-        
-        
+            </Grid>
+
+
+
+
+
             <Grid x:Name="railwayGrid" Background="Black">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>

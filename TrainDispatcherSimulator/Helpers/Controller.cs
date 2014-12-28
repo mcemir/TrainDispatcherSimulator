@@ -12,11 +12,13 @@ namespace TrainDispatcherSimulator.Helpers
 {
     public enum PathDirection {RightToLeft, LeftToRight, Both};
     public enum KeyboardEvents {Reserve, Clear, ShowRailway, ShowGraph, ShowLog };
+    public enum LogType { Info, Warrning, Error, Critical };
     public class Controller
     {
         //Promijenio sam ovo u public accessibility samo radi testriranja.
         public PathReservation pathFinder = new PathReservation();
         public KeyboardInput keyboardEvent = new KeyboardInput();
+        public Logger logger = new Logger();
 
         public List<RailwayBase> Railways = new List<RailwayBase>();
 

@@ -38,18 +38,21 @@ namespace TrainDispatcherSimulator
         {
             railwayGrid.Visibility = Visibility.Collapsed;
             graphGrid.Visibility = Visibility.Visible;
+            logGrid.Visibility = Visibility.Collapsed;
         }
 
         private void trainButton_Click(object sender, RoutedEventArgs e)
         {
             railwayGrid.Visibility = Visibility.Visible;
             graphGrid.Visibility = Visibility.Collapsed;
+            logGrid.Visibility = Visibility.Collapsed;
 
         }
 
         private void logButton_Click(object sender, RoutedEventArgs e)
         {
-            railwayGrid.Visibility = Visibility.Visible;
+            logGrid.Visibility = Visibility.Visible;
+            railwayGrid.Visibility = Visibility.Collapsed;
             graphGrid.Visibility = Visibility.Collapsed;
 
         }

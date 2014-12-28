@@ -67,8 +67,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\LogItem.xaml.cs">
+      <DependentUpon>LogItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\Controller.cs" />
     <Compile Include="Helpers\KeyboardInput.cs" />
+    <Compile Include="Controls\Log.cs" />
+    <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\PathReservation.cs" />
     <Compile Include="Controls\Platform.xaml.cs">
       <DependentUpon>Platform.xaml</DependentUpon>
@@ -115,6 +120,10 @@
     <Compile Include="Controls\RailwaySection.xaml.cs">
       <DependentUpon>RailwaySection.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\LogItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Platform.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
