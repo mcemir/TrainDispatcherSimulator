@@ -44,20 +44,20 @@
                 Placement="Top">
 
                 <Border Background="#50FFFFFF">
-                    <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal" Margin="0,2" MouseUp="redSignal_MouseUp">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Margin="0,2" MouseUp="redSignal_MouseUp">
                             <Ellipse Fill="LightGray" Visibility="Hidden" Style="{StaticResource SignalStyle}"/>
                             <Ellipse Fill="Red" Style="{StaticResource SignalStyle}"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,2" MouseUp="yellowSignal_MouseUp">
+                        <StackPanel Orientation="Vertical" Margin="0,2" MouseUp="yellowSignal_MouseUp">
                             <Ellipse Fill="LightGray" Visibility="Hidden" Style="{StaticResource SignalStyle}"/>
                             <Ellipse Fill="Yellow" Style="{StaticResource SignalStyle}"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,2" MouseUp="yellowYellowSignal_MouseUp">
+                        <StackPanel Orientation="Vertical" Margin="0,2" MouseUp="yellowYellowSignal_MouseUp">
                             <Ellipse Fill="Yellow" Style="{StaticResource SignalStyle}" />
                             <Ellipse Fill="Yellow" Style="{StaticResource SignalStyle}"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,2" MouseUp="greenSignal_MouseUp">
+                        <StackPanel Orientation="Vertical" Margin="0,2" MouseUp="greenSignal_MouseUp">
                             <Ellipse Fill="LightGray" Visibility="Hidden" Style="{StaticResource SignalStyle}"/>
                             <Ellipse Fill="LightGreen" Style="{StaticResource SignalStyle}"/>
                         </StackPanel>
