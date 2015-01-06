@@ -96,6 +96,12 @@ namespace TrainDispatcherSimulator.Controls
         }
 
 
+        public override void EnterRailway(Train train)
+        {
+            base.EnterRailway(train);
+            changeOrientationButton.Visibility = Visibility.Visible;
+        }
+
 
         public override void LeaveRailway(Train train)
         {
@@ -109,6 +115,7 @@ namespace TrainDispatcherSimulator.Controls
 
                 TrainNameLeftPanelVisibility = Visibility.Collapsed;
                 TrainNameRightPanelVisibility = Visibility.Collapsed;
+                changeOrientationButton.Visibility = Visibility.Collapsed;
             }
 
             
@@ -131,6 +138,16 @@ namespace TrainDispatcherSimulator.Controls
             return true;
         }
 
+        private void leaveRailway()
+        {
+            if ((leftSemaphore.Signal != SemaphoreSignalType.Red && Trains.First().Orientation == TrainOrientation.Left) ||
+                (rightSemaphore.Signal != SemaphoreSignalType.Red && Trains.First().Orientation == TrainOrientation.Right) &&
+                !drivingTimer.IsEnabled)
+            {
+                LeaveRailway(Trains.First());
+            }
+        }
+
         #endregion PRIVATE METHODS
 
         
@@ -142,16 +159,35 @@ namespace TrainDispatcherSimulator.Controls
         {
             if (Trains.Count > 0 && (sender as SemaphoreSignal).Signal != SemaphoreSignalType.Red)
             {
-                if ((sender == leftSemaphore && Trains.First().Orientation == TrainOrientation.Left) ||
-                    (sender == rightSemaphore && Trains.First().Orientation == TrainOrientation.Right) &&
-                    !drivingTimer.IsEnabled)
+                leaveRailway();
+            }
+        }
+
+        private void changeOrientationButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Trains.Count > 0)
+            {
+                TrainNameLeftPanelVisibility = Visibility.Collapsed;
+                TrainNameRightPanelVisibility = Visibility.Collapsed;
+
+                if (Trains.First().Orientation == TrainOrientation.Left)
                 {
-                    LeaveRailway(Trains.First());
+                    Trains.First().Orientation = TrainOrientation.Right;
+                    TrainNameRightPanelVisibility = Visibility.Visible;
                 }
+                else
+                {
+                    Trains.First().Orientation = TrainOrientation.Left;
+                    TrainNameLeftPanelVisibility = Visibility.Visible;
+                }
+
+                leaveRailway();
             }
         }
 
         #endregion EVENT HANDLERS
+
+        
 
 
 
