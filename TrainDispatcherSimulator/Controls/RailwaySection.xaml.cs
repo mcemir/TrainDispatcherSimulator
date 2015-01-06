@@ -106,7 +106,12 @@ namespace TrainDispatcherSimulator.Controls
                 nextRailway.EnterRailway(train);
                 startTimerLeaving(train);
                 Trains.Remove(train);
+
+                TrainNameLeftPanelVisibility = Visibility.Collapsed;
+                TrainNameRightPanelVisibility = Visibility.Collapsed;
             }
+
+            
         }
         #endregion PUBLIC METHODS
 

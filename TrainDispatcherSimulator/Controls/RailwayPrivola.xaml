@@ -29,7 +29,9 @@
         <TextBlock Grid.Row="0" x:Name="timerTextBlock" FontSize="18" Foreground="Red" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <Border Grid.Row="1" Background="{Binding RailwayBrush}"/>
 
-        <TextBlock Grid.Row="1" Text="{Binding CurrentTrainName}" Style="{StaticResource railwayNameTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding TrainName}" Grid.Row="1" Visibility="{Binding TrainNameRightPanelVisibility}" Foreground="Black" Margin="5,0" VerticalAlignment="Center"  HorizontalAlignment="Right" />
+        <TextBlock Text="{Binding TrainName}" Visibility="{Binding TrainNameLeftPanelVisibility}" Grid.Row="1" HorizontalAlignment="Left" Foreground="Black" Margin="5,0" VerticalAlignment="Center" />
+
         <TextBlock Grid.Row="2" Text="{Binding RailwayName}" Margin="10,0,0,0" FontSize="14" Foreground="LightGray" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <Polygon x:Name="rightTriangle"  Grid.Row="2" Fill="{StaticResource RailwayBaseBrush}" VerticalAlignment="Center" HorizontalAlignment="Right">

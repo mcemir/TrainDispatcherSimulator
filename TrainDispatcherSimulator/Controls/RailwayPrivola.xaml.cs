@@ -67,10 +67,21 @@ namespace TrainDispatcherSimulator.Controls
             RailwayBrush = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
             startTimer(minutes, seconds, train);
 
+            TrainName = train.Name;
+
             if (train.Orientation == TrainOrientation.Left)
+            {
                 leftTriangle.Fill = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
-            else
-                rightTriangle.Fill = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
+                TrainNameLeftPanelVisibility = Visibility.Visible;
+            }
+            else 
+            {
+                rightTriangle.Fill = App.Current.Resources["RailwayVisited"] as SolidColorBrush;                
+                TrainNameRightPanelVisibility = Visibility.Visible;
+            }
+
+
+            
         }
 
 
@@ -106,6 +117,9 @@ namespace TrainDispatcherSimulator.Controls
             // Reset triangle color
             leftTriangle.Fill = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
             rightTriangle.Fill = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+
+            TrainNameLeftPanelVisibility = Visibility.Collapsed;
+            TrainNameRightPanelVisibility = Visibility.Collapsed;
             
         }
 

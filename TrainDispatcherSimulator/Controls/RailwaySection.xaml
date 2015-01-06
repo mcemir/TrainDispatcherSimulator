@@ -33,7 +33,11 @@
             ManuverSemaphoreVisibility="{Binding ManuverSemaphoreVisibility}"
             Visibility="{Binding LeftSemaphoreVisibility}"/>
 
-        <Border Background="{Binding RailwayBrush}" BorderBrush="{Binding RailwayStrokeBrush}" BorderThickness="2" Grid.Row="1"/>
+        <Border Background="{Binding RailwayBrush}" Grid.Row="1"/>
+       
+        <TextBlock Text="{Binding TrainName}" Grid.Row="1" Visibility="{Binding TrainNameRightPanelVisibility}" Foreground="Black" Margin="5,0" VerticalAlignment="Center"  HorizontalAlignment="Right" />
+        <TextBlock Text="{Binding TrainName}" Visibility="{Binding TrainNameLeftPanelVisibility}" Grid.Row="1" HorizontalAlignment="Left" Foreground="Black" Margin="5,0" VerticalAlignment="Center" />
+        
 
         <control:SemaphoreSignal 
             x:Name="rightSemaphore"

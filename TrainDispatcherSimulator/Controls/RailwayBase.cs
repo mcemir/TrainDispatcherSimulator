@@ -76,6 +76,40 @@ namespace TrainDispatcherSimulator.Controls
             DependencyProperty.Register("Platform", typeof(Platform), typeof(RailwayBase), new PropertyMetadata(null));
 
 
+
+
+
+
+        public string TrainName
+        {
+            get { return (string)GetValue(TrainNameProperty); }
+            set { SetValue(TrainNameProperty, value); }
+        }
+        public static readonly DependencyProperty TrainNameProperty =
+            DependencyProperty.Register("TrainName", typeof(string), typeof(RailwayBase), new PropertyMetadata(""));
+
+        
+        public Visibility TrainNameLeftPanelVisibility
+        {
+            get { return (Visibility)GetValue(TrainNameLeftPanelVisibilityProperty); }
+            set { SetValue(TrainNameLeftPanelVisibilityProperty, value); }
+        }
+        public static readonly DependencyProperty TrainNameLeftPanelVisibilityProperty =
+            DependencyProperty.Register("TrainNameLeftPanelVisibility", typeof(Visibility), typeof(RailwayBase), new PropertyMetadata(Visibility.Collapsed));
+
+
+        public Visibility TrainNameRightPanelVisibility
+        {
+            get { return (Visibility)GetValue(TrainNameRightPanelVisibilityProperty); }
+            set { SetValue(TrainNameRightPanelVisibilityProperty, value); }
+        }
+        public static readonly DependencyProperty TrainNameRightPanelVisibilityProperty =
+            DependencyProperty.Register("TrainNameRightPanelVisibility", typeof(Visibility), typeof(RailwayBase), new PropertyMetadata(Visibility.Collapsed));
+
+        
+
+        
+
         
         public List<Train> Trains { get; set; }
         public int Length  { get; set; }            // Dužina sekcije u metrima
@@ -196,6 +230,14 @@ namespace TrainDispatcherSimulator.Controls
             Trains.Add(train);
             RailwayBrush = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
             startTimerDriving(train);
+
+
+            TrainName = train.Name;
+            // Update train name
+            if (train.Orientation == TrainOrientation.Left)
+                TrainNameLeftPanelVisibility = Visibility.Visible;
+            else
+                TrainNameRightPanelVisibility = Visibility.Visible;
         }
 
         public virtual void LeaveRailway(Train train)
@@ -207,7 +249,11 @@ namespace TrainDispatcherSimulator.Controls
                 nextRailway.EnterRailway(train);
                 startTimerLeaving(train);
                 Trains.Remove(train);
+
+                TrainNameLeftPanelVisibility = Visibility.Collapsed;
+                TrainNameRightPanelVisibility = Visibility.Collapsed;
             }
+
         }
 
 
