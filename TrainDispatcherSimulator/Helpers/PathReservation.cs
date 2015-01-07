@@ -66,6 +66,7 @@ namespace TrainDispatcherSimulator.Helpers
 
             if (findPathBetweenSections())
             {
+                Controller.Instance.Log("New railway path reserved!", LogType.Info);
                 iluminatePath();
                 railwayClear = false;
             }
@@ -76,7 +77,10 @@ namespace TrainDispatcherSimulator.Helpers
 
         public void clearPath()
         {
+            
             if (!parentSections.Any()) return;
+            //Log
+            Controller.Instance.Log("Reserved railway path cleared!", LogType.Info);
             RailwayBase current = finalPoint;
             while (current != startingPoint)
             {

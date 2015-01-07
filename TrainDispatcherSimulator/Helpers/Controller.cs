@@ -12,7 +12,7 @@ namespace TrainDispatcherSimulator.Helpers
 {
     public enum PathDirection {RightToLeft, LeftToRight, Both};
     public enum KeyboardEvents {Reserve, Clear, ShowRailway, ShowGraph, ShowLog };
-    public enum LogType { Info, Warrning, Error, Critical };
+    public enum LogType { Info, Warning, Error, Critical };
     public class Controller
     {
         //Promijenio sam ovo u public accessibility samo radi testriranja.
@@ -20,6 +20,7 @@ namespace TrainDispatcherSimulator.Helpers
         public Logger logger = new Logger();
 
         public List<RailwayBase> Railways = new List<RailwayBase>();
+        public DataGrid LogDataGrid = new DataGrid();
 
 
         // Čisto radi čuvanja referenci
@@ -61,6 +62,12 @@ namespace TrainDispatcherSimulator.Helpers
             //pathFinder.activate();
         }
 
+        public void Log(String content, LogType type)
+        {
+            Log e = new Log(content, type, DateTime.Now);
+            logger.Add(e);
+            LogDataGrid.Items.Refresh();
+        }
         public void RegisterMouseDown(RailwayBase railway)
         {
             mouseDownRailway = railway;
@@ -86,6 +93,7 @@ namespace TrainDispatcherSimulator.Helpers
         public void RegisterKeyPressed(KeyEventArgs e)
         {
             keyboardEvent.captureKeyboardInput(e);
+            Controller.Instance.Log("Key shortcut pressed!", LogType.Info);
         }
 
         #endregion PUBLIC METHODS

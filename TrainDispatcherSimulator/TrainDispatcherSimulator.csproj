@@ -70,9 +70,10 @@
     <Compile Include="Controls\LogItem.xaml.cs">
       <DependentUpon>LogItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\LogTypeToColour.cs" />
     <Compile Include="Helpers\Controller.cs" />
     <Compile Include="Helpers\KeyboardInput.cs" />
-    <Compile Include="Controls\Log.cs" />
+    <Compile Include="Helpers\Log.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\PathReservation.cs" />
     <Compile Include="Controls\Platform.xaml.cs">

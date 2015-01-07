@@ -142,11 +142,61 @@
 
             <Grid x:Name="logGrid" Background="Black">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Grid.Row="0"
+                           Text="Railway event logger"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="White"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           ></TextBlock>
+                
+
+                <DataGrid AutoGenerateColumns="False"
+                          RowBackground="Black"
+                          RowHeaderWidth="0"
+                          Background="Black"
+                          GridLinesVisibility="None"
+                          FontSize="18"
+                          Grid.Column="0"
+                          Grid.Row="1"
+                          IsEnabled="False"
+                          Loaded="DataGrid_Loaded"
+                          x:Name="logDataGrid"
+                          >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="Timestamp"
+                            Foreground="White"
+                            Binding="{Binding Timestamp}"
+                            TextBlock.TextAlignment="Right"
+                            >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn
+                            Header="Type"
+                            FontWeight="Bold"
+                            TextBlock.TextAlignment="Center"
+                            Binding="{Binding LogType}"
+                            Foreground="White"
+                            >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn
+                            Header="Text"
+                            Binding="{Binding Content}"
+                            Foreground="White"
+                            TextBlock.TextAlignment="Left"
+                            >
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                    
+                </DataGrid>
 
             </Grid>
 

@@ -25,6 +25,10 @@ namespace TrainDispatcherSimulator
         public MainWindow()
         {
             InitializeComponent();
+
+            Controller.Instance.logger.Add(new Log("Test", LogType.Info, DateTime.Now));
+            Controller.Instance.logger.Add(new Log("Medo je bio ovdje i izvrnuo stol!", LogType.Info, DateTime.Now));
+            Controller.Instance.logger.Add(new Log("Meho je sve zezno!", LogType.Error, DateTime.Now));
             this.KeyUp += new KeyEventHandler(keyboardKey_Up);
 
         }
@@ -51,15 +55,24 @@ namespace TrainDispatcherSimulator
 
         private void logButton_Click(object sender, RoutedEventArgs e)
         {
+
             logGrid.Visibility = Visibility.Visible;
             railwayGrid.Visibility = Visibility.Collapsed;
             graphGrid.Visibility = Visibility.Collapsed;
+            
 
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Controller.Instance.Railways = railwayGrid.Children.Cast<UIElement>().Where(p => p is RailwayBase).Cast<RailwayBase>().ToList();
+            Controller.Instance.LogDataGrid = logDataGrid;
+        }
+
+        private void DataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            var gridData = sender as DataGrid;
+            gridData.ItemsSource = Controller.Instance.logger.logs;
         }
 
     }
