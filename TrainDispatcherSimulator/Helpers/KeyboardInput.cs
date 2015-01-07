@@ -50,7 +50,7 @@ namespace TrainDispatcherSimulator.Helpers
                     Controller.Instance.Railways[13].Platform.Title = "Reserved";
                     break;
                 case "C":
-                    Controller.Instance.pathFinder.clearPath();
+                    PathReservation.Instance.clearPath();
                     Controller.Instance.Railways[13].Platform.Title = "Cleared";
                     break;
                 case "D1":

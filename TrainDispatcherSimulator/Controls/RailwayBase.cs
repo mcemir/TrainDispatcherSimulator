@@ -19,6 +19,8 @@ using TrainDispatcherSimulator.Helpers;
 
 namespace TrainDispatcherSimulator.Controls
 {
+    public enum RailwayReservation { Free, Reserved, Highlight };
+
     public class RailwayBase : UserControl
     {
         public List<RailwayBase> LeftRailways = new List<RailwayBase>();
@@ -113,7 +115,7 @@ namespace TrainDispatcherSimulator.Controls
         
         public List<Train> Trains { get; set; }
         public int Length  { get; set; }            // Dužina sekcije u metrima
-        public bool Reserved { get; set; }
+        public RailwayReservation Reserved { get; set; }
         #endregion PROPERTIES
 
 
@@ -257,14 +259,26 @@ namespace TrainDispatcherSimulator.Controls
         }
 
 
+
+
         // Vraća true ukoliko je rezervacija uspešna
         // previousRailway je prethodnik trenutnom
         // nextRailway je sljedbenik trenutnom
-        public virtual bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway)
+        public virtual bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway, bool highlight = false )
         {
-            Reserved = true;
-            if (Trains.Count == 0)
-                RailwayBrush = App.Current.Resources["RailwayReservedBrush"] as SolidColorBrush;
+            if (highlight)
+            {
+                Reserved = RailwayReservation.Highlight;
+                startBlink();
+            }
+            else
+            {
+                Reserved = RailwayReservation.Reserved;
+                if (Trains.Count == 0)
+                    RailwayBrush = App.Current.Resources["RailwayReservedBrush"] as SolidColorBrush;
+            }
+
+            
 
             return true;
         }
@@ -275,8 +289,11 @@ namespace TrainDispatcherSimulator.Controls
             // Moze se resetovat samo ukoliko je prazan railway
             if (Trains.Count == 0)
             {
-                Reserved = false;
+                Reserved = RailwayReservation.Free;
                 RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+
+                if (blinkTimer != null)
+                    blinkTimer.Stop();
             }
         }
 
@@ -374,6 +391,35 @@ namespace TrainDispatcherSimulator.Controls
         }
 
 
+        DispatcherTimer blinkTimer;
+        protected virtual void startBlink()
+        {
+            int blinkIntervalMs = 500;
+
+            blinkTimer = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
+            blinkTimer.Interval = new TimeSpan(0, 0, 0, 0, blinkIntervalMs);
+
+
+            blinkTimer.Tick += (s, args) =>
+            {
+                if (Reserved != RailwayReservation.Highlight || Trains.Count > 0)
+                {
+                    blinkTimer.Stop();
+                    return;
+                }
+
+                if (RailwayBrush == App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush)
+                    RailwayBrush = App.Current.Resources["RailwayHighlightBrush"] as SolidColorBrush;
+                else
+                    RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+
+                
+            };
+
+            blinkTimer.Start();
+        }
+
+
         #endregion DISPATCHER TIMERS
 
 
@@ -403,12 +449,14 @@ namespace TrainDispatcherSimulator.Controls
 
         private void RailwayBase_MouseEnter(object sender, MouseEventArgs e)
         {
+            Controller.Instance.RegisterMouseEnter(this);
             tmpRailwayBrush = RailwayBrush;
             RailwayBrush = brightBrush(RailwayBrush);
         }
 
         private void RailwayBase_MouseLeave(object sender, MouseEventArgs e)
         {
+            Controller.Instance.RegisterMouseLeave(this);
             if (RailwayBrush.Color == brightBrush(tmpRailwayBrush).Color)
                 RailwayBrush = tmpRailwayBrush;
         }

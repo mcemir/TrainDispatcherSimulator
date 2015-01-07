@@ -16,11 +16,16 @@ namespace TrainDispatcherSimulator.Helpers
     public class Controller
     {
         //Promijenio sam ovo u public accessibility samo radi testriranja.
-        public PathReservation pathFinder = new PathReservation();
         public KeyboardInput keyboardEvent = new KeyboardInput();
         public Logger logger = new Logger();
 
         public List<RailwayBase> Railways = new List<RailwayBase>();
+
+
+        // Čisto radi čuvanja referenci
+        private RailwayBase mouseDownRailway;
+        private List<RailwayBase> selectedPath = new List<RailwayBase>();
+
 
         #region INITIALIZATION
 
@@ -38,11 +43,12 @@ namespace TrainDispatcherSimulator.Helpers
 
         private Controller()
         {
-
+            PathReservation.Instance.Railways = Railways;
+            EventManager.RegisterClassHandler(typeof(MainWindow), Mouse.MouseUpEvent, new MouseButtonEventHandler(OnGlobaMouseUp));
         }
 
-        #endregion INITIALIZATION
 
+        #endregion INITIALIZATION
 
 
 
@@ -51,14 +57,30 @@ namespace TrainDispatcherSimulator.Helpers
 
         public void RegisterMouseUp(RailwayBase railway)
         {
-            pathFinder.secondPoint = railway;
-            pathFinder.activate();
+            //pathFinder.secondPoint = railway;
+            //pathFinder.activate();
         }
 
         public void RegisterMouseDown(RailwayBase railway)
         {
-            pathFinder.firstPoint = railway;
-            
+            mouseDownRailway = railway;
+            //pathFinder.firstPoint = railway;            
+        }
+
+        public void RegisterMouseEnter(RailwayBase railway)
+        {
+            if (Mouse.LeftButton == MouseButtonState.Pressed && mouseDownRailway != null)
+            {
+                selectedPath = PathReservation.Instance.Highligh(mouseDownRailway, railway);
+            }
+        }
+
+        public void RegisterMouseLeave(RailwayBase railway)
+        {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+            {
+                PathReservation.Instance.Reset(selectedPath);
+            }
         }
 
         public void RegisterKeyPressed(KeyEventArgs e)
@@ -69,6 +91,13 @@ namespace TrainDispatcherSimulator.Helpers
         #endregion PUBLIC METHODS
 
 
+
+
+
+        private void OnGlobaMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            mouseDownRailway = null;
+        }
 
     }
 }

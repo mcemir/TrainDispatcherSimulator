@@ -55,9 +55,9 @@ namespace TrainDispatcherSimulator.Controls
         }
 
 
-        public override bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway)
+        public override bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway, bool highlight = false)
         {
-            if (base.Reserve(previousRailway, nextRailway))
+            if (base.Reserve(previousRailway, nextRailway, highlight))
             {
                 int indexR = 0;
                 int indexL = 0;

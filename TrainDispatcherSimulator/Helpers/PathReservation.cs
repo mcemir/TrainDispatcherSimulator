@@ -14,6 +14,21 @@ namespace TrainDispatcherSimulator.Helpers
     //Nalazi se izmedju ovih dugih sa peronima.
     public class PathReservation
     {
+        private static PathReservation instance;
+        public static PathReservation Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new PathReservation();
+
+                return instance;
+            }
+        }
+
+        public List<RailwayBase> Railways = new List<RailwayBase>();
+
+
         public RailwayBase firstPoint { get; set; }
         public RailwayBase secondPoint { get; set; }
 
@@ -35,9 +50,15 @@ namespace TrainDispatcherSimulator.Helpers
 
         public void activate(){
 
-            if (firstPoint == null || secondPoint == null || firstPoint == secondPoint) return;
-            if (firstPoint.GetType() != typeof(RailwaySection) || secondPoint.GetType() != typeof(RailwaySection)) return;
-            if (!railwayClear) return;
+            if (firstPoint == null || secondPoint == null || firstPoint == secondPoint) 
+                return;
+
+            if (firstPoint.GetType() != typeof(RailwaySection) || secondPoint.GetType() != typeof(RailwaySection)) 
+                return;
+
+            if (!railwayClear) 
+                return;
+
             startingPoint = firstPoint;
             finalPoint = secondPoint;
             int distance = Grid.GetColumn(startingPoint) - Grid.GetColumn(finalPoint);
@@ -51,7 +72,7 @@ namespace TrainDispatcherSimulator.Helpers
             
             sectionQueue.Clear();
             visitedSections.Clear();
-            }
+        }
 
         public void clearPath()
         {
@@ -80,12 +101,12 @@ namespace TrainDispatcherSimulator.Helpers
             {
                 next = parentSections[current];
 
-                current.Reserve(previous, next);
+                current.Reserve(previous, next, true);
 
                 previous = current;
                 current = next;
             }
-            current.Reserve(previous, null);
+            current.Reserve(previous, null, true);
         }
 
         private bool findPathBetweenSections()
@@ -117,6 +138,115 @@ namespace TrainDispatcherSimulator.Helpers
                 }
             }
             return false;
+        }
+
+
+
+
+
+
+        // ==============================================================
+
+
+
+        private List<RailwayBase> getPathBetween(RailwayBase first, RailwayBase last, bool highlight = false)
+        {
+            List<RailwayBase> path = new List<RailwayBase>();
+            Queue<RailwayBase> queue = new Queue<RailwayBase>();
+            HashSet<RailwayBase> visited = new HashSet<RailwayBase>();
+            Dictionary<RailwayBase, RailwayBase> parent = new Dictionary<RailwayBase, RailwayBase>();
+
+            int distance = Grid.GetColumn(first) - Grid.GetColumn(last);
+            string direction = distance >= 0 ? "RightToLeft" : "LeftToRight";
+
+            queue.Enqueue(first);
+
+            while (queue.Any())
+            {
+                RailwayBase railway = queue.Dequeue();
+
+                if (!visited.Add(railway))
+                    continue;
+
+                if (last == railway)
+                    break;
+
+                List<RailwayBase> neighbors = new List<RailwayBase>();
+                if (direction == "RightToLeft")
+                    neighbors = railway.LeftRailways.Where(n => !visitedSections.Contains(n)).ToList();
+                else
+                    neighbors = railway.RightRailways.Where(n => !visitedSections.Contains(n)).ToList();
+
+
+                foreach (RailwayBase child in neighbors)
+                {
+                    parent[child] = railway;
+                    queue.Enqueue(child);
+                }                
+            }
+
+
+            // Create path
+            RailwayBase current = last;
+            RailwayBase previous = null;
+            RailwayBase next = null;
+
+            try
+            {
+                while (current != first)
+                {
+                    next = parent[current];
+
+                    path.Add(current);
+                    if (highlight)
+                        current.Reserve(previous, next, true);
+
+                    previous = current;
+                    current = next;
+                }
+                path.Add(current);
+                if (highlight)
+                    current.Reserve(previous, null, true);
+            }
+            catch (Exception)
+            {
+                // Nije se pronašla putanja
+            }
+            
+
+            return path;
+        }
+
+
+        public List<RailwayBase> Highligh(RailwayBase first, RailwayBase last)
+        {
+            List<RailwayBase> path = new List<RailwayBase>();
+
+            // Ukoliko je sekcija ili privola
+            if (first != null && last != null &&
+                first != last &&
+                (first is RailwaySection ||  first is RailwayPrivola) &&
+                (last is RailwaySection || last is RailwayPrivola))
+            {
+                path = getPathBetween(first, last, true);
+            }
+
+
+            return path;
+        }
+
+        public void Reset()
+        {
+            Reset(Railways);
+        }
+
+        public void Reset(List<RailwayBase> railways)
+        {
+            if (railways != null)
+            {
+                foreach (RailwayBase railway in railways)
+                    railway.Reset();
+            }
         }
     }   
 }

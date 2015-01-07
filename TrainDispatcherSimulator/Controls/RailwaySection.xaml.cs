@@ -71,9 +71,9 @@ namespace TrainDispatcherSimulator.Controls
 
         #region PUBLIC METHODS  
 
-        public override bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway)
+        public override bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway, bool highlight = false)
         {
-            if (base.Reserve(previousRailway, nextRailway))
+            if (base.Reserve(previousRailway, nextRailway, highlight) && !highlight)
             {
                 if (previousRailway != null && (nextRailway == null || RightRailways.Contains(nextRailway)) && LeftRailways.Contains(previousRailway) && leftSemaphore.Visibility == Visibility.Visible)
                 {
