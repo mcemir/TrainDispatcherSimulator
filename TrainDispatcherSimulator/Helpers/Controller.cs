@@ -137,6 +137,7 @@ namespace TrainDispatcherSimulator.Helpers
         private void OnGlobalKeyUp(object sender, KeyEventArgs e)
         {
             string pressedKey = e.Key.ToString();
+            Controller.Instance.Log("Keyboard key pressed: <" + pressedKey + ">", LogType.Info);
             switch (pressedKey)
             {
                 case "R":

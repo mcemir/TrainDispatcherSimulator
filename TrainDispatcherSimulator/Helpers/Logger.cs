@@ -8,10 +8,10 @@ namespace TrainDispatcherSimulator.Helpers
 {
     public class Logger
     {
-        public Queue<Log> logs = new Queue<Log>();
+        public List<Log> logs = new List<Log>();
 
         public void Add(Log e){
-            logs.Enqueue(e);
+            logs.Insert(0,e);
         }
     }
 }

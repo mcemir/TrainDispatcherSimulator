@@ -16,13 +16,13 @@ namespace TrainDispatcherSimulator.Helpers
             LogType = type;
             Timestamp = time;
             //Izgleda da mora konverter se registrovati preko resursa.
-            Color = LogTypeToColor.Convert(type);
+            Color = "Black";
         }
 
         public LogType LogType { get; set; }
         public DateTime Timestamp { get; set; }
         public String Content { get; set; }
-        public SolidColorBrush Color { get; set; }
+        public String Color { get; set; }
         
         
     }

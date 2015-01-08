@@ -25,10 +25,6 @@ namespace TrainDispatcherSimulator
         public MainWindow()
         {
             InitializeComponent();
-
-            Controller.Instance.logger.Add(new Log("Test", LogType.Info, DateTime.Now));
-            Controller.Instance.logger.Add(new Log("Medo je bio ovdje i izvrnuo stol!", LogType.Info, DateTime.Now));
-            Controller.Instance.logger.Add(new Log("Meho je sve zezno!", LogType.Error, DateTime.Now));
         }
 
 
