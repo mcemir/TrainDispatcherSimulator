@@ -29,14 +29,8 @@ namespace TrainDispatcherSimulator
             Controller.Instance.logger.Add(new Log("Test", LogType.Info, DateTime.Now));
             Controller.Instance.logger.Add(new Log("Medo je bio ovdje i izvrnuo stol!", LogType.Info, DateTime.Now));
             Controller.Instance.logger.Add(new Log("Meho je sve zezno!", LogType.Error, DateTime.Now));
-            this.KeyUp += new KeyEventHandler(keyboardKey_Up);
-
         }
 
-        private void keyboardKey_Up(object sender, KeyEventArgs e)
-        {
-            Controller.Instance.RegisterKeyPressed(e);
-        }
 
         private void graphButton_Click(object sender, RoutedEventArgs e)
         {

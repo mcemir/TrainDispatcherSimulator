@@ -11,20 +11,18 @@ using TrainDispatcherSimulator.Controls;
 namespace TrainDispatcherSimulator.Helpers
 {
     public enum PathDirection {RightToLeft, LeftToRight, Both};
-    public enum KeyboardEvents {Reserve, Clear, ShowRailway, ShowGraph, ShowLog };
     public enum LogType { Info, Warning, Error, Critical };
     public class Controller
     {
         //Promijenio sam ovo u public accessibility samo radi testriranja.
-        public KeyboardInput keyboardEvent = new KeyboardInput();
         public Logger logger = new Logger();
 
         public List<RailwayBase> Railways = new List<RailwayBase>();
         public DataGrid LogDataGrid = new DataGrid();
 
 
-        // Čisto radi čuvanja referenci
-        private RailwayBase mouseDownRailway;
+
+
         private List<RailwayBase> selectedPath = new List<RailwayBase>();
 
 
@@ -45,8 +43,13 @@ namespace TrainDispatcherSimulator.Helpers
         private Controller()
         {
             PathReservation.Instance.Railways = Railways;
-            EventManager.RegisterClassHandler(typeof(MainWindow), Mouse.MouseUpEvent, new MouseButtonEventHandler(OnGlobaMouseUp));
+            EventManager.RegisterClassHandler(typeof(MainWindow), Mouse.MouseUpEvent, new MouseButtonEventHandler(OnGlobalMouseUp));
+            EventManager.RegisterClassHandler(typeof(MainWindow), Keyboard.KeyUpEvent, new KeyEventHandler(OnGlobalKeyUp));
         }
+
+        
+
+        
 
 
         #endregion INITIALIZATION
@@ -54,13 +57,22 @@ namespace TrainDispatcherSimulator.Helpers
 
 
 
+
+
+
+
         #region PUBLIC METHODS
 
-        public void RegisterMouseUp(RailwayBase railway)
+        public void ReserveSelected()
         {
-            //pathFinder.secondPoint = railway;
-            //pathFinder.activate();
+            if (selectedPath != null) 
+            {
+                foreach(RailwayBase railway in selectedPath)
+                    railway.Reserve(null, null);
+            }
+            selectedPath = null;
         }
+
 
         public void Log(String content, LogType type)
         {
@@ -68,6 +80,26 @@ namespace TrainDispatcherSimulator.Helpers
             logger.Add(e);
             LogDataGrid.Items.Refresh();
         }
+
+        #endregion PUBLIC METHODS
+
+
+
+
+
+
+
+
+        #region MOUSE EVENTS PUBLIC METHODS
+
+        private RailwayBase mouseDownRailway;
+        public void RegisterMouseUp(RailwayBase railway)
+        {
+            //pathFinder.secondPoint = railway;
+            //pathFinder.activate();
+        }
+
+        
         public void RegisterMouseDown(RailwayBase railway)
         {
             mouseDownRailway = railway;
@@ -90,22 +122,37 @@ namespace TrainDispatcherSimulator.Helpers
             }
         }
 
-        public void RegisterKeyPressed(KeyEventArgs e)
-        {
-            keyboardEvent.captureKeyboardInput(e);
-            Controller.Instance.Log("Key shortcut pressed!", LogType.Info);
-        }
-
-        #endregion PUBLIC METHODS
+        #endregion MOUSE EVENTS PUBLIC METHODS
 
 
 
 
 
-        private void OnGlobaMouseUp(object sender, MouseButtonEventArgs e)
+        private void OnGlobalMouseUp(object sender, MouseButtonEventArgs e)
         {
             mouseDownRailway = null;
         }
+
+
+        private void OnGlobalKeyUp(object sender, KeyEventArgs e)
+        {
+            string pressedKey = e.Key.ToString();
+            switch (pressedKey)
+            {
+                case "R":
+                    ReserveSelected();
+                    break;
+                case "C":
+                    break;
+                case "D1":
+                    break;
+                case "D2":
+                    break;
+                case "D3":
+                    break;
+            }
+        }
+
 
     }
 }

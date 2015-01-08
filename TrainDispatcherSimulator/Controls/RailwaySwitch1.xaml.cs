@@ -42,6 +42,9 @@ namespace TrainDispatcherSimulator.Controls
         {
             if (base.Reserve(previousRailway, nextRailway, highlight))
             {
+                if (previousRailway == null && nextRailway == null)
+                    return true;
+
                 int indexR = 0;
                 int indexL = 0;
                 bool found = false;

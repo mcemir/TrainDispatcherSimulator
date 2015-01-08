@@ -72,7 +72,6 @@
     </Compile>
     <Compile Include="Converters\LogTypeToColour.cs" />
     <Compile Include="Helpers\Controller.cs" />
-    <Compile Include="Helpers\KeyboardInput.cs" />
     <Compile Include="Helpers\Log.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\PathReservation.cs" />
