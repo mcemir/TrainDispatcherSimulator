@@ -203,7 +203,15 @@ namespace TrainDispatcherSimulator.Helpers
 
                     path.Add(current);
                     if (highlight)
-                        current.Reserve(previous, next, true);
+                    {
+                        bool canReserve = current.Reserve(previous, next, true);
+                        if (!canReserve)
+                        {
+                            Reset(path);
+                            return new List<RailwayBase>();
+                        }
+
+                    }
 
                     previous = current;
                     current = next;

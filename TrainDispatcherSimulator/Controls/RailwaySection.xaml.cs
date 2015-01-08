@@ -85,7 +85,7 @@ namespace TrainDispatcherSimulator.Controls
                 }
             }
 
-            return false;
+            return true;
         }
 
         public override void Reset()

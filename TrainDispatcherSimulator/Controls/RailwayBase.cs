@@ -159,20 +159,64 @@ namespace TrainDispatcherSimulator.Controls
 
             Grid parentGrid = this.Parent as Grid;
 
-
             if (parentGrid != null)
             {
-                LeftRailways = parentGrid.Children.Cast<UserControl>().Where(c => c != this && c is RailwayBase && (
-                    (Grid.GetRow(c) == row - 1 && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && Grid.GetRowSpan(c) == 2 && !(c is RailwaySwitch4)) && !(c is RailwayCurve2) ||
-                    (Grid.GetRow(c) == row && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && !(c is RailwayCurve1) && (!(this is RailwayCurve2) && !(c is RailwaySwitch3))) ||
-                    (rowSpan == 2 && Grid.GetRow(c) == row + 1 && Grid.GetColumn(c) + Grid.GetColumnSpan(c) == col && !(c is RailwaySwitch3) && !(c is RailwayCurve1))))
-                    .OrderBy(c => Grid.GetRow(c)).Cast<RailwayBase>().ToList();
+                LeftRailways = new List<RailwayBase>();
+                RightRailways = new List<RailwayBase>();
+                foreach (RailwayBase railway in parentGrid.Children.Cast<UserControl>().Where(c => c != this && c is RailwayBase))
+                {
+                    int railwayRow = Grid.GetRow(railway);
+                    int railwayCol = Grid.GetColumn(railway);
+                    int railwayRowSpan = Grid.GetRowSpan(railway);
+                    int railwayColSpan = Grid.GetColumnSpan(railway);
 
-                RightRailways = parentGrid.Children.Cast<UserControl>().Where(c => c != this && c is RailwayBase && (
-                    (Grid.GetRow(c) == row - 1 && Grid.GetColumn(c) == col + colSpan && Grid.GetRowSpan(c) == 2 && !(c is RailwaySwitch1)) && !(c is RailwayCurve1) ||
-                    (Grid.GetRow(c) == row && Grid.GetColumn(c) == col + colSpan && !(c is RailwayCurve2) && (!(this is RailwayCurve1) && !(c is RailwaySwitch2))) ||
-                    (rowSpan == 2 && Grid.GetRow(c) == row + 1 && Grid.GetColumn(c) == col + colSpan && !(c is RailwaySwitch2) && !(c is RailwayCurve2))))
-                    .OrderBy(c => Grid.GetRow(c)).Cast<RailwayBase>().ToList();
+                    // Left railways
+                    if (railwayRow == row - 1 && railwayCol + railwayColSpan == col && railwayRowSpan == 2 && !(this is RailwayCurve2) && !(this is RailwaySwitch2) && !(railway is RailwayCurve2) && !(railway is RailwaySwitch4))
+                    {
+                        LeftRailways.Add(railway);
+                    }
+                    else if (railwayRow == row && railwayCol + railwayColSpan == col)
+                    {
+                        // Oba lijeva
+                        if ((this is RailwayCross || this is RailwaySwitch3 || this is RailwaySwitch4 || this is RailwaySwitch5 || this is RailwaySwitch6))
+                            LeftRailways.Add(railway);
+
+                        // Gornji lijevi
+                        else if ((this is RailwayCurve1 || this is RailwaySwitch1 || this is RailwaySection || this is RailwayPrivola) && !(railway is RailwayCurve1 || railway is RailwaySwitch3))
+                            LeftRailways.Add(railway);
+
+                        // Donji lijevi
+                        else if ((this is RailwayCurve2 || this is RailwaySwitch2) && !(railway is RailwayCurve2 || railway is RailwaySwitch4 || railway is RailwaySection || railway is RailwayPrivola))
+                            LeftRailways.Add(railway);
+                    }
+                    else if (rowSpan == 2 && railwayRow == row + 1 && railwayCol + railwayColSpan == col && !(this is RailwayCurve1) && !(this is RailwaySwitch1) && !(railway is RailwayCurve1) && !(railway is RailwaySwitch3))
+                        LeftRailways.Add(railway);
+
+
+
+
+                    // Right railways
+                    else if (railwayRow == row - 1 && railwayCol == col + colSpan && railwayRowSpan == 2 && !(this is RailwayCurve1) && !(this is RailwaySwitch3) && !(railway is RailwayCurve1) && !(railway is RailwaySwitch1))
+                    {
+                        RightRailways.Add(railway);
+                    }
+                    else if (railwayRow == row && railwayCol == col + colSpan)
+                    {
+                        // Oba desna
+                        if ((this is RailwayCross || this is RailwaySwitch1 || this is RailwaySwitch2 || this is RailwaySwitch5 || this is RailwaySwitch6))
+                            RightRailways.Add(railway);
+
+                        // Gornji desni
+                        else if ((this is RailwayCurve2 || this is RailwaySwitch4 || this is RailwaySection || this is RailwayPrivola) && !(railway is RailwayCurve2 || railway is RailwaySwitch2))
+                            RightRailways.Add(railway);
+
+                        // Donji lijevi
+                        else if ((this is RailwayCurve1 || this is RailwaySwitch3) && !(railway is RailwayCurve1 || railway is RailwaySwitch1 || railway is RailwaySection || railway is RailwayPrivola))
+                            RightRailways.Add(railway);
+                    }
+                    else if (rowSpan == 2 && railwayRow == row + 1 && railwayCol == col + colSpan && !(this is RailwayCurve2) && !(this is RailwaySwitch4) && !(railway is RailwayCurve2) && !(railway is RailwaySwitch2))
+                        RightRailways.Add(railway);
+                }
             }
             
 
@@ -189,6 +233,9 @@ namespace TrainDispatcherSimulator.Controls
             {
                 RightRailways.Add(RightRailways[0]); // Dodaj još jednu instancu
             }
+
+            LeftRailways = LeftRailways.OrderBy(c => Grid.GetRow(c)).Cast<RailwayBase>().ToList();
+            RightRailways = RightRailways.OrderBy(c => Grid.GetRow(c)).Cast<RailwayBase>().ToList();
 
         }
 
@@ -408,7 +455,7 @@ namespace TrainDispatcherSimulator.Controls
                     return;
                 }
 
-                if (RailwayBrush == App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush)
+                if (RailwayBrush != App.Current.Resources["RailwayHighlightBrush"] as SolidColorBrush)
                     RailwayBrush = App.Current.Resources["RailwayHighlightBrush"] as SolidColorBrush;
                 else
                     RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
@@ -451,7 +498,8 @@ namespace TrainDispatcherSimulator.Controls
         {
             Controller.Instance.RegisterMouseEnter(this);
             tmpRailwayBrush = RailwayBrush;
-            RailwayBrush = brightBrush(RailwayBrush);
+            if (RailwayBrush != App.Current.Resources["RailwayHighlightBrush"])
+                RailwayBrush = brightBrush(RailwayBrush);
         }
 
         private void RailwayBase_MouseLeave(object sender, MouseEventArgs e)

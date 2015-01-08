@@ -81,7 +81,7 @@ namespace TrainDispatcherSimulator.Controls
                     found = true;
                 }
 
-                if (found)
+                if (found && !(indexR == 0 && indexL == 1))
                 {
                     if (indexR == indexL)
                         State = RailwaySwitchState.Straight;
