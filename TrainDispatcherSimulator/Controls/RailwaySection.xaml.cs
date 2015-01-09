@@ -185,7 +185,13 @@ namespace TrainDispatcherSimulator.Controls
             }
         }
 
+        private void semaphore_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Reset();
+        }
         #endregion EVENT HANDLERS
+
+        
 
         
 
