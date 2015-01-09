@@ -86,7 +86,10 @@ namespace TrainDispatcherSimulator.Helpers
             selectedPath = null;
         }
 
-
+        public void ClearSelected()
+        {
+            PathReservation.Instance.Reset(selectedPath);
+        }
 
 
         public void Log(String content, LogType type)
