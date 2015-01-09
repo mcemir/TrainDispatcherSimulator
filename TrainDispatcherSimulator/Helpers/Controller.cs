@@ -67,11 +67,26 @@ namespace TrainDispatcherSimulator.Helpers
         {
             if (selectedPath != null) 
             {
-                foreach(RailwayBase railway in selectedPath)
-                    railway.Reserve(null, null);
+                RailwayBase next = null;
+                RailwayBase previous = null;
+                if (selectedPath.Count > 1)
+                {
+                    for (int i = 0; i < selectedPath.Count; i++)
+                    {
+                        if (i < selectedPath.Count - 1)
+                            next = selectedPath[i + 1];
+                        else
+                            next = null;
+
+                        selectedPath[i].Reserve(previous, next);
+                        previous = selectedPath[i];
+                    }
+                }
             }
             selectedPath = null;
         }
+
+
 
 
         public void Log(String content, LogType type)
@@ -144,6 +159,7 @@ namespace TrainDispatcherSimulator.Helpers
                     ReserveSelected();
                     break;
                 case "C":
+                    PathReservation.Instance.Reset(selectedPath);
                     break;
                 case "D1":
                     break;
