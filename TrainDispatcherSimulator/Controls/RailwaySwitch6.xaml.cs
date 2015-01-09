@@ -87,7 +87,13 @@ namespace TrainDispatcherSimulator.Controls
                 if (found && !(indexR == 0 && indexL == 1))
                 {
                     if (indexR == indexL)
+                    {
                         State = RailwaySwitchState.Straight;
+                        if (indexR == 0)
+                            straightLowerPolygon.Fill = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+                        else
+                            straightUpperPolygon.Fill = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+                    }
                     else
                         State = RailwaySwitchState.Sverve;
                 }
@@ -103,6 +109,12 @@ namespace TrainDispatcherSimulator.Controls
             return false;
         }
 
+        public override void Reset()
+        {
+            base.Reset();
+            straightLowerPolygon.SetBinding(Polygon.FillProperty, new Binding("RailwayBrush"));
+            straightUpperPolygon.SetBinding(Polygon.FillProperty, new Binding("RailwayBrush"));
+        }
 
 
         // Ovo nije dobro treba mijenjat

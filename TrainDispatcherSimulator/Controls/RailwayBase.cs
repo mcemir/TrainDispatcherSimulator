@@ -297,7 +297,7 @@ namespace TrainDispatcherSimulator.Controls
             {
                 nextRailway.EnterRailway(train);
                 startTimerLeaving(train);
-                Trains.Remove(train);
+                Trains.RemoveAll(t => t.Name == train.Name);
 
                 TrainNameLeftPanelVisibility = Visibility.Collapsed;
                 TrainNameRightPanelVisibility = Visibility.Collapsed;

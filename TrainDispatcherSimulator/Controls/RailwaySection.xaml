@@ -30,7 +30,6 @@
             HorizontalAlignment="Left" 
             Orientation="Left"
             StateChanged="semaphore_StateChanged"
-            MouseUp="semaphore_MouseUp"
             ManuverSemaphoreVisibility="{Binding ManuverSemaphoreVisibility}"
             Visibility="{Binding LeftSemaphoreVisibility}"/>
 
@@ -49,7 +48,6 @@
             HorizontalAlignment="Right" 
             Orientation="Right"
             StateChanged="semaphore_StateChanged"
-            MouseUp="semaphore_MouseUp"
             ManuverSemaphoreVisibility="{Binding ManuverSemaphoreVisibility}"
             Visibility="{Binding RightSemaphoreVisibility}"/>
     </Grid>

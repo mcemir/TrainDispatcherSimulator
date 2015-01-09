@@ -111,7 +111,7 @@ namespace TrainDispatcherSimulator.Controls
                 nextRailway.EnterRailway(train);
 
 
-            Trains.Remove(train);
+            Trains.RemoveAll(t => t.Name == train.Name);
             this.startTimerLeaving(train);
 
             // Reset triangle color

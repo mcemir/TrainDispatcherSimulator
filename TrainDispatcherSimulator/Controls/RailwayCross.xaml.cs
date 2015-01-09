@@ -180,7 +180,13 @@ namespace TrainDispatcherSimulator.Controls
                 if (found)
                 {
                     if (indexR == indexL)
+                    {
                         State = RailwayCrossState.Straight;
+                        if (indexR == 0)
+                            straightLowerPolygon.Fill = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+                        else
+                            straightUpperPolygon.Fill = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
+                    }
                     else if (indexL == 0 && indexR == 1)
                         State = RailwayCrossState.SverveFirst;
                     else
@@ -203,6 +209,8 @@ namespace TrainDispatcherSimulator.Controls
         {
             base.Reset();
             State = RailwayCrossState.Straight;
+            straightLowerPolygon.SetBinding(Polygon.FillProperty, new Binding("RailwayBrush"));
+            straightUpperPolygon.SetBinding(Polygon.FillProperty, new Binding("RailwayBrush"));
         }
 
 
