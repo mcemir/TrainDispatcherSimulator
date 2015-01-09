@@ -315,10 +315,10 @@
 
 
                 <control:RailwaySwitch2 Grid.Row="1" Grid.Column="6" Grid.RowSpan="2"/>
-                <control:RailwaySection Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="8"  LeftSemaphoreVisibility="Collapsed" RightSemaphoreVisibility="Collapsed"/>
-                <control:RailwaySection Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="8"  LeftSemaphoreVisibility="Collapsed" RightSemaphoreVisibility="Collapsed"/>
+                <control:RailwaySection Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="8" />
+                <control:RailwaySection Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="8"  />
                 <control:RailwaySwitch3 Grid.Row="1" Grid.Column="15" Grid.RowSpan="2"/>
-                <control:RailwaySection Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" LeftSemaphoreVisibility="Collapsed" RightSemaphoreVisibility="Collapsed"/>
+                <control:RailwaySection Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" RightSemaphoreVisibility="Collapsed"/>
                 
             </Grid>
 
