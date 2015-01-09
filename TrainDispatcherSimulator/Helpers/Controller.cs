@@ -113,15 +113,14 @@ namespace TrainDispatcherSimulator.Helpers
         private RailwayBase mouseDownRailway;
         public void RegisterMouseUp(RailwayBase railway)
         {
-            //pathFinder.secondPoint = railway;
-            //pathFinder.activate();
         }
 
         
         public void RegisterMouseDown(RailwayBase railway)
         {
+            ClearSelected();
             mouseDownRailway = railway;
-            //pathFinder.firstPoint = railway;            
+            selectedPath = PathReservation.Instance.Highligh(mouseDownRailway, mouseDownRailway);
         }
 
         public void RegisterMouseEnter(RailwayBase railway)

@@ -236,7 +236,6 @@ namespace TrainDispatcherSimulator.Helpers
 
             // Ukoliko je sekcija ili privola
             if (first != null && last != null &&
-                first != last &&
                 (first is RailwaySection ||  first is RailwayPrivola) &&
                 (last is RailwaySection || last is RailwayPrivola))
             {
