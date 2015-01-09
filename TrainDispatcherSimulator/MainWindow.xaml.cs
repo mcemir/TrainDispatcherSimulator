@@ -65,5 +65,6 @@ namespace TrainDispatcherSimulator
             gridData.ItemsSource = Controller.Instance.logger.logs;
         }
 
+
     }
 }
