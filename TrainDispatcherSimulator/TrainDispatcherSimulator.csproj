@@ -70,6 +70,9 @@
     <Compile Include="Controls\LogItem.xaml.cs">
       <DependentUpon>LogItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RailwayScale.xaml.cs">
+      <DependentUpon>RailwayScale.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MarkingItem.xaml.cs">
       <DependentUpon>MarkingItem.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
     <Page Include="Controls\LogItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RailwayScale.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\MarkingItem.xaml">
       <SubType>Designer</SubType>

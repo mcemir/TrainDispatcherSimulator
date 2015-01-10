@@ -79,6 +79,17 @@ namespace TrainDispatcherSimulator.Controls
 
 
 
+        public RailwayScale Scale
+        {
+            get { return (RailwayScale)GetValue(ScaleProperty); }
+            set { SetValue(ScaleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Scale.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ScaleProperty =
+            DependencyProperty.Register("Scale", typeof(RailwayScale), typeof(RailwayBase), new PropertyMetadata(null));
+
+        
 
 
 
@@ -279,7 +290,7 @@ namespace TrainDispatcherSimulator.Controls
             Trains.Add(train);
             RailwayBrush = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
             startTimerDriving(train);
-
+            if (Scale != null) Scale.MeasueredWeight = (Math.Round(20 + new Random().NextDouble()*60,2)).ToString();
 
             TrainName = train.Name;
             // Update train name
