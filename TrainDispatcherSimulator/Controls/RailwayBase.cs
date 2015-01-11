@@ -345,7 +345,7 @@ namespace TrainDispatcherSimulator.Controls
         // nextRailway je sljedbenik trenutnom
         public virtual bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway, bool highlight = false )
         {
-            if (highlight == false && (RailwayMark != "" || Trains.Count > 0))
+            if (highlight == false && (RailwayMark != "" || Trains.Count > 0) && nextRailway != null)
                 return false;
 
             if (highlight)
