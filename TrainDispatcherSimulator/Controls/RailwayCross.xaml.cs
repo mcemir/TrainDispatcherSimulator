@@ -135,6 +135,7 @@ namespace TrainDispatcherSimulator.Controls
         {
             base.EnterRailway(train);
 
+
             if (State == RailwayCrossState.Straight)
             {
                 if (RightRailways[0].Trains.Contains(train) ||

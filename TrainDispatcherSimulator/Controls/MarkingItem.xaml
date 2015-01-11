@@ -7,12 +7,12 @@
              mc:Ignorable="d" 
              Height="40" Width="40">
     <Grid>
-        <Border BorderBrush="Maroon" BorderThickness="3" Background="Black">
+        <Border BorderBrush="DarkRed" BorderThickness="3" Background="Black">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
                        x:Name="markingTextBlock"
                        FontFamily="Courier"
                        FontSize="20"
-                       Foreground="Maroon"
+                       Foreground="DarkRed"
                        FontWeight="ExtraBold"/>
         </Border>
     </Grid>
