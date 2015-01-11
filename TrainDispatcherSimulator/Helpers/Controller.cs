@@ -13,12 +13,12 @@ namespace TrainDispatcherSimulator.Helpers
 {
     public enum PathDirection {RightToLeft, LeftToRight, Both};
     public enum LogType { Info, Warning, Error, Critical };
+    public enum AudioSignalType { Notify, Warn };
     public class Controller
     {
         //Promijenio sam ovo u public accessibility samo radi testriranja.
         public Logger logger = new Logger();
         public DataGrid LogDataGrid;
-
 
         public DataGrid ScheduleDataGrid;
         public List<ScheduleItem> ScheduleList = new List<ScheduleItem>();
@@ -50,7 +50,6 @@ namespace TrainDispatcherSimulator.Helpers
             PathReservation.Instance.Railways = Railways;
             EventManager.RegisterClassHandler(typeof(MainWindow), Mouse.MouseUpEvent, new MouseButtonEventHandler(OnGlobalMouseUp));
             EventManager.RegisterClassHandler(typeof(MainWindow), Keyboard.KeyUpEvent, new KeyEventHandler(OnGlobalKeyUp));
-
         }
 
 
@@ -238,7 +237,11 @@ namespace TrainDispatcherSimulator.Helpers
 
         #endregion INITIALIZATION
 
+        #region SOUND SIGNALS
+        public void RailwayPrivolaSound(AudioSignalType type){
 
+        }
+        #endregion SOUND SIGNALS
 
 
 
@@ -389,15 +392,19 @@ namespace TrainDispatcherSimulator.Helpers
                     PathReservation.Instance.Reset(selectedPath);
                     break;
                 case "D1":
+                    AudioSignal.Instance.BeepSound();
                     showRailway();
                     break;
                 case "D2":
                     showGraph();
+                    AudioSignal.Instance.AsteriskSound();
                     break;
                 case "D3":
+                    AudioSignal.Instance.ExclamationSound();
                     showTableGrid();
                     break;
                 case "D4":
+                    AudioSignal.Instance.HandSound();
                     showLogger();
                     break;
             }
