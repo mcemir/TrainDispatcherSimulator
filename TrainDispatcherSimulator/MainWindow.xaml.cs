@@ -30,14 +30,14 @@ namespace TrainDispatcherSimulator
 
         private void graphButton_Click(object sender, RoutedEventArgs e)
         {
-            railwayGrid.Visibility = Visibility.Collapsed;
+            mainRailwayGrid.Visibility = Visibility.Collapsed;
             graphGrid.Visibility = Visibility.Visible;
             logGrid.Visibility = Visibility.Collapsed;
         }
 
         private void trainButton_Click(object sender, RoutedEventArgs e)
         {
-            railwayGrid.Visibility = Visibility.Visible;
+            mainRailwayGrid.Visibility = Visibility.Visible;
             graphGrid.Visibility = Visibility.Collapsed;
             logGrid.Visibility = Visibility.Collapsed;
 
@@ -47,7 +47,7 @@ namespace TrainDispatcherSimulator
         {
 
             logGrid.Visibility = Visibility.Visible;
-            railwayGrid.Visibility = Visibility.Collapsed;
+            mainRailwayGrid.Visibility = Visibility.Collapsed;
             graphGrid.Visibility = Visibility.Collapsed;
             
 
@@ -55,7 +55,7 @@ namespace TrainDispatcherSimulator
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Controller.Instance.Railways = railwayGrid.Children.Cast<UIElement>().Where(p => p is RailwayBase).Cast<RailwayBase>().ToList();
+            Controller.Instance.Railways = railwaysGrid.Children.Cast<UIElement>().Where(p => p is RailwayBase).Cast<RailwayBase>().ToList();
             Controller.Instance.LogDataGrid = logDataGrid;
         }
 
