@@ -329,6 +329,8 @@ namespace TrainDispatcherSimulator.Controls
                 startTimerLeaving(train);
                 Trains.RemoveAll(t => t.Name == train.Name);
 
+                if (Scale != null)
+                    Scale.MeasueredWeight = "-";
                 TrainNameLeftPanelVisibility = Visibility.Collapsed;
                 TrainNameRightPanelVisibility = Visibility.Collapsed;
             }
