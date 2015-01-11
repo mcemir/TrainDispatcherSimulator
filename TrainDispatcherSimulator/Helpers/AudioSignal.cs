@@ -23,7 +23,6 @@ namespace TrainDispatcherSimulator.Helpers
         public void AsteriskSound()
         {
                 SystemSounds.Asterisk.Play();
-                System.Media.SystemSounds.Question.Play();
         }
 
         public void BeepSound()

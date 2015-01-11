@@ -239,8 +239,44 @@ namespace TrainDispatcherSimulator.Helpers
 
         #region SOUND SIGNALS
         public void RailwayPrivolaSound(AudioSignalType type){
-
+            AudioSignal.Instance.AsteriskSound()
+            switch(type){
+                case AudioSignalType.Notify:
+                    AudioSignal.Instance.ExclamationSound();
+                    break;
+                case AudioSignalType.Warn:
+                    AudioSignal.Instance.BeepSound();
+                    break;
+            }
         }
+
+        public void RailwaySwitchSound(AudioSignalType type)
+        {
+            AudioSignal.Instance.QuestionSound();
+            switch(type){
+                case AudioSignalType.Notify:
+                    AudioSignal.Instance.ExclamationSound();
+                    break;
+                case AudioSignalType.Warn:
+                    AudioSignal.Instance.BeepSound();
+                    break;
+            }
+        }
+
+        public void RailwaySectionSound(AudioSignalType type)
+        {
+            AudioSignal.Instance.AsteriskSound();
+            switch (type)
+            {
+                case AudioSignalType.Notify:
+                    AudioSignal.Instance.ExclamationSound();
+                    break;
+                case AudioSignalType.Warn:
+                    AudioSignal.Instance.BeepSound();
+                    break;
+            }
+        }
+
         #endregion SOUND SIGNALS
 
 
