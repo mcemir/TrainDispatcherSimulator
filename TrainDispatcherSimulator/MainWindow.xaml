@@ -10,6 +10,7 @@
         Background="Black"
         WindowStartupLocation="CenterScreen" 
         WindowState="Maximized"
+        SizeChanged="Window_SizeChanged"
         >
 
     <Window.DataContext>
@@ -114,7 +115,7 @@
 
 
         
-            <Grid x:Name="graphGrid" Background="Black" Opacity="0.9">
+            <Grid x:Name="graphGrid" Background="Black">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="1*"/>
@@ -171,7 +172,6 @@
                           Grid.Column="0"
                           Grid.Row="1"
                           IsEnabled="False"
-                          Loaded="DataGrid_Loaded"
                           x:Name="logDataGrid"
                           >
                     <DataGrid.LayoutTransform>
@@ -228,14 +228,11 @@
             
             
             
-            <Grid x:Name="mainTableGrid">
+            <Grid x:Name="mainTableGrid" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
                 
                 <TextBlock Grid.Column="0"
                            Grid.Row="0"
@@ -251,20 +248,77 @@
 
                 <DataGrid 
                     AutoGenerateColumns="False"
-                    HeadersVisibility="None"
-                    ScrollViewer.CanContentScroll="True"
-                    ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                    HeadersVisibility="Column"
                     RowBackground="Black"
                     RowHeaderWidth="0"
                     Background="Black"
                     GridLinesVisibility="None"
                     FontSize="18"
                     Grid.Column="0"
+                    IsReadOnly="True"
                     Grid.Row="1"
-                    IsEnabled="False"
-                    Loaded="DataGrid_Loaded"
-                    x:Name="scheduleDataGrid"
-                    >
+                    ColumnWidth="*"
+                    x:Name="scheduleDataGrid">
+
+
+                    <DataGrid.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                            Color="LightBlue"/>
+                    </DataGrid.Resources>
+
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Foreground="White"
+                            Header="Train"
+                            Binding="{Binding Train.Name}"
+                            >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn
+                            Foreground="White"
+                            Header="Wagons"
+                            TextBlock.TextAlignment="Center"
+                            Binding="{Binding Train.WagonCount}"
+                            >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn
+                            Foreground="White"
+                            Header="Train type"
+                            TextBlock.TextAlignment="Center"
+                            Binding="{Binding Train.Type}"
+                            >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn
+                            Foreground="White"
+                            Header="From"
+                            Binding="{Binding From}"
+                            >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn
+                            Foreground="White"
+                            Header="To"
+                            Binding="{Binding To}"
+                            >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn
+                            Foreground="White"
+                            Header="Target"
+                            Binding="{Binding Target}"
+                            >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn
+                            Foreground="White"
+                            Header="Status"
+                            Binding="{Binding ScheduleType}"
+                            >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn                            
+                            Foreground="White"
+                            Header="Time"
+                            Binding="{Binding Time, Converter={StaticResource DateTimeToStringConverter}}"
+                            >
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
                     
                 </DataGrid>
             </Grid>
@@ -320,8 +374,8 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <control:RailwayPrivola Grid.Row="5" Grid.Column="0" RailwayName="P1"/>
-                    <control:RailwayPrivola Grid.Row="6" Grid.Column="0" RailwayName="P2"/>
+                    <control:RailwayPrivola Grid.Row="5" Grid.Column="0" RailwayName="N1"/>
+                    <control:RailwayPrivola Grid.Row="6" Grid.Column="0" RailwayName="N2"/>
             
                     <control:RailwaySection Grid.Row="5" Grid.Column="1"/>
                     <control:RailwaySection Grid.Row="6" Grid.Column="1"/>
@@ -382,8 +436,8 @@
 
 
 
-                <Border BorderBrush="LightGray" Grid.Row="1" BorderThickness="0,0,0,0" VerticalAlignment="Bottom">
-                    <Grid x:Name="controlPanelGrid" Background="Transparent"  VerticalAlignment="Bottom">
+                <Border Grid.Row="1">
+                    <Grid x:Name="controlPanelGrid" Background="Black"  VerticalAlignment="Bottom">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="1*"/>

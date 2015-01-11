@@ -44,13 +44,6 @@ namespace TrainDispatcherSimulator.Controls
         // TEST 
         private void RailwayPrivola_Loaded(object sender, RoutedEventArgs e)
         {
-            if (this.RailwayName == "P1")
-            {
-                Train t = new Train();
-                t.Orientation = TrainOrientation.Right;
-                t.Name = "P104";
-                this.DispatchTrain(0, 10, t);
-            }
         }
 
         #endregion INITIALIZATION

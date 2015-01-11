@@ -68,12 +68,22 @@ namespace TrainDispatcherSimulator
         {
             Controller.Instance.Railways = railwaysGrid.Children.Cast<UIElement>().Where(p => p is RailwayBase).Cast<RailwayBase>().ToList();
             Controller.Instance.LogDataGrid = logDataGrid;
+            Controller.Instance.ScheduleDataGrid = scheduleDataGrid;
+
+            Controller.Instance.InitSchedule();
+
+            logDataGrid.ItemsSource = Controller.Instance.logger.logs;
+            scheduleDataGrid.ItemsSource = Controller.Instance.ScheduleList;
+            scheduleDataGrid.SelectedItem = scheduleDataGrid.Items[0];
+
         }
 
-        private void DataGrid_Loaded(object sender, RoutedEventArgs e)
+
+
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var gridData = sender as DataGrid;
-            gridData.ItemsSource = Controller.Instance.logger.logs;
+            mainTableGrid.Width = e.NewSize.Width-20;
         }
 
 

@@ -19,6 +19,7 @@
         <SolidColorBrush x:Key="RailwayVisited" Color="Red"/>
 
         <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+        <converter:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
 
 
         <Style x:Key="railwayNameTextStyle" TargetType="TextBlock">

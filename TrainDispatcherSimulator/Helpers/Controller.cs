@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 using TrainDispatcherSimulator.Controls;
 
 namespace TrainDispatcherSimulator.Helpers
@@ -16,14 +17,17 @@ namespace TrainDispatcherSimulator.Helpers
     {
         //Promijenio sam ovo u public accessibility samo radi testriranja.
         public Logger logger = new Logger();
+        public DataGrid LogDataGrid;
+
+
+        public DataGrid ScheduleDataGrid;
+        public List<ScheduleItem> ScheduleList = new List<ScheduleItem>();
+
 
         public List<RailwayBase> Railways = new List<RailwayBase>();
-        public DataGrid LogDataGrid = new DataGrid();
-
-
-
-
         private List<RailwayBase> selectedPath = new List<RailwayBase>();
+
+
 
 
         #region INITIALIZATION
@@ -45,11 +49,190 @@ namespace TrainDispatcherSimulator.Helpers
             PathReservation.Instance.Railways = Railways;
             EventManager.RegisterClassHandler(typeof(MainWindow), Mouse.MouseUpEvent, new MouseButtonEventHandler(OnGlobalMouseUp));
             EventManager.RegisterClassHandler(typeof(MainWindow), Keyboard.KeyUpEvent, new KeyEventHandler(OnGlobalKeyUp));
+
         }
 
-        
 
-        
+
+        public void InitSchedule()
+        {
+            Train p101 = new Train() {
+                Name = "P101",
+                MaxSpeed = 120,
+                Type = TrainType.Passenger,
+                WagonCount = 3,
+                Orientation = TrainOrientation.Right
+            };
+
+            Train p102 = new Train() {
+                Name = "P102",
+                MaxSpeed = 80,
+                Type = TrainType.Passenger,
+                WagonCount = 2,
+                Orientation = TrainOrientation.Right
+            };
+
+            Train p103 = new Train() {
+                Name = "P103",
+                MaxSpeed = 80,
+                Type = TrainType.Passenger,
+                WagonCount = 5,
+                Orientation = TrainOrientation.Right
+            };
+
+            Train p104 = new Train() {
+                Name = "P104",
+                MaxSpeed = 80,
+                Type = TrainType.Passenger,
+                WagonCount = 3,
+                Orientation = TrainOrientation.Right
+            };
+
+            Train p105 = new Train() {
+                Name = "P105",
+                MaxSpeed = 80,
+                Type = TrainType.Passenger,
+                WagonCount = 3,
+                Orientation = TrainOrientation.Right
+            };
+
+            Train f101 = new Train() {
+                Name = "F101",
+                MaxSpeed = 80,
+                Type = TrainType.Freight,
+                WagonCount = 20,
+                Orientation = TrainOrientation.Right
+            };
+
+            Train f102 = new Train() {
+                Name = "F102",
+                MaxSpeed = 80,
+                Type = TrainType.Freight,
+                WagonCount = 35,
+                Orientation = TrainOrientation.Right
+            };
+
+
+
+            DateTime date = DateTime.Now;
+            date = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, 0);
+
+
+            ScheduleItem item1 = new ScheduleItem()
+            {
+                Train = p101,
+                ScheduleType = ScheduleType.Arrival,
+                Target = "P1",
+                Time = date.AddMinutes(1),
+                From = "Zagreb",
+                To = "Ploče"
+            };
+            ScheduleList.Add(item1);
+
+            ScheduleItem item2 = new ScheduleItem()
+            {
+                Train = p102,
+                ScheduleType = ScheduleType.Arrival,
+                Target = "P3",
+                Time = date.AddMinutes(2),
+                From = "Beograd",
+                To = "Ploče"
+            };
+            ScheduleList.Add(item2);
+
+            ScheduleItem item3 = new ScheduleItem()
+            {
+                Train = f101,
+                ScheduleType = ScheduleType.Arrival,
+                Target = "",
+                Time = date.AddMinutes(3),
+                From = "Doboj",
+                To = "Sarajevo"
+            };
+            ScheduleList.Add(item3);
+
+            ScheduleItem item4 = new ScheduleItem()
+            {
+                Train = p101,
+                ScheduleType = ScheduleType.Departure,
+                Target = "N1",
+                Time = date.AddMinutes(5),
+                From = "Zagreb",
+                To = "Ploče"
+            };
+            ScheduleList.Add(item4);
+
+            ScheduleItem item5 = new ScheduleItem()
+            {
+                Train = f102,
+                ScheduleType = ScheduleType.Arrival,
+                Target = "",
+                Time = date.AddMinutes(5),
+                From = "Ploče",
+                To = "Sarajevo"
+            };
+            ScheduleList.Add(item5);
+
+            ScheduleItem item6 = new ScheduleItem()
+            {
+                Train = p102,
+                ScheduleType = ScheduleType.Departure,
+                Target = "N1",
+                Time = date.AddMinutes(6),
+                From = "Beograd",
+                To = "Ploče"
+            };
+            ScheduleList.Add(item6);
+
+            ScheduleItem item7 = new ScheduleItem()
+            {
+                Train = p103,
+                ScheduleType = ScheduleType.Arrival,
+                Target = "P2",
+                Time = date.AddMinutes(6),
+                From = "Zenica",
+                To = "Sarajevo"
+            };
+            ScheduleList.Add(item7);
+
+            ScheduleItem item8 = new ScheduleItem()
+            {
+                Train = p104,
+                ScheduleType = ScheduleType.Arrival,
+                Target = "P4",
+                Time = date.AddMinutes(6),
+                From = "Mostar",
+                To = "Sarajevo"
+            };
+            ScheduleList.Add(item8);
+
+            ScheduleItem item9 = new ScheduleItem()
+            {
+                Train = p105,
+                ScheduleType = ScheduleType.Arrival,
+                Target = "P1",
+                Time = date.AddMinutes(7),
+                From = "Mostar",
+                To = "Doboj"
+            };
+            ScheduleList.Add(item9);
+
+            ScheduleItem item10 = new ScheduleItem()
+            {
+                Train = p105,
+                ScheduleType = ScheduleType.Departure,
+                Target = "N1",
+                Time = date.AddMinutes(8),
+                From = "Mostar",
+                To = "Doboj"
+            };
+            ScheduleList.Add(item10);
+
+            RailwayPrivola ulaznaPrivola = Railways.First(r => (r as RailwayBase).RailwayName == "N2") as RailwayPrivola;
+            ulaznaPrivola.DispatchTrain(1, 0, p101);
+
+            //startScheduleTimer();
+        }
 
 
         #endregion INITIALIZATION
@@ -154,6 +337,7 @@ namespace TrainDispatcherSimulator.Helpers
 
 
 
+        #region GLOBAL EVENT HANDLERS
         private void OnGlobalMouseUp(object sender, MouseButtonEventArgs e)
         {
             mouseDownRailway = null;
@@ -180,7 +364,44 @@ namespace TrainDispatcherSimulator.Helpers
                     break;
             }
         }
+        #endregion GLOBAL EVENT HANDLERS
 
 
+
+
+
+
+
+
+        #region DISPATCHER TIMERS
+        int currentIndex = 0;   // Trenutni na koji se čeka
+        protected DispatcherTimer scheduleTimer = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
+        protected virtual void startScheduleTimer()
+        {
+            int intervalSec = 30;
+            scheduleTimer.Interval = new TimeSpan(0, 0, 0, intervalSec, 0);
+            scheduleTimer.Tick += (s, args) =>
+            {
+                if (currentIndex < ScheduleList.Count - 1)
+                {
+                    if (ScheduleList[currentIndex].Time < DateTime.Now)
+                    {
+                        while (ScheduleList[currentIndex].Time < DateTime.Now)
+                            currentIndex++;
+
+                        RailwayPrivola ulaznaPrivola = Railways.First(r => (r as RailwayBase).RailwayName == "N2") as RailwayPrivola;
+                        ulaznaPrivola.DispatchTrain(1, 0, ScheduleList[currentIndex].Train);
+
+                        ScheduleDataGrid.SelectedItem = ScheduleList[currentIndex];
+                    }
+                }
+                else
+                {
+                    scheduleTimer.Stop();
+                }
+            };
+            scheduleTimer.Start();
+        }
+        #endregion DISPATCHER TIMERS
     }
 }
