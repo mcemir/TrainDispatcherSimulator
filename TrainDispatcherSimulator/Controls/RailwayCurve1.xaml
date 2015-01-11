@@ -24,5 +24,6 @@
             </Polygon.Points>
         </Polygon>
 
+        <control:MarkingItem Grid.RowSpan="10" MarkType="{Binding RailwayMark}" Visibility="{Binding RailwayMark, Converter={StaticResource StringToVisibilityConverter}}"  />
     </Grid>
 </control:RailwayCurveBase>

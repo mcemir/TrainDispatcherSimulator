@@ -14,7 +14,7 @@
 
     <control:RailwayBase.Resources>
         <converter:SectionDimensionsToPointConverter x:Key="SectionDimensionsToPointConverter" />
-        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />        
     </control:RailwayBase.Resources>
 
     <Grid>
@@ -50,5 +50,7 @@
             StateChanged="semaphore_StateChanged"
             ManuverSemaphoreVisibility="{Binding ManuverSemaphoreVisibility}"
             Visibility="{Binding RightSemaphoreVisibility}"/>
+
+        <control:MarkingItem Grid.RowSpan="3" MarkType="{Binding RailwayMark}" Visibility="{Binding RailwayMark, Converter={StaticResource StringToVisibilityConverter}}"  />
     </Grid>
 </control:RailwayBase>

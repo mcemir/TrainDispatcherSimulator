@@ -3,15 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             MouseMove="UserControl_MouseMove"
              mc:Ignorable="d" 
-             d:DesignHeight="40" d:DesignWidth="40">
+             Height="40" Width="40">
     <Grid>
         <Border BorderBrush="Maroon" BorderThickness="3" Background="Black">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
-                       x:Name="markingBlock"
-                       Text="TG"
+                       x:Name="markingTextBlock"
                        FontFamily="Courier"
-                       FontSize="25"
+                       FontSize="20"
                        Foreground="Maroon"
                        FontWeight="ExtraBold"/>
         </Border>

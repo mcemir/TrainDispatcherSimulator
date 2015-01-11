@@ -29,12 +29,47 @@ namespace TrainDispatcherSimulator.Controls
 
 
         #region PROPERTIES
+
+        
         public string MarkType
         {
-            get { return markingBlock.Text; }
-            set { markingBlock.Text = value; }
+            get { return (string)GetValue(MarkTypeProperty); }
+            set { SetValue(MarkTypeProperty, value); }
         }
+        public static readonly DependencyProperty MarkTypeProperty =
+            DependencyProperty.Register("MarkType", typeof(string), typeof(MarkingItem), new FrameworkPropertyMetadata("",
+                      FrameworkPropertyMetadataOptions.AffectsRender, 
+                      new PropertyChangedCallback(OnUriChanged)));
+
+        private static void OnUriChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as MarkingItem).SetMarkText((string)e.NewValue);
+        }
+
+        
         #endregion PROPERTIES
 
+
+
+        #region PUBLIC METHOS
+        public void SetMarkText(string text)
+        {
+            markingTextBlock.Text = text;
+        }
+        #endregion PUBLIC METHOS
+
+
+        #region EVENT HANDLERS
+
+        private void UserControl_MouseMove(object sender, MouseEventArgs e)
+        {
+            // Detect drag starting
+            MarkingItem item = sender as MarkingItem;
+            if (item != null && e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragDrop.DoDragDrop(item, item.MarkType, DragDropEffects.Move);
+            }
+        }
+        #endregion EVENT HANDLERS
     }
 }

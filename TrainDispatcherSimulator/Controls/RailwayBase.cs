@@ -84,8 +84,6 @@ namespace TrainDispatcherSimulator.Controls
             get { return (RailwayScale)GetValue(ScaleProperty); }
             set { SetValue(ScaleProperty, value); }
         }
-
-        // Using a DependencyProperty as the backing store for Scale.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ScaleProperty =
             DependencyProperty.Register("Scale", typeof(RailwayScale), typeof(RailwayBase), new PropertyMetadata(null));
 
@@ -119,6 +117,18 @@ namespace TrainDispatcherSimulator.Controls
         public static readonly DependencyProperty TrainNameRightPanelVisibilityProperty =
             DependencyProperty.Register("TrainNameRightPanelVisibility", typeof(Visibility), typeof(RailwayBase), new PropertyMetadata(Visibility.Collapsed));
 
+
+
+
+
+        public string RailwayMark
+        {
+            get { return (string)GetValue(RailwayMarkProperty); }
+            set { SetValue(RailwayMarkProperty, value); }
+        }
+        public static readonly DependencyProperty RailwayMarkProperty =
+            DependencyProperty.Register("RailwayMark", typeof(string), typeof(RailwayBase), new PropertyMetadata(""));
+
         
 
         
@@ -144,6 +154,12 @@ namespace TrainDispatcherSimulator.Controls
             RailwayBrush = App.Current.Resources["RailwayBaseBrush"] as SolidColorBrush;
             Trains = new List<Train>();
 
+            // Drag and drop init
+            AllowDrop = true;
+            this.Drop += RailwayBase_Drop;
+            this.DragEnter += RailwayBase_DragEnter;
+            this.DragLeave += RailwayBase_DragLeave;
+
             this.MouseEnter += RailwayBase_MouseEnter;
             this.MouseLeave += RailwayBase_MouseLeave;
             this.Loaded += RailwayBase_Loaded;
@@ -151,6 +167,7 @@ namespace TrainDispatcherSimulator.Controls
             this.MouseUp += RailwayBase_MouseUp;
 
         }
+
         
 
         void RailwayBase_Loaded(object sender, RoutedEventArgs e)
@@ -290,7 +307,9 @@ namespace TrainDispatcherSimulator.Controls
             Trains.Add(train);
             RailwayBrush = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
             startTimerDriving(train);
-            if (Scale != null) Scale.MeasueredWeight = (Math.Round(20 + new Random().NextDouble()*60,2)).ToString();
+            
+            if (Scale != null) 
+                Scale.MeasueredWeight = (Math.Round(20 + new Random().NextDouble()*60,2)).ToString();
 
             TrainName = train.Name;
             // Update train name
@@ -402,6 +421,33 @@ namespace TrainDispatcherSimulator.Controls
 
 
 
+        #region DRAG AND DROP
+        void RailwayBase_Drop(object sender, DragEventArgs e)
+        {
+            // If the DataObject contains string data, extract it. 
+            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                RailwayMark = (string)e.Data.GetData(DataFormats.StringFormat);
+            }
+        }
+
+        private string _previousMark = null;
+        void RailwayBase_DragEnter(object sender, DragEventArgs e)
+        {
+            // If the DataObject contains string data, extract it. 
+            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                _previousMark = RailwayMark;
+                RailwayMark = (string)e.Data.GetData(DataFormats.StringFormat);
+            }
+        }
+
+        void RailwayBase_DragLeave(object sender, DragEventArgs e)
+        {
+            RailwayMark = _previousMark;
+        }
+
+        #endregion DRAG AND DROP
 
 
 

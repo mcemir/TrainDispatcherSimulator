@@ -299,7 +299,7 @@
                 <control:RailwaySection Grid.Row="9" Grid.Column="16" Grid.ColumnSpan="1" RightSemaphoreVisibility="Collapsed" LeftSemaphoreVisibility="Collapsed"/>
 
                 <control:RailwaySwitch2 Grid.Row="2" Grid.Column="5" Grid.RowSpan="2"/>
-                <control:RailwaySection Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="8" Scale="{Binding ElementName=scale1}" Platform="{Binding ElementName=platform4}" ManuverSemaphoreVisibility="Visible"/>
+                <control:RailwaySection Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="8" Platform="{Binding ElementName=platform4}" ManuverSemaphoreVisibility="Visible"/>
                 <control:RailwaySwitch5 Grid.Row="4" Grid.Column="15" Grid.RowSpan="2"/>
                 <control:RailwayCurve1 Grid.Row="3" Grid.Column="14" Grid.RowSpan="2"/>
                 <control:RailwaySection Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="3" RightSemaphoreVisibility="Collapsed"/>
@@ -316,18 +316,21 @@
 
 
                 <control:RailwaySwitch2 Grid.Row="1" Grid.Column="6" Grid.RowSpan="2"/>
-                <control:RailwaySection Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="8" />
+                <control:RailwaySection Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="8" Scale="{Binding ElementName=scale1}" />
                 <control:RailwaySection Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="8"  />
                 <control:RailwaySwitch3 Grid.Row="1" Grid.Column="15" Grid.RowSpan="2"/>
                 <control:RailwaySection Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" RightSemaphoreVisibility="Collapsed"/>
                 
             </Grid>
 
-            <Border BorderBrush="LightGray" BorderThickness="3" Height="150" VerticalAlignment="Bottom">
+            
+            
+            
+            <Border BorderBrush="LightGray" BorderThickness="0,3,0,0" Height="150" VerticalAlignment="Bottom">
                 <Grid x:Name="controlPanelGrid" Background="Gray"  VerticalAlignment="Bottom">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
@@ -335,30 +338,26 @@
                     </Grid.ColumnDefinitions>
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="0" Grid.ColumnSpan="2" Margin="6">
+                        <StackPanel.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="control:MarkingItem">
+                                    <Setter Property="Margin" Value="5"/>
+                                    <Setter Property="Height" Value="40"/>
+                                    <Setter Property="Width" Value="40"/>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackPanel.Resources>
                         <TextBlock Text="Section markings"
                                    FontSize="14"
                                    FontWeight="Bold"/>
-                        <Button Click="graphButton_Click" Style="{DynamicResource CommandButtonStyle}">
-                            <control:MarkingItem MarkType="RG" Grid.Row="0"/>
-                        </Button>
-                        <Button Click="graphButton_Click" Style="{DynamicResource CommandButtonStyle}">
-                            <control:MarkingItem MarkType="SS" Grid.Row="0"/>
-                        </Button>
-                        <Button Click="graphButton_Click" Style="{DynamicResource CommandButtonStyle}">
-                            <control:MarkingItem MarkType="SN" Grid.Row="0"/>
-                        </Button>
-                        <Button Click="graphButton_Click" Style="{DynamicResource CommandButtonStyle}">
-                            <control:MarkingItem MarkType="VO" Grid.Row="0"/>
-                        </Button>
-                        <Button Click="graphButton_Click" Style="{DynamicResource CommandButtonStyle}">
-                            <control:MarkingItem MarkType="KM" Grid.Row="0"/>
-                        </Button>
-                        <Button Click="graphButton_Click" Style="{DynamicResource CommandButtonStyle}">
-                            <control:MarkingItem MarkType="PS" Grid.Row="0"/>
-                        </Button>
-                        <Button Click="graphButton_Click" Style="{DynamicResource CommandButtonStyle}">
-                            <control:MarkingItem MarkType="OS" Grid.Row="0"/>
-                        </Button>
+                        <control:MarkingItem MarkType="" />
+                        <control:MarkingItem MarkType="RG" />
+                        <control:MarkingItem MarkType="SS" />
+                        <control:MarkingItem MarkType="SN" />
+                        <control:MarkingItem MarkType="VO" />
+                        <control:MarkingItem MarkType="KM" />
+                        <control:MarkingItem MarkType="PS" />
+                        <control:MarkingItem MarkType="OS" />
 
 
 

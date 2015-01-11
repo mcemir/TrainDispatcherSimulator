@@ -1,6 +1,7 @@
 ﻿<Application x:Class="TrainDispatcherSimulator.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converter="clr-namespace:TrainDispatcherSimulator.Converters"
              StartupUri="MainWindow.xaml"
              xmlns:my="clr-namespace:System;assembly=mscorlib">
     <Application.Resources>
@@ -16,8 +17,10 @@
         <SolidColorBrush x:Key="RailwayReservedBrush" Color="Green"/>
         <SolidColorBrush x:Key="RailwayHighlightBrush" Color="Yellow"/>
         <SolidColorBrush x:Key="RailwayVisited" Color="Red"/>
-        
-        
+
+        <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+
+
         <Style x:Key="railwayNameTextStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Foreground" Value="LightGray"/>
