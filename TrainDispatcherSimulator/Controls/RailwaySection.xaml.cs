@@ -112,13 +112,13 @@ namespace TrainDispatcherSimulator.Controls
         public override void LeaveRailway(Train train)
         {
             RailwayBase nextRailway = getNextRailway(train);
-
             if (nextRailway != null && validateSemaphoreSignal(train))
             {
                 nextRailway.EnterRailway(train);
                 startTimerLeaving(train);
                 Trains.RemoveAll(t => t.Name == train.Name);
-
+                if (Scale != null)
+                    Scale.MeasueredWeight = "-";
                 TrainNameLeftPanelVisibility = Visibility.Collapsed;
                 TrainNameRightPanelVisibility = Visibility.Collapsed;
                 changeOrientationButton.Visibility = Visibility.Collapsed;
