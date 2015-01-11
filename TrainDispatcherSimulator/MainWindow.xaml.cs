@@ -32,33 +32,21 @@ namespace TrainDispatcherSimulator
         #region VISIBILITY MANAGEMENT
         private void graphButton_Click(object sender, RoutedEventArgs e)
         {
-            collapseAll();
-            graphGrid.Visibility = Visibility.Visible;
+            Controller.Instance.showGraph();
         }
 
         private void trainButton_Click(object sender, RoutedEventArgs e)
         {
-            collapseAll();
-            mainRailwayGrid.Visibility = Visibility.Visible;
+            Controller.Instance.showRailway();
         }
 
         private void tableButton_Click(object sender, RoutedEventArgs e)
         {
-            collapseAll();
-            mainTableGrid.Visibility = Visibility.Visible;
+            Controller.Instance.showTableGrid();
         }
         private void logButton_Click(object sender, RoutedEventArgs e)
         {
-            collapseAll();
-            logGrid.Visibility = Visibility.Visible;
-        }
-
-        private void collapseAll()
-        {
-            logGrid.Visibility = Visibility.Collapsed;
-            mainRailwayGrid.Visibility = Visibility.Collapsed;
-            graphGrid.Visibility = Visibility.Collapsed;
-            mainTableGrid.Visibility = Visibility.Collapsed;
+            Controller.Instance.showLogger();
         }
         #endregion VISIBILITY MANAGEMENT
 

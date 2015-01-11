@@ -15,7 +15,6 @@ namespace TrainDispatcherSimulator.Data
 
         public MainViewModel()
         {
-            this.Title = "Željeznička stanica Sarajevo - Red vožnje";
             initializeData();
         }
 

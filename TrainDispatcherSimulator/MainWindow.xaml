@@ -123,8 +123,18 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                
-                <oxy:Plot Grid.Row="1" Title="{Binding Title}" Background="Gray" >
+                <TextBlock Grid.Column="0"
+                           Grid.Row="0"
+                           Text="Local train schedule"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="White"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           >
+                </TextBlock>
+
+                <oxy:Plot Grid.Row="1" Title="{Binding Title}" Background="Gray" IsEnabled="False" >
                     <oxy:PlotView.Series>
                         <oxy:LineSeries ItemsSource="{Binding Linija1}" Style="{StaticResource Odlazni}" />
                         <oxy:LineSeries ItemsSource="{Binding Linija2}" Style="{StaticResource Odlazni}" />
@@ -134,7 +144,7 @@
                     <oxy:Plot.Axes>
                         <oxy:LinearAxis Position="Bottom" Minimum="6" Maximum="22" Style="{StaticResource AxesStyle}" MinorStep="0.5" MajorStep="1"   />
                         <oxy:LinearAxis Position="Top" Minimum="6" Maximum="22" Style="{StaticResource AxesStyle}" MinorStep="0.5" MajorStep="1" />
-                        <oxy:CategoryAxis Labels="{Binding Stations}" Position="Right" Minimum="0" Maximum ="8" Style="{StaticResource AxesStyle}" MinorStep="1" MajorStep="1" IsTickCentered="True"  />
+                        <oxy:CategoryAxis Labels="{Binding Stations}" Position="Right" Minimum="0" Maximum ="8" Style="{StaticResource AxesStyle}" MinorStep="1" MajorStep="1" IsTickCentered="True" />
                         <oxy:CategoryAxis Labels="{Binding Stations}" Position="Left" Minimum="0" Maximum ="8"  Style="{StaticResource AxesStyle}" MinorStep="1" MajorStep="1" IsTickCentered="True" />
                     </oxy:Plot.Axes>
 
@@ -236,7 +246,7 @@
                 
                 <TextBlock Grid.Column="0"
                            Grid.Row="0"
-                           Text="Schedule"
+                           Text="Train schedule"
                            TextAlignment="Center"
                            VerticalAlignment="Center"
                            Foreground="White"
@@ -514,11 +524,11 @@
                 </Button>
 
                 <Button Click="tableButton_Click" Style="{DynamicResource CommandButtonStyle}">
-                    <Path Stretch="Uniform" Fill="White" Data="F1 M 19,23L 27,23L 27,31L 19,31L 19,23 Z M 19,34L 27,34L 27,42L 19,42L 19,34 Z M 31,23L 57,23L 57,31L 31,31L 31,23 Z M 19,45L 27,45L 27,53L 19,53L 19,45 Z M 31,34L 57,34L 57,42L 31,42L 31,34 Z M 31,45L 57,45L 57,53L 31,53L 31,45 Z "/>
+                    <Path Stretch="UniformToFill" Fill="White" Data="F1 M 19,23L 27,23L 27,31L 19,31L 19,23 Z M 19,34L 27,34L 27,42L 19,42L 19,34 Z M 31,23L 57,23L 57,31L 31,31L 31,23 Z M 19,45L 27,45L 27,53L 19,53L 19,45 Z M 31,34L 57,34L 57,42L 31,42L 31,34 Z M 31,45L 57,45L 57,53L 31,53L 31,45 Z "/>
                 </Button>
 
                 <Button Click="logButton_Click" Style="{DynamicResource CommandButtonStyle}">
-                    <Path Stretch="Fill" Fill="White" Data="F1 M 19.0027,21.0029L 19.0027,25.0034L 44.0061,25.0034L 44.0061,21.0029L 19.0027,21.0029 Z M 19.0027,27.0038L 19.0027,31.0042L 49.0068,31.0042L 49.0068,27.0038L 19.0027,27.0038 Z M 19.0027,33.0046L 19.0027,37.005L 43.006,37.005L 43.006,33.0046L 19.0027,33.0046 Z M 19.0027,39.0054L 19.0027,43.0059L 52.0073,43.0059L 52.0073,39.0054L 19.0027,39.0054 Z M 19.0027,45.0064L 19.0027,49.0068L 46.0064,49.0068L 46.0064,45.0064L 19.0027,45.0064 Z M 19.0027,51.0073L 19.0027,55.0077L 51.0071,55.0077L 51.0071,51.0073L 19.0027,51.0073 Z " />
+                    <Path Stretch="UniformToFill" Fill="White" Data="F1 M 19.0027,21.0029L 19.0027,25.0034L 44.0061,25.0034L 44.0061,21.0029L 19.0027,21.0029 Z M 19.0027,27.0038L 19.0027,31.0042L 49.0068,31.0042L 49.0068,27.0038L 19.0027,27.0038 Z M 19.0027,33.0046L 19.0027,37.005L 43.006,37.005L 43.006,33.0046L 19.0027,33.0046 Z M 19.0027,39.0054L 19.0027,43.0059L 52.0073,43.0059L 52.0073,39.0054L 19.0027,39.0054 Z M 19.0027,45.0064L 19.0027,49.0068L 46.0064,49.0068L 46.0064,45.0064L 19.0027,45.0064 Z M 19.0027,51.0073L 19.0027,55.0077L 51.0071,55.0077L 51.0071,51.0073L 19.0027,51.0073 Z " />
                 </Button>
             </StackPanel>
 

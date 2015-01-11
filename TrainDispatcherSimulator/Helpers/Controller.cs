@@ -27,7 +27,7 @@ namespace TrainDispatcherSimulator.Helpers
         public List<RailwayBase> Railways = new List<RailwayBase>();
         private List<RailwayBase> selectedPath = new List<RailwayBase>();
 
-
+        private MainWindow mainWindow;
 
 
         #region INITIALIZATION
@@ -46,6 +46,7 @@ namespace TrainDispatcherSimulator.Helpers
 
         private Controller()
         {
+            mainWindow = ((MainWindow)System.Windows.Application.Current.MainWindow);
             PathReservation.Instance.Railways = Railways;
             EventManager.RegisterClassHandler(typeof(MainWindow), Mouse.MouseUpEvent, new MouseButtonEventHandler(OnGlobalMouseUp));
             EventManager.RegisterClassHandler(typeof(MainWindow), Keyboard.KeyUpEvent, new KeyEventHandler(OnGlobalKeyUp));
@@ -290,10 +291,41 @@ namespace TrainDispatcherSimulator.Helpers
             logger.Add(e);
             LogDataGrid.Items.Refresh();
         }
-
         #endregion PUBLIC METHODS
 
+        #region VISIBILITY MANAGEMENT
+        public void showGraph()
+        {
+            collapseAll();
+            mainWindow.graphGrid.Visibility = Visibility.Visible;
+        }
 
+        public void showRailway()
+        {
+            collapseAll();
+            mainWindow.mainRailwayGrid.Visibility = Visibility.Visible;
+        }
+
+        public void showTableGrid()
+        {
+            collapseAll();
+            mainWindow.mainTableGrid.Visibility = Visibility.Visible;
+        }
+        public void showLogger()
+        {
+            collapseAll();
+            mainWindow.logGrid.Visibility = Visibility.Visible;
+        }
+        
+        private void collapseAll()
+        {
+            mainWindow.logGrid.Visibility = Visibility.Collapsed;
+            mainWindow.mainRailwayGrid.Visibility = Visibility.Collapsed;
+            mainWindow.graphGrid.Visibility = Visibility.Collapsed;
+            mainWindow.mainTableGrid.Visibility = Visibility.Collapsed;
+        }
+
+        #endregion VISIBILITY MANAGEMENT
 
 
 
@@ -357,10 +389,16 @@ namespace TrainDispatcherSimulator.Helpers
                     PathReservation.Instance.Reset(selectedPath);
                     break;
                 case "D1":
+                    showRailway();
                     break;
                 case "D2":
+                    showGraph();
                     break;
                 case "D3":
+                    showTableGrid();
+                    break;
+                case "D4":
+                    showLogger();
                     break;
             }
         }
