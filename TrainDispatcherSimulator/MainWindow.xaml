@@ -326,30 +326,34 @@
             
             
             
-            <Border BorderBrush="LightGray" BorderThickness="0,3,0,0" Height="150" VerticalAlignment="Bottom">
+            <Border BorderBrush="LightGray" BorderThickness="0,3,0,0" VerticalAlignment="Bottom">
                 <Grid x:Name="controlPanelGrid" Background="Gray"  VerticalAlignment="Bottom">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="1*"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="0" Grid.ColumnSpan="2" Margin="6">
+                    <TextBlock 
+                        Text="Section markings"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Margin="10,0,0,0"/>
+                    
+                    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="6">
                         <StackPanel.Resources>
                             <ResourceDictionary>
                                 <Style TargetType="control:MarkingItem">
                                     <Setter Property="Margin" Value="5"/>
-                                    <Setter Property="Height" Value="40"/>
-                                    <Setter Property="Width" Value="40"/>
                                 </Style>
                             </ResourceDictionary>
                         </StackPanel.Resources>
-                        <TextBlock Text="Section markings"
-                                   FontSize="14"
-                                   FontWeight="Bold"/>
+                        
                         <control:MarkingItem MarkType="" />
                         <control:MarkingItem MarkType="RG" />
                         <control:MarkingItem MarkType="SS" />
@@ -359,28 +363,20 @@
                         <control:MarkingItem MarkType="PS" />
                         <control:MarkingItem MarkType="OS" />
 
-
-
                     </StackPanel>
 
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" Margin="3">
-                    <TextBlock Text="Train control"
-                                FontSize="14"
-                                FontWeight="Bold"
-                                Margin="3"/>
-                        <Button  Content="Add new: P1"/>
-                        <Button  Content="Add new: P2"/>
 
-                    </StackPanel>
-
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Margin="3">
-                    <TextBlock Text="Simulation controls"
-                                FontSize="14"
-                                FontWeight="Bold"
-                                Margin="3"/>
-                    <Button Content="Reserve"/>
-                    <Button Content="Clear"/>
-                    <Button Content="Reset"/>
+                    <TextBlock 
+                        Text="Controls"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
+                    
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Margin="3">                    
+                        <Button Content="Reserve" Style="{StaticResource CommandButtonStyle}"/>
+                        <Button Content="Clear" Style="{StaticResource CommandButtonStyle}"/>
+                        <Button Content="Reset" Style="{StaticResource CommandButtonStyle}"/>
                     </StackPanel>
 
                 </Grid>

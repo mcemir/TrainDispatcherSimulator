@@ -218,7 +218,9 @@ namespace TrainDispatcherSimulator.Helpers
                 }
                 path.Add(current);
                 if (highlight)
+                {
                     current.Reserve(previous, null, true);
+                }
             }
             catch (Exception)
             {

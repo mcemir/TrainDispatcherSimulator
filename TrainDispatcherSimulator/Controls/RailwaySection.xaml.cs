@@ -73,19 +73,25 @@ namespace TrainDispatcherSimulator.Controls
 
         public override bool Reserve(RailwayBase previousRailway, RailwayBase nextRailway, bool highlight = false)
         {
-            if (base.Reserve(previousRailway, nextRailway, highlight) && !highlight)
+            if (base.Reserve(previousRailway, nextRailway, highlight))
             {
-                if (previousRailway != null && (nextRailway == null || RightRailways.Contains(nextRailway)) && LeftRailways.Contains(previousRailway) && leftSemaphore.Visibility == Visibility.Visible)
+                if (!highlight)
                 {
-                    leftSemaphore.Signal = SemaphoreSignalType.Green;
+                    if (previousRailway != null && (nextRailway == null || RightRailways.Contains(nextRailway)) && LeftRailways.Contains(previousRailway) && leftSemaphore.Visibility == Visibility.Visible)
+                    {
+                        leftSemaphore.Signal = SemaphoreSignalType.Green;
+                    }
+                    else if (previousRailway != null && RightRailways.Contains(previousRailway) && (nextRailway == null || LeftRailways.Contains(nextRailway)) && rightSemaphore.Visibility == Visibility.Visible)
+                    {
+                        rightSemaphore.Signal = SemaphoreSignalType.Green;
+                    }
                 }
-                else if (previousRailway != null && RightRailways.Contains(previousRailway) && (nextRailway == null || LeftRailways.Contains(nextRailway)) && rightSemaphore.Visibility == Visibility.Visible)
-                {
-                    rightSemaphore.Signal = SemaphoreSignalType.Green;
-                }
-            }
 
-            return true;
+                return true;
+            }
+            else
+                return false;
+
         }
 
         public override void Reset()

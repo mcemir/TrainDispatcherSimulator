@@ -78,7 +78,16 @@ namespace TrainDispatcherSimulator.Helpers
                         else
                             next = null;
 
-                        selectedPath[i].Reserve(previous, next);
+                        bool result = selectedPath[i].Reserve(previous, next);
+
+                        // Ukoliko se ne može rezervisati određeni dio selektovanog puta, cijeli put se resetuje (ne može se rezervisat)
+                        if (!result)
+                        {
+                            Log("Railway can not be reserved", LogType.Warning);
+                            ClearSelected();
+                            return;
+                        }
+
                         previous = selectedPath[i];
                     }
                 }
