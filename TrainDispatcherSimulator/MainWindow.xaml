@@ -21,6 +21,9 @@
     
     <Window.Resources>
         <ResourceDictionary>
+            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Blue"/>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"  Color="Blue"/>
+            
             <Style x:Key="AxesStyle" TargetType="oxy:LinearAxis">
                 <Setter Property="AxisDistance" Value="5"/>
                 <Setter Property="AxislineStyle" Value="Solid"/>
@@ -271,10 +274,6 @@
                     x:Name="scheduleDataGrid">
 
 
-                    <DataGrid.Resources>
-                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
-                            Color="LightBlue"/>
-                    </DataGrid.Resources>
 
 
                     <DataGrid.Columns>

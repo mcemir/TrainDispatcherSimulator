@@ -230,9 +230,10 @@ namespace TrainDispatcherSimulator.Helpers
             ScheduleList.Add(item10);
 
             RailwayPrivola ulaznaPrivola = Railways.First(r => (r as RailwayBase).RailwayName == "N2") as RailwayPrivola;
-            ulaznaPrivola.DispatchTrain(1, 0, p101);
 
-            //startScheduleTimer();
+            ulaznaPrivola.DispatchTrain((item1.Time - DateTime.Now).Minutes, (item1.Time - DateTime.Now).Seconds, p101);
+
+            startScheduleTimer();
         }
 
 
@@ -413,21 +414,30 @@ namespace TrainDispatcherSimulator.Helpers
         protected DispatcherTimer scheduleTimer = new DispatcherTimer(DispatcherPriority.Render); // Set priority to render
         protected virtual void startScheduleTimer()
         {
-            int intervalSec = 30;
+            int intervalSec = 10;
             scheduleTimer.Interval = new TimeSpan(0, 0, 0, intervalSec, 0);
             scheduleTimer.Tick += (s, args) =>
             {
                 if (currentIndex < ScheduleList.Count - 1)
                 {
-                    if (ScheduleList[currentIndex].Time < DateTime.Now)
+                    DateTime date = DateTime.Now;
+                    date = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, 0);
+
+                    if (ScheduleList[currentIndex].Time < DateTime.Now.AddSeconds(-5))
                     {
-                        while (ScheduleList[currentIndex].Time < DateTime.Now)
+                        while ((currentIndex < ScheduleList.Count) && (ScheduleList[currentIndex].Time < DateTime.Now || ScheduleList[currentIndex].ScheduleType == ScheduleType.Departure))
                             currentIndex++;
 
-                        RailwayPrivola ulaznaPrivola = Railways.First(r => (r as RailwayBase).RailwayName == "N2") as RailwayPrivola;
-                        ulaznaPrivola.DispatchTrain(1, 0, ScheduleList[currentIndex].Train);
+                        if (currentIndex < ScheduleList.Count)
+                        {
+                            RailwayPrivola ulaznaPrivola = Railways.First(r => (r as RailwayBase).RailwayName == "N2") as RailwayPrivola;
 
-                        ScheduleDataGrid.SelectedItem = ScheduleList[currentIndex];
+                            double sec = (ScheduleList[currentIndex].Time - DateTime.Now).TotalSeconds;
+                            int min = (int)(sec / 60);
+                            ulaznaPrivola.DispatchTrain(min, (int)(sec - 60 * min), ScheduleList[currentIndex].Train);
+
+                            ScheduleDataGrid.SelectedItem = ScheduleList[currentIndex];
+                        }
                     }
                 }
                 else
