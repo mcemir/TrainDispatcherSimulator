@@ -36,7 +36,6 @@
         <Border Background="{Binding RailwayBrush}" Grid.Row="1"/>
         <TextBlock Grid.Row="0"
                    Text="{Binding RailwayName}"
-                   FontWeight="Bold"
                    FontSize="14"
                    Foreground="Orange"
                    HorizontalAlignment="Center"

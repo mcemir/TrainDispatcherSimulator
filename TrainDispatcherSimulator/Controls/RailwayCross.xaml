@@ -14,7 +14,6 @@
         
         <TextBlock Grid.Row="0"
                    Text="{Binding RailwayName}"
-                   FontWeight="Bold"
                    FontSize="14"
                    Foreground="Blue"
                    HorizontalAlignment="Center"
