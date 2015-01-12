@@ -98,7 +98,7 @@ namespace TrainDispatcherSimulator.Controls
         }
         public static readonly DependencyProperty TrainNameProperty =
             DependencyProperty.Register("TrainName", typeof(string), typeof(RailwayBase), new PropertyMetadata(""));
-
+       
         
         public Visibility TrainNameLeftPanelVisibility
         {

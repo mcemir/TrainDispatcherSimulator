@@ -329,7 +329,7 @@ namespace TrainDispatcherSimulator.Helpers
                 if (railway.GetType().BaseType == typeof(RailwaySwitchBase) || railway.GetType() == typeof(RailwayCross))
                 {
                     Controller.Instance.AudioSignal.RailwaySwitchToogle();
-                    Controller.Instance.Log("Railway switch segment activated: <" + railway + ">", LogType.Info);
+                    Controller.Instance.Log("Railway switch segment activated: <" + railway.RailwayName + ">", LogType.Info);
                 }
                 else
                 {

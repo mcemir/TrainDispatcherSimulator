@@ -238,7 +238,7 @@
             
             
             
-            <Grid x:Name="mainTableGrid" Visibility="Collapsed">
+            <Grid x:Name="mainTableGrid" Visibility="Collapsed" Panel.ZIndex="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="1*"/>
@@ -387,25 +387,25 @@
                     <control:RailwayPrivola Grid.Row="5" Grid.Column="0" RailwayName="N1"/>
                     <control:RailwayPrivola Grid.Row="6" Grid.Column="0" RailwayName="N2"/>
             
-                    <control:RailwaySection Grid.Row="5" Grid.Column="1"/>
-                    <control:RailwaySection Grid.Row="6" Grid.Column="1"/>
-                    <control:RailwayCross Grid.Row="5" Grid.Column="2" Grid.RowSpan="2"/>
+                    <control:RailwaySection Grid.Row="5" Grid.Column="1" RailwayName="RS1"/>
+                    <control:RailwaySection Grid.Row="6" Grid.Column="1" RailwayName="RS2"/>
+                    <control:RailwayCross Grid.Row="5" Grid.Column="2" Grid.RowSpan="2" RailwayName="C1"/>
 
-                    <control:RailwaySwitch2 Grid.Row="4" Grid.Column="3" Grid.RowSpan="2"/>
-                    <control:RailwaySwitch1 Grid.Row="6" Grid.Column="3" Grid.RowSpan="2"/>
+                    <control:RailwaySwitch2 Grid.Row="4" Grid.Column="3" Grid.RowSpan="2" RailwayName="S11"/>
+                    <control:RailwaySwitch1 Grid.Row="6" Grid.Column="3" Grid.RowSpan="2" RailwayName="S21"/>
                     <control:RailwayCurve2 Grid.Row="3" Grid.Column="4" Grid.RowSpan="2"/>
                     <control:RailwayCurve1 Grid.Row="7" Grid.Column="4" Grid.RowSpan="2"/>
 
 
-                    <control:RailwaySwitch2 Grid.Row="4" Grid.Column="4" Grid.RowSpan="2"/>
-                    <control:RailwaySwitch1 Grid.Row="6" Grid.Column="4" Grid.RowSpan="2"/>
-                    <control:RailwaySection Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="3" RightSemaphoreVisibility="Collapsed"/>
-                    <control:RailwaySection Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="3" RightSemaphoreVisibility="Collapsed"/>
+                    <control:RailwaySwitch2 Grid.Row="4" Grid.Column="4" Grid.RowSpan="2" RailwayName="S12"/>
+                    <control:RailwaySwitch1 Grid.Row="6" Grid.Column="4" Grid.RowSpan="2" RailwayName="S22"/>
+                    <control:RailwaySection Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="3" RightSemaphoreVisibility="Collapsed" RailwayName="RS6"/>
+                    <control:RailwaySection Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="3" RightSemaphoreVisibility="Collapsed" RailwayName="RS9"/>
 
-                    <control:RailwaySection Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="10" Platform="{Binding ElementName=platform3}"  ManuverSemaphoreVisibility="Visible"/>
-                    <control:RailwaySection Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="8" Platform="{Binding ElementName=platform2}"  ManuverSemaphoreVisibility="Visible"/>
+                    <control:RailwaySection Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="10" Platform="{Binding ElementName=platform3}"  ManuverSemaphoreVisibility="Visible" RailwayName="RS7"/>
+                    <control:RailwaySection Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="8" Platform="{Binding ElementName=platform2}"  ManuverSemaphoreVisibility="Visible" RailwayName="RS8"/>
                     <control:RailwayCurve1 Grid.Row="6" Grid.Column="13" Grid.RowSpan="2"/>
-                    <control:RailwaySwitch3 Grid.Row="7" Grid.Column="14" Grid.RowSpan="2"/>
+                    <control:RailwaySwitch3 Grid.Row="7" Grid.Column="14" Grid.RowSpan="2" RailwayName="S32"/>
 
                     <control:Platform Grid.Row="6" Grid.Column="9" Grid.ColumnSpan="3" Title="P2" x:Name="platform2" Grid.RowSpan="2"  Height="50" Margin="0,0,0,50" VerticalAlignment="Bottom"/>
                     <control:Platform Grid.Row="7" Grid.Column="9" Grid.ColumnSpan="3" Title="P1" x:Name="platform1" Grid.RowSpan="2"  Height="50" Margin="0,50,0,0" VerticalAlignment="Top"/>
@@ -413,34 +413,117 @@
                     <control:Platform Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="3" Title="P3" x:Name="platform3" Grid.RowSpan="2"  Height="50" Margin="0,50,0,0" VerticalAlignment="Top"/>
 
                     <control:RailwaySection Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="8" Platform="{Binding ElementName=platform1}"  ManuverSemaphoreVisibility="Visible"/>
-                    <control:RailwaySwitch1 Grid.Row="8" Grid.Column="5" Grid.RowSpan="2"/>
-                    <control:RailwaySection Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="9"  ManuverSemaphoreVisibility="Visible"/>
-                    <control:RailwaySwitch3 Grid.Row="8" Grid.Column="15" Grid.RowSpan="2"/>
-                    <control:RailwaySection Grid.Row="9" Grid.Column="16" Grid.ColumnSpan="1" RightSemaphoreVisibility="Collapsed" LeftSemaphoreVisibility="Collapsed"/>
+                    <control:RailwaySwitch1 Grid.Row="8" Grid.Column="5" Grid.RowSpan="2" RailwayName="S31"/>
+                    <control:RailwaySection Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="9"  ManuverSemaphoreVisibility="Visible" RailwayName="RS10"/>
+                    <control:RailwaySwitch3 Grid.Row="8" Grid.Column="15" Grid.RowSpan="2" RailwayName="S53"/>
+                    <control:RailwaySection Grid.Row="9" Grid.Column="16" Grid.ColumnSpan="1" RightSemaphoreVisibility="Collapsed" LeftSemaphoreVisibility="Collapsed" RailwayName="RS13"/>
 
-                    <control:RailwaySwitch2 Grid.Row="2" Grid.Column="5" Grid.RowSpan="2"/>
-                    <control:RailwaySection Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="8" Platform="{Binding ElementName=platform4}" ManuverSemaphoreVisibility="Visible"/>
-                    <control:RailwaySwitch5 Grid.Row="4" Grid.Column="15" Grid.RowSpan="2"/>
+                    <control:RailwaySwitch2 Grid.Row="2" Grid.Column="5" Grid.RowSpan="2" RailwayName="S31"/>
+                    <control:RailwaySection Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="8" Platform="{Binding ElementName=platform4}" ManuverSemaphoreVisibility="Visible" RailwayName="RS5"/>
+                    <control:RailwaySwitch5 Grid.Row="4" Grid.Column="15" Grid.RowSpan="2" RailwayName="S13"/>
                     <control:RailwayCurve1 Grid.Row="3" Grid.Column="14" Grid.RowSpan="2"/>
-                    <control:RailwaySection Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="3" RightSemaphoreVisibility="Collapsed"/>
+                    <control:RailwaySection Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="3" RightSemaphoreVisibility="Collapsed" RailwayName="RS12"/>
 
 
 
-                    <control:RailwaySection Grid.Row="8" Grid.Column="19" Grid.ColumnSpan="2" RightSemaphoreVisibility="Collapsed"/>
+                    <control:RailwaySection Grid.Row="8" Grid.Column="19" Grid.ColumnSpan="2" RightSemaphoreVisibility="Collapsed" RailwayName="RS14"/>
                     <control:RailwayCurve2 Grid.Row="8" Grid.Column="17" Grid.RowSpan="2"/>
-                    <control:RailwaySwitch3 Grid.Row="7" Grid.Column="18" Grid.RowSpan="2"/>
+                    <control:RailwaySwitch3 Grid.Row="7" Grid.Column="18" Grid.RowSpan="2" RailwayName="S33"/>
                     <control:RailwayCurve1 Grid.Row="6" Grid.Column="17" Grid.RowSpan="2"/>
                     <control:RailwayCurve1 Grid.Row="5" Grid.Column="16" Grid.RowSpan="2"/>
 
                     <control:RailwayScale Grid.Row="1" x:Name="scale1" Grid.RowSpan ="2" Grid.Column="12" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="0 0 0 70"/>
 
 
-                    <control:RailwaySwitch2 Grid.Row="1" Grid.Column="6" Grid.RowSpan="2"/>
-                    <control:RailwaySection Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="8" Scale="{Binding ElementName=scale1}" />
-                    <control:RailwaySection Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="8"  />
-                    <control:RailwaySwitch3 Grid.Row="1" Grid.Column="15" Grid.RowSpan="2"/>
-                    <control:RailwaySection Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" RightSemaphoreVisibility="Collapsed"/>
+                    <control:RailwaySwitch2 Grid.Row="1" Grid.Column="6" Grid.RowSpan="2" RailwayName="S41"/>
+                    <control:RailwaySection Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="8" Scale="{Binding ElementName=scale1}" RailwayName="RS3"/>
+                    <control:RailwaySection Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="8"  RailwayName="RS4"/>
+                    <control:RailwaySwitch3 Grid.Row="1" Grid.Column="15" Grid.RowSpan="2" RailwayName="S42"/>
+                    <control:RailwaySection Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" RightSemaphoreVisibility="Collapsed" RailwayName="RS11"/>
+
+                </Grid>
                 
+                <Border Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="10"  HorizontalAlignment="Left" >
+                    <Grid x:Name="notificationPanelGrid" Background="Black"  VerticalAlignment="Bottom">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="Auto" MaxWidth="100"/>
+                            </Grid.ColumnDefinitions>
+                        <TextBlock 
+                            Text="Heating"
+                            HorizontalAlignment="Center"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Margin="10,0,0,0"
+                            Grid.Row="0"
+                            Grid.Column="6"/>
+
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="6" Grid.Row="1" Margin="3">
+                            <Button Content="SR" Style="{StaticResource CommandButtonStyle}"/>
+                            <Button Content="WR" Style="{StaticResource CommandButtonStyle}"/>
+                        </StackPanel>
+
+                        <TextBlock 
+                            Text="Lightning"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Margin="10,0,0,0"
+                            Grid.Row="0"
+                            Grid.Column="4"/>
+
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="1" Margin="3">
+                            <Button Content="Day" Style="{StaticResource CommandButtonStyle}"/>
+                            <Button Content="Night" Style="{StaticResource CommandButtonStyle}"/>
+                        </StackPanel>
+
+                        <TextBlock 
+                            Text="Alarms"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Margin="10,0,0,0"
+                            Grid.Row="0"
+                            Grid.Column="2"/>
+
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Margin="3">
+                            <Button Content="LZS" Style="{StaticResource CommandButtonStyle}"/>
+                            <Button Content="TA" Style="{StaticResource CommandButtonStyle}"/>
+                            <Button Content="TGCP" Style="{StaticResource CommandButtonStyle}"/>
+                        </StackPanel>
+
+                        <TextBlock 
+                            Text="Railway"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Margin="10,0,0,0"
+                            Grid.Row="0"
+                            Grid.Column="8"/>
+
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="8" Grid.Row="1" Margin="3">
+                            <Button Content="TOPV" Style="{StaticResource CommandButtonStyle}"/>
+                            <Button Content="TM" Style="{StaticResource CommandButtonStyle}"/>
+                            <Button Content="TPS" Style="{StaticResource CommandButtonStyle}"/>
+                        </StackPanel>
+
+                    </Grid>
+                </Border>
                 </Grid>
 
 
@@ -506,7 +589,7 @@
 
                     </Grid>
                 </Border>
-            </Grid>
+
 
 
 

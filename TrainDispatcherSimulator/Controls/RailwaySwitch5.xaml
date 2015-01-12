@@ -15,7 +15,14 @@
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
 
-
+        <TextBlock Grid.Row="0"
+                   Text="{Binding RailwayName}"
+                   FontWeight="Bold"
+                   FontSize="14"
+                   Foreground="YellowGreen"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   ></TextBlock>
         <!--  Interfejs kada switch nije upaljen (horizontalni prolaz)   -->
         <Grid x:Name="switchStraight" Grid.Row="1" Visibility="{Binding RailwaySwitchStraightVisibility}">
 
