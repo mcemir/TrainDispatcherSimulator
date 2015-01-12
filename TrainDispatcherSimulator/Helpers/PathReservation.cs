@@ -232,7 +232,7 @@ namespace TrainDispatcherSimulator.Helpers
         }
 
 
-        public List<RailwayBase> Highligh(RailwayBase first, RailwayBase last)
+        public List<RailwayBase> Highlight(RailwayBase first, RailwayBase last)
         {
             List<RailwayBase> path = new List<RailwayBase>();
 

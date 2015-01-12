@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using TrainDispatcherSimulator.Helpers;
 
 namespace TrainDispatcherSimulator.Controls
 {
@@ -106,7 +107,14 @@ namespace TrainDispatcherSimulator.Controls
         {
             base.EnterRailway(train);
             if (Scale != null)
+            {
                 Scale.MeasueredWeight = (Math.Round(20 + new Random().NextDouble() * 60, 2)).ToString();
+                Controller.Instance.AudioSignal.RailwayScaleActivated();
+            }
+            else
+            {
+                Controller.Instance.AudioSignal.RailwaySectionArrival();
+            }
             changeOrientationButton.Visibility = Visibility.Visible;
         }
 
@@ -121,6 +129,11 @@ namespace TrainDispatcherSimulator.Controls
                 Trains.RemoveAll(t => t.Name == train.Name);
                 if (Scale != null)
                     Scale.MeasueredWeight = "-";
+                if (train.Orientation == TrainOrientation.Left)
+                {
+                    Controller.Instance.AudioSignal.RailwaySectionDeparture();
+                    Controller.Instance.Log("Train departing from section: <" + this + ">", LogType.Warning);
+                }
                 TrainNameLeftPanelVisibility = Visibility.Collapsed;
                 TrainNameRightPanelVisibility = Visibility.Collapsed;
                 changeOrientationButton.Visibility = Visibility.Collapsed;

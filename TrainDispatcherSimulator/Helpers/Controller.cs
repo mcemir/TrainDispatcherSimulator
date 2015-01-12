@@ -28,6 +28,7 @@ namespace TrainDispatcherSimulator.Helpers
 
         private MainWindow mainWindow;
 
+        public AudioSignal AudioSignal;
 
         #region INITIALIZATION
 
@@ -46,6 +47,7 @@ namespace TrainDispatcherSimulator.Helpers
         private Controller()
         {
             mainWindow = ((MainWindow)System.Windows.Application.Current.MainWindow);
+            AudioSignal = AudioSignal.Instance;
             PathReservation.Instance.Railways = Railways;
             EventManager.RegisterClassHandler(typeof(MainWindow), Mouse.MouseUpEvent, new MouseButtonEventHandler(OnGlobalMouseUp));
             EventManager.RegisterClassHandler(typeof(MainWindow), Keyboard.KeyUpEvent, new KeyEventHandler(OnGlobalKeyUp));
@@ -261,7 +263,7 @@ namespace TrainDispatcherSimulator.Helpers
                             ClearSelected();
                             return;
                         }
-
+                        Controller.Instance.AudioSignal.RailwayReservedPath();
                         previous = selectedPath[i];
                     }
                 }
@@ -324,10 +326,16 @@ namespace TrainDispatcherSimulator.Helpers
         {
             if (railway != null)
             {
-                if (!(railway.GetType() == typeof(RailwaySection) || railway.GetType() == typeof(RailwayPrivola))) {
-                    AudioSignal.Instance.RailwaySwitchToogle();
+                if (railway.GetType().BaseType == typeof(RailwaySwitchBase) || railway.GetType() == typeof(RailwayCross))
+                {
+                    Controller.Instance.AudioSignal.RailwaySwitchToogle();
                     Controller.Instance.Log("Railway switch segment activated: <" + railway + ">", LogType.Info);
                 }
+                else
+                {
+                    Controller.Instance.AudioSignal.RailwaySelectedPath();
+                }
+                
             }
         }
 
@@ -336,14 +344,14 @@ namespace TrainDispatcherSimulator.Helpers
         {
             ClearSelected();
             mouseDownRailway = railway;
-            selectedPath = PathReservation.Instance.Highligh(mouseDownRailway, mouseDownRailway);
+            selectedPath = PathReservation.Instance.Highlight(mouseDownRailway, mouseDownRailway);
         }
 
         public void RegisterMouseEnter(RailwayBase railway)
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed && mouseDownRailway != null)
             {
-                selectedPath = PathReservation.Instance.Highligh(mouseDownRailway, railway);
+                selectedPath = PathReservation.Instance.Highlight(mouseDownRailway, railway);
             }
         }
 

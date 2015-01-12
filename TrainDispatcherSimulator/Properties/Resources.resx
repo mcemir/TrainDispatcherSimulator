@@ -139,16 +139,10 @@
   <data name="RailwaySectionDeparture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Sounds\RailwaySectionDeparture.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="RailwaySwitchToggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Sounds\RailwaySwitchToggle.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="RailwaySwitchToggle2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Sounds\RailwaySwitchToggle2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="RailwayTrainMoving" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Sounds\RailwayTrainMoving.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Sounds" xml:space="preserve">
-    <value />
   </data>
 </root>

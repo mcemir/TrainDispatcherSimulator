@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using TrainDispatcherSimulator.Helpers;
 
 namespace TrainDispatcherSimulator.Controls
 {
@@ -82,7 +83,8 @@ namespace TrainDispatcherSimulator.Controls
         public override void EnterRailway(Train train)
         {
             base.EnterRailway(train);
-
+            Controller.Instance.AudioSignal.RailwayPrivolaArrival();
+            Controller.Instance.Log("Train arriving to section: <" + this + ">", LogType.Warning);
             if (train.Orientation == TrainOrientation.Left)
                 leftTriangle.Fill = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
             else
