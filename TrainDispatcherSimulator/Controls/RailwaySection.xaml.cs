@@ -201,8 +201,6 @@ namespace TrainDispatcherSimulator.Controls
                     Trains.First().Orientation = TrainOrientation.Left;
                     TrainNameLeftPanelVisibility = Visibility.Visible;
                 }
-
-                leaveRailway();
             }
         }
         #endregion EVENT HANDLERS

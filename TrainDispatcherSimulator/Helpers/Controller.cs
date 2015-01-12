@@ -109,7 +109,7 @@ namespace TrainDispatcherSimulator.Helpers
                 Name = "F102",
                 MaxSpeed = 80,
                 Type = TrainType.Freight,
-                WagonCount = 35,
+                WagonCount = 15,
                 Orientation = TrainOrientation.Right
             };
 
@@ -140,7 +140,7 @@ namespace TrainDispatcherSimulator.Helpers
                 To = "Ploče"
             };
             ScheduleList.Add(item2);
-
+            /*
             ScheduleItem item3 = new ScheduleItem()
             {
                 Train = f101,
@@ -157,7 +157,7 @@ namespace TrainDispatcherSimulator.Helpers
                 Train = p101,
                 ScheduleType = ScheduleType.Departure,
                 Target = "N1",
-                Time = date.AddMinutes(5),
+                Time = date.AddMinutes(4),
                 From = "Zagreb",
                 To = "Ploče"
             };
@@ -190,7 +190,7 @@ namespace TrainDispatcherSimulator.Helpers
                 Train = p103,
                 ScheduleType = ScheduleType.Arrival,
                 Target = "P2",
-                Time = date.AddMinutes(6),
+                Time = date.AddMinutes(7),
                 From = "Zenica",
                 To = "Sarajevo"
             };
@@ -201,7 +201,7 @@ namespace TrainDispatcherSimulator.Helpers
                 Train = p104,
                 ScheduleType = ScheduleType.Arrival,
                 Target = "P4",
-                Time = date.AddMinutes(6),
+                Time = date.AddMinutes(8),
                 From = "Mostar",
                 To = "Sarajevo"
             };
@@ -212,7 +212,7 @@ namespace TrainDispatcherSimulator.Helpers
                 Train = p105,
                 ScheduleType = ScheduleType.Arrival,
                 Target = "P1",
-                Time = date.AddMinutes(7),
+                Time = date.AddMinutes(9),
                 From = "Mostar",
                 To = "Doboj"
             };
@@ -223,12 +223,12 @@ namespace TrainDispatcherSimulator.Helpers
                 Train = p105,
                 ScheduleType = ScheduleType.Departure,
                 Target = "N1",
-                Time = date.AddMinutes(8),
+                Time = date.AddMinutes(10),
                 From = "Mostar",
                 To = "Doboj"
             };
             ScheduleList.Add(item10);
-
+            */
             RailwayPrivola ulaznaPrivola = Railways.First(r => (r as RailwayBase).RailwayName == "N2") as RailwayPrivola;
 
             ulaznaPrivola.DispatchTrain((item1.Time - DateTime.Now).Minutes, (item1.Time - DateTime.Now).Seconds, p101);
@@ -425,16 +425,18 @@ namespace TrainDispatcherSimulator.Helpers
 
                     if (ScheduleList[currentIndex].Time < DateTime.Now.AddSeconds(-5))
                     {
-                        while ((currentIndex < ScheduleList.Count) && (ScheduleList[currentIndex].Time < DateTime.Now || ScheduleList[currentIndex].ScheduleType == ScheduleType.Departure))
+                        while ((currentIndex < ScheduleList.Count) && (ScheduleList[currentIndex].Time < DateTime.Now))
                             currentIndex++;
 
                         if (currentIndex < ScheduleList.Count)
                         {
-                            RailwayPrivola ulaznaPrivola = Railways.First(r => (r as RailwayBase).RailwayName == "N2") as RailwayPrivola;
-
-                            double sec = (ScheduleList[currentIndex].Time - DateTime.Now).TotalSeconds;
-                            int min = (int)(sec / 60);
-                            ulaznaPrivola.DispatchTrain(min, (int)(sec - 60 * min), ScheduleList[currentIndex].Train);
+                            if (ScheduleList[currentIndex].ScheduleType != ScheduleType.Departure)
+                            {
+                                RailwayPrivola ulaznaPrivola = Railways.First(r => (r as RailwayBase).RailwayName == "N2") as RailwayPrivola;
+                                double sec = (ScheduleList[currentIndex].Time - DateTime.Now).TotalSeconds;
+                                int min = (int)(sec / 60);
+                                ulaznaPrivola.DispatchTrain(min, (int)(sec - 60 * min), ScheduleList[currentIndex].Train);
+                            }
 
                             ScheduleDataGrid.SelectedItem = ScheduleList[currentIndex];
                         }
