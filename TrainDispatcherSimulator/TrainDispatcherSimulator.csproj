@@ -247,6 +247,36 @@
   <ItemGroup>
     <Folder Include="Media\Images\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Sounds\RailwaySwitchToggle2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Sounds\RailwayFireAlarm.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Sounds\RailwayMouseDown.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Sounds\RailwayMouseUp.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Sounds\RailwayPrivolaNotification.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Sounds\RailwayScaleActivated.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Sounds\RailwaySectionArived.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Sounds\RailwaySectionDeparture.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Sounds\RailwaySwitchToggle.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Sounds\RailwayTrainMoving.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Media;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace TrainDispatcherSimulator.Helpers
 {
     public class AudioSignal
     {
+        SoundPlayer mplayer;
         private static AudioSignal instance;
         public static AudioSignal Instance
         {
@@ -20,31 +22,31 @@ namespace TrainDispatcherSimulator.Helpers
                 return instance;
             }
         }
-        public void AsteriskSound()
+
+        private AudioSignal()
         {
-                SystemSounds.Asterisk.Play();
+            mplayer = new SoundPlayer();
+        }
+        public void RailwaySwitchToogle()
+        {
+           
+            mplayer.Stream = Properties.Resources.RailwaySwitchToggle2;
+            mplayer.Play();
         }
 
-        public void BeepSound()
+        public void RailwayMouseUp()
         {
-                SystemSounds.Beep.Play();
+
+            mplayer.Stream = Properties.Resources.RailwayMouseUp;
+            mplayer.Play();
         }
 
-        public void ExclamationSound()
+        public void RailwayScaleActivated()
         {
-                SystemSounds.Exclamation.Play();
-        }
 
-        public void HandSound()
-        {
-                SystemSounds.Hand.Play();
+            mplayer.Stream = Properties.Resources.RailwayScaleActivated;
+            mplayer.Play();
         }
-
-        public void QuestionSound()
-        {
-                SystemSounds.Question.Play();
-        }
-
 
     }
 }

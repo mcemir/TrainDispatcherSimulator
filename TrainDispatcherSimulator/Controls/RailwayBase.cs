@@ -307,9 +307,6 @@ namespace TrainDispatcherSimulator.Controls
             Trains.Add(train);
             RailwayBrush = App.Current.Resources["RailwayVisited"] as SolidColorBrush;
             startTimerDriving(train);
-            
-            if (Scale != null) 
-                Scale.MeasueredWeight = (Math.Round(20 + new Random().NextDouble()*60,2)).ToString();
 
             TrainName = train.Name;
             // Update train name

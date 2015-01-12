@@ -105,6 +105,8 @@ namespace TrainDispatcherSimulator.Controls
         public override void EnterRailway(Train train)
         {
             base.EnterRailway(train);
+            if (Scale != null)
+                Scale.MeasueredWeight = (Math.Round(20 + new Random().NextDouble() * 60, 2)).ToString();
             changeOrientationButton.Visibility = Visibility.Visible;
         }
 

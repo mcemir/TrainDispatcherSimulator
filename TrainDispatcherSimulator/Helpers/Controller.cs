@@ -13,7 +13,6 @@ namespace TrainDispatcherSimulator.Helpers
 {
     public enum PathDirection {RightToLeft, LeftToRight, Both};
     public enum LogType { Info, Warning, Error, Critical };
-    public enum AudioSignalType { Notify, Warn };
     public class Controller
     {
         //Promijenio sam ovo u public accessibility samo radi testriranja.
@@ -237,55 +236,7 @@ namespace TrainDispatcherSimulator.Helpers
 
         #endregion INITIALIZATION
 
-        #region SOUND SIGNALS
-        public void RailwayPrivolaSound(AudioSignalType type){
-            AudioSignal.Instance.AsteriskSound()
-            switch(type){
-                case AudioSignalType.Notify:
-                    AudioSignal.Instance.ExclamationSound();
-                    break;
-                case AudioSignalType.Warn:
-                    AudioSignal.Instance.BeepSound();
-                    break;
-            }
-        }
-
-        public void RailwaySwitchSound(AudioSignalType type)
-        {
-            AudioSignal.Instance.QuestionSound();
-            switch(type){
-                case AudioSignalType.Notify:
-                    AudioSignal.Instance.ExclamationSound();
-                    break;
-                case AudioSignalType.Warn:
-                    AudioSignal.Instance.BeepSound();
-                    break;
-            }
-        }
-
-        public void RailwaySectionSound(AudioSignalType type)
-        {
-            AudioSignal.Instance.AsteriskSound();
-            switch (type)
-            {
-                case AudioSignalType.Notify:
-                    AudioSignal.Instance.ExclamationSound();
-                    break;
-                case AudioSignalType.Warn:
-                    AudioSignal.Instance.BeepSound();
-                    break;
-            }
-        }
-
-        #endregion SOUND SIGNALS
-
-
-
-
-
-
         #region PUBLIC METHODS
-
         public void ReserveSelected()
         {
             if (selectedPath != null) 
@@ -366,16 +317,18 @@ namespace TrainDispatcherSimulator.Helpers
 
         #endregion VISIBILITY MANAGEMENT
 
-
-
-
-
-
         #region MOUSE EVENTS PUBLIC METHODS
 
         private RailwayBase mouseDownRailway;
         public void RegisterMouseUp(RailwayBase railway)
         {
+            if (railway != null)
+            {
+                if (!(railway.GetType() == typeof(RailwaySection) || railway.GetType() == typeof(RailwayPrivola))) {
+                    AudioSignal.Instance.RailwaySwitchToogle();
+                    Controller.Instance.Log("Railway switch segment activated: <" + railway + ">", LogType.Info);
+                }
+            }
         }
 
         
@@ -428,31 +381,21 @@ namespace TrainDispatcherSimulator.Helpers
                     PathReservation.Instance.Reset(selectedPath);
                     break;
                 case "D1":
-                    AudioSignal.Instance.BeepSound();
+                    AudioSignal.Instance.RailwaySwitchToogle();
                     showRailway();
                     break;
                 case "D2":
                     showGraph();
-                    AudioSignal.Instance.AsteriskSound();
                     break;
                 case "D3":
-                    AudioSignal.Instance.ExclamationSound();
                     showTableGrid();
                     break;
                 case "D4":
-                    AudioSignal.Instance.HandSound();
                     showLogger();
                     break;
             }
         }
         #endregion GLOBAL EVENT HANDLERS
-
-
-
-
-
-
-
 
         #region DISPATCHER TIMERS
         int currentIndex = 0;   // Trenutni na koji se čeka
