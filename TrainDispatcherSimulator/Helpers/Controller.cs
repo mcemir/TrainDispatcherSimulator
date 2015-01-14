@@ -140,7 +140,7 @@ namespace TrainDispatcherSimulator.Helpers
                 To = "Ploče"
             };
             ScheduleList.Add(item2);
-            /*
+            
             ScheduleItem item3 = new ScheduleItem()
             {
                 Train = f101,
@@ -228,12 +228,12 @@ namespace TrainDispatcherSimulator.Helpers
                 To = "Doboj"
             };
             ScheduleList.Add(item10);
-            */
+            
             RailwayPrivola ulaznaPrivola = Railways.First(r => (r as RailwayBase).RailwayName == "N2") as RailwayPrivola;
 
-            ulaznaPrivola.DispatchTrain((item1.Time - DateTime.Now).Minutes, (item1.Time - DateTime.Now).Seconds, p101);
+            ulaznaPrivola.DispatchTrain(0, 30, p101);
 
-            startScheduleTimer();
+            //startScheduleTimer();
         }
 
 

@@ -409,12 +409,16 @@ namespace TrainDispatcherSimulator.Controls
 
         void RailwayBase_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Controller.Instance.RegisterMouseUp(this);
+            if (e.LeftButton == MouseButtonState.Released)
+                Controller.Instance.RegisterMouseUp(this);
         }
 
         void RailwayBase_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Controller.Instance.RegisterMouseDown(this);
+            if (e.LeftButton == MouseButtonState.Pressed)
+                Controller.Instance.RegisterMouseDown(this);
+            else if (e.RightButton == MouseButtonState.Pressed)
+                RailwayMark = "";
         }
         
 

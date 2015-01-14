@@ -62,7 +62,7 @@ namespace TrainDispatcherSimulator
 
             logDataGrid.ItemsSource = Controller.Instance.logger.logs;
             scheduleDataGrid.ItemsSource = Controller.Instance.ScheduleList;
-            scheduleDataGrid.SelectedItem = scheduleDataGrid.Items[0];
+            scheduleDataGrid.SelectedItem = scheduleDataGrid.Items[3];
 
         }
 
