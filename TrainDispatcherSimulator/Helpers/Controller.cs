@@ -239,6 +239,11 @@ namespace TrainDispatcherSimulator.Helpers
 
         #endregion INITIALIZATION
 
+
+
+
+
+
         #region PUBLIC METHODS
         public void ReserveSelected()
         {
@@ -277,6 +282,14 @@ namespace TrainDispatcherSimulator.Helpers
             PathReservation.Instance.Reset(selectedPath);
         }
 
+        public void Reset()
+        {
+            foreach (RailwayBase railway in Railways)
+            {
+                railway.Reset();
+            }
+        }
+
 
         public void Log(String content, LogType type)
         {
@@ -285,6 +298,12 @@ namespace TrainDispatcherSimulator.Helpers
             LogDataGrid.Items.Refresh();
         }
         #endregion PUBLIC METHODS
+
+
+
+
+
+
 
         #region VISIBILITY MANAGEMENT
         public void showGraph()

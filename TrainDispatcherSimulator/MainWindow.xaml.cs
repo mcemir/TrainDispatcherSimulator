@@ -22,11 +22,27 @@ namespace TrainDispatcherSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        #region INITIALIZATION
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Controller.Instance.Railways = railwaysGrid.Children.Cast<UIElement>().Where(p => p is RailwayBase).Cast<RailwayBase>().ToList();
+            Controller.Instance.LogDataGrid = logDataGrid;
+            Controller.Instance.ScheduleDataGrid = scheduleDataGrid;
+
+            Controller.Instance.InitSchedule();
+
+            logDataGrid.ItemsSource = Controller.Instance.logger.logs;
+            scheduleDataGrid.ItemsSource = Controller.Instance.ScheduleList;
+            scheduleDataGrid.SelectedItem = scheduleDataGrid.Items[3];
+
+        }
+        #endregion INITIALIZATION
 
 
         #region VISIBILITY MANAGEMENT
@@ -52,23 +68,11 @@ namespace TrainDispatcherSimulator
 
 
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Controller.Instance.Railways = railwaysGrid.Children.Cast<UIElement>().Where(p => p is RailwayBase).Cast<RailwayBase>().ToList();
-            Controller.Instance.LogDataGrid = logDataGrid;
-            Controller.Instance.ScheduleDataGrid = scheduleDataGrid;
-
-            Controller.Instance.InitSchedule();
-
-            logDataGrid.ItemsSource = Controller.Instance.logger.logs;
-            scheduleDataGrid.ItemsSource = Controller.Instance.ScheduleList;
-            scheduleDataGrid.SelectedItem = scheduleDataGrid.Items[3];
-
-        }
 
 
 
 
+        #region EVENT HANDLERS
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             mainTableGrid.Width = e.NewSize.Width-20;
@@ -84,6 +88,21 @@ namespace TrainDispatcherSimulator
                 railway.RailwayNameVisibility = railwayVisisbility;
         }
 
+        private void reserveButton_Click(object sender, RoutedEventArgs e)
+        {
+            Controller.Instance.ReserveSelected();
+        }
+
+        private void clearSelectedButton_Click(object sender, RoutedEventArgs e)
+        {
+            Controller.Instance.ClearSelected();
+        }
+
+        private void resetRailwayButton_Click(object sender, RoutedEventArgs e)
+        {
+            Controller.Instance.Reset();
+        }
+        #endregion EVENT HANDLERS
 
 
     }

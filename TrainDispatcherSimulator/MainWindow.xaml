@@ -593,9 +593,9 @@
                             Grid.Column="2"/>
 
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="1" Margin="3">
-                        <Button Content="Reserve" Style="{StaticResource CommandButtonStyle}"/>
-                        <Button Content="Clear" Style="{StaticResource CommandButtonStyle}"/>
-                        <Button Content="Reset" Style="{StaticResource CommandButtonStyle}"/>
+                        <Button Content="Reserve" Style="{StaticResource CommandButtonStyle}" Click="reserveButton_Click" />
+                        <Button Content="Clear" Style="{StaticResource CommandButtonStyle}" Click="clearSelectedButton_Click"/>
+                        <Button Content="Reset" Style="{StaticResource CommandButtonStyle}" Click="resetRailwayButton_Click"/>
                     </StackPanel>
                 </Grid>
                 
