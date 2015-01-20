@@ -18,7 +18,7 @@
                    Foreground="Blue"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   ></TextBlock>
+                   Visibility="{Binding RailwayNameVisibility}"/>
         <!--  Interfejs kada prelaz nije upaljen"  -->
         <Grid x:Name="crossStraight" Grid.Row="1" Visibility="{Binding RailwayCrossStraightVisibility}" >
             <Polygon  x:Name="straightUpperPolygon" Fill="{Binding RailwayBrush}">

@@ -40,7 +40,7 @@
                    Foreground="Orange"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   ></TextBlock>
+                   Visibility="{Binding RailwayNameVisibility}"/>
         <TextBlock Text="{Binding TrainName}" Grid.Row="1" Visibility="{Binding TrainNameRightPanelVisibility}" Foreground="Black" Margin="5,0" VerticalAlignment="Center"  HorizontalAlignment="Right" />
         <TextBlock Text="{Binding TrainName}" Visibility="{Binding TrainNameLeftPanelVisibility}" Grid.Row="1" HorizontalAlignment="Left" Foreground="Black" Margin="5,0" VerticalAlignment="Center" />
         

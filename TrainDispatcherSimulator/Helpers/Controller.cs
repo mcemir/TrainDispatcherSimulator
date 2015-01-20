@@ -297,8 +297,6 @@ namespace TrainDispatcherSimulator.Helpers
         {
             collapseAll();
             mainWindow.mainRailwayGrid.Visibility = Visibility.Visible;
-            mainWindow.notificationPanelGrid.Visibility = Visibility.Visible;
-            mainWindow.controlPanelGrid.Visibility = Visibility.Visible;
         }
 
         public void showTableGrid()
@@ -315,8 +313,6 @@ namespace TrainDispatcherSimulator.Helpers
         private void collapseAll()
         {
             mainWindow.logGrid.Visibility = Visibility.Collapsed;
-            mainWindow.controlPanelGrid.Visibility = Visibility.Collapsed;
-            mainWindow.notificationPanelGrid.Visibility = Visibility.Collapsed;
             mainWindow.mainRailwayGrid.Visibility = Visibility.Collapsed;
             mainWindow.graphGrid.Visibility = Visibility.Collapsed;
             mainWindow.mainTableGrid.Visibility = Visibility.Collapsed;

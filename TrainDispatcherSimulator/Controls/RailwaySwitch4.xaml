@@ -18,7 +18,7 @@
                    Foreground="YellowGreen"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   ></TextBlock>
+                   Visibility="{Binding RailwayNameVisibility}"/>
 
         <!--  Interfejs kada switch nije upaljen (horizontalni prolaz)   -->
         <Grid x:Name="switchStraight" Grid.Row="1" Visibility="{Binding RailwaySwitchStraightVisibility}">

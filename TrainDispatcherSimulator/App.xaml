@@ -20,6 +20,7 @@
 
         <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
         <converter:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
 
 
         <Style x:Key="railwayNameTextStyle" TargetType="TextBlock">

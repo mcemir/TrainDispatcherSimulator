@@ -154,6 +154,10 @@
                 </oxy:Plot>
             </Grid>
 
+            
+            
+            
+            
             <Grid x:Name="logGrid" Background="Black">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
@@ -339,15 +343,16 @@
 
 
 
-            <Grid x:Name="mainRailwayGrid">               
+            <Grid x:Name="mainRailwayGrid"
+                  Background="Black">               
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="90"/>
                 </Grid.RowDefinitions>
                 
                 <Grid x:Name="railwaysGrid" Grid.Row="0" Background="Black">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
@@ -406,10 +411,10 @@
                     <control:RailwayCurve1 Grid.Row="6" Grid.Column="13" Grid.RowSpan="2"/>
                     <control:RailwaySwitch3 Grid.Row="7" Grid.Column="14" Grid.RowSpan="2" RailwayName="S32"/>
 
-                    <control:Platform Grid.Row="6" Grid.Column="9" Grid.ColumnSpan="3" Title="P2" x:Name="platform2" Grid.RowSpan="2"  Height="30" Margin="0,0,0,70" VerticalAlignment="Bottom"/>
-                    <control:Platform Grid.Row="7" Grid.Column="9" Grid.ColumnSpan="3" Title="P1" x:Name="platform1" Grid.RowSpan="2"  Height="30" Margin="0,70,0,0" VerticalAlignment="Top"/>
-                    <control:Platform Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="3" Title="P4" x:Name="platform4" Grid.RowSpan="2"  Height="30" Margin="0,0,0,70" VerticalAlignment="Bottom"/>
-                    <control:Platform Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="3" Title="P3" x:Name="platform3" Grid.RowSpan="2"  Height="30" Margin="0,70,0,0" VerticalAlignment="Top"/>
+                    <control:Platform Grid.Row="6" Grid.Column="9" Grid.ColumnSpan="3" Title="P2" x:Name="platform2" Grid.RowSpan="2"  Height="30" Margin="0,0,0,70" VerticalAlignment="Bottom" Visibility="{Binding IsChecked, ElementName=platofmsCheckBox, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <control:Platform Grid.Row="7" Grid.Column="9" Grid.ColumnSpan="3" Title="P1" x:Name="platform1" Grid.RowSpan="2"  Height="30" Margin="0,70,0,0" VerticalAlignment="Top" Visibility="{Binding IsChecked, ElementName=platofmsCheckBox, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <control:Platform Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="3" Title="P4" x:Name="platform4" Grid.RowSpan="2"  Height="30" Margin="0,0,0,70" VerticalAlignment="Bottom" Visibility="{Binding IsChecked, ElementName=platofmsCheckBox, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <control:Platform Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="3" Title="P3" x:Name="platform3" Grid.RowSpan="2"  Height="30" Margin="0,70,0,0" VerticalAlignment="Top" Visibility="{Binding IsChecked, ElementName=platofmsCheckBox, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
                     <control:RailwaySection Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="8" Platform="{Binding ElementName=platform1}"  ManuverSemaphoreVisibility="Visible"/>
                     <control:RailwaySwitch1 Grid.Row="8" Grid.Column="5" Grid.RowSpan="2" RailwayName="S31"/>
@@ -431,7 +436,7 @@
                     <control:RailwayCurve1 Grid.Row="6" Grid.Column="17" Grid.RowSpan="2"/>
                     <control:RailwayCurve1 Grid.Row="5" Grid.Column="16" Grid.RowSpan="2"/>
 
-                    <control:RailwayScale Grid.Row="1" x:Name="scale1" Grid.RowSpan ="2" Grid.Column="12" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="0 0 0 70"/>
+                    <control:RailwayScale Grid.Row="1" x:Name="scale1" Grid.RowSpan ="2" Grid.Column="12" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="0 0 0 70" Visibility="{Binding IsChecked, ElementName=scaleCheckBox, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
 
                     <control:RailwaySwitch2 Grid.Row="1" Grid.Column="6" Grid.RowSpan="2" RailwayName="S41"/>
@@ -443,7 +448,11 @@
                 </Grid>
                 
                 <Border Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="10"  HorizontalAlignment="Left" >
-                    <Grid x:Name="notificationPanelGrid" Background="Black"  VerticalAlignment="Bottom">
+                    <Grid 
+                        x:Name="notificationPanelGrid" 
+                        Background="Black"  
+                        VerticalAlignment="Bottom"
+                        Visibility="{Binding IsChecked, ElementName=notificationPanelCheckBox, Converter={StaticResource BoolToVisibilityConverter}}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -523,24 +532,29 @@
 
                     </Grid>
                 </Border>
-                </Grid>
+                
+                
+                
+                
 
+                <Grid 
+                    x:Name="controlPanelGrid" 
+                    Grid.Row="1" 
+                    Background="Black"  
+                    VerticalAlignment="Stretch" 
+                    Visibility="{Binding IsChecked, ElementName=commandPanelCheckBox, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
 
-
-
-            <Grid x:Name="controlPanelGrid" Grid.Row="1" Background="Black"  VerticalAlignment="Bottom">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock 
+                    <TextBlock 
                             Text="Section markings"
                             Grid.Row="0"
                             Grid.Column="0"
@@ -549,27 +563,27 @@
                             Foreground="White"
                             Margin="10,0,0,0"/>
 
-                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="6">
-                    <StackPanel.Resources>
-                        <ResourceDictionary>
-                            <Style TargetType="control:MarkingItem">
-                                <Setter Property="Margin" Value="5"/>
-                            </Style>
-                        </ResourceDictionary>
-                    </StackPanel.Resources>
+                    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="6">
+                        <StackPanel.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="control:MarkingItem">
+                                    <Setter Property="Margin" Value="5"/>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackPanel.Resources>
 
-                    <control:MarkingItem MarkType="RG" />
-                    <control:MarkingItem MarkType="SS" />
-                    <control:MarkingItem MarkType="SN" />
-                    <control:MarkingItem MarkType="VO" />
-                    <control:MarkingItem MarkType="KM" />
-                    <control:MarkingItem MarkType="PS" />
-                    <control:MarkingItem MarkType="OS" />
+                        <control:MarkingItem MarkType="RG" />
+                        <control:MarkingItem MarkType="SS" />
+                        <control:MarkingItem MarkType="SN" />
+                        <control:MarkingItem MarkType="VO" />
+                        <control:MarkingItem MarkType="KM" />
+                        <control:MarkingItem MarkType="PS" />
+                        <control:MarkingItem MarkType="OS" />
 
-                </StackPanel>
+                    </StackPanel>
 
 
-                <TextBlock 
+                    <TextBlock 
                             Text="Controls"
                             FontSize="14"
                             FontWeight="Bold"
@@ -578,13 +592,29 @@
                             Grid.Row="0"
                             Grid.Column="2"/>
 
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="1" Margin="3">
-                    <Button Content="Reserve" Style="{StaticResource CommandButtonStyle}"/>
-                    <Button Content="Clear" Style="{StaticResource CommandButtonStyle}"/>
-                    <Button Content="Reset" Style="{StaticResource CommandButtonStyle}"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="1" Margin="3">
+                        <Button Content="Reserve" Style="{StaticResource CommandButtonStyle}"/>
+                        <Button Content="Clear" Style="{StaticResource CommandButtonStyle}"/>
+                        <Button Content="Reset" Style="{StaticResource CommandButtonStyle}"/>
+                    </StackPanel>
+                </Grid>
+                
+                
+                <StackPanel Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10">
+                    <TextBlock Text="Layers:" Foreground="White" FontSize="14"/>
+                    <CheckBox x:Name="commandPanelCheckBox" Content="Command panel" IsChecked="True" Foreground="White" FontSize="14"/>
+                    <CheckBox x:Name="notificationPanelCheckBox" Content="Notification panel" IsChecked="True" Foreground="White" FontSize="14"/>
+                    <CheckBox x:Name="railwayNamesCheckBox" Content="Railway names" IsChecked="True" Foreground="White" FontSize="14" Checked="railwayNamesCheckBox_CheckedChanged" Unchecked="railwayNamesCheckBox_CheckedChanged"/>
+                    <CheckBox x:Name="platofmsCheckBox" Content="Platforms" IsChecked="True" Foreground="White" FontSize="14"/>
+                    <CheckBox x:Name="scaleCheckBox" Content="Scales" IsChecked="True" Foreground="White" FontSize="14"/>
                 </StackPanel>
-
+                
             </Grid>
+
+
+
+
+            
 
 
 

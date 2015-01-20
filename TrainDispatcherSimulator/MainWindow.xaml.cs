@@ -74,6 +74,16 @@ namespace TrainDispatcherSimulator
             mainTableGrid.Width = e.NewSize.Width-20;
         }
 
+        private void railwayNamesCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
+        {
+            Visibility railwayVisisbility = Visibility.Visible;
+            if (!((bool)railwayNamesCheckBox.IsChecked))
+                railwayVisisbility = Visibility.Collapsed;
+
+            foreach (RailwayBase railway in Controller.Instance.Railways)
+                railway.RailwayNameVisibility = railwayVisisbility;
+        }
+
 
 
     }
