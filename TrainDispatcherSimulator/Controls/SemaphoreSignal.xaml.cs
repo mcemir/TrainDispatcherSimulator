@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TrainDispatcherSimulator.Helpers;
 
 namespace TrainDispatcherSimulator.Controls
 {
@@ -182,29 +183,35 @@ namespace TrainDispatcherSimulator.Controls
         private void redSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Signal = SemaphoreSignalType.Red;
+            Controller.Instance.Log("Semaphore <" + this.Name + "> manually changed to RED" , LogType.Info);
         }
 
         private void yellowSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Signal = SemaphoreSignalType.Yellow;
+            Controller.Instance.Log("Semaphore <" + this.Name + "> manually changed to YELLOW", LogType.Info);
         }
         private void yellowYellowSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Signal = SemaphoreSignalType.YellowYellow;
+            Controller.Instance.Log("Semaphore <" + this.Name + "> manually changed to YELLOW_YELLOW", LogType.Info);
         }
         private void greenSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Signal = SemaphoreSignalType.Green;
+            Controller.Instance.Log("Semaphore <" + this.Name + "> manually changed to GREEN", LogType.Info);
         }
 
         private void notActiveSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
             ManueuvreSignal = ManueuvreSignalStyle.NotActive;
+            Controller.Instance.Log("Semaphore <" + this.Name + "> manually changed to NotActive", LogType.Info);
         }
 
         private void activeSignal_MouseUp(object sender, MouseButtonEventArgs e)
         {
             ManueuvreSignal = ManueuvreSignalStyle.Active;
+            Controller.Instance.Log("Semaphore <" + this.Name + "> manually changed to Active", LogType.Info);
         }
 
 

@@ -269,17 +269,19 @@ namespace TrainDispatcherSimulator.Helpers
                             ClearSelected();
                             return;
                         }
-                        Controller.Instance.AudioSignal.RailwayReservedPath();
                         previous = selectedPath[i];
                     }
                 }
             }
+            Log("Railway reserved", LogType.Info);
+            Controller.Instance.AudioSignal.RailwayReservedPath();
             selectedPath = null;
         }
 
         public void ClearSelected()
         {
             PathReservation.Instance.Reset(selectedPath);
+            Log("Selection cleared", LogType.Info);
         }
 
         public void Reset()
@@ -288,6 +290,8 @@ namespace TrainDispatcherSimulator.Helpers
             {
                 railway.Reset();
             }
+
+            Log("Railway has been reset", LogType.Info);
         }
 
 
@@ -350,12 +354,7 @@ namespace TrainDispatcherSimulator.Helpers
                 {
                     Controller.Instance.AudioSignal.RailwaySwitchToogle();
                     Controller.Instance.Log("Railway switch segment activated: <" + railway.RailwayName + ">", LogType.Info);
-                }
-                else
-                {
-                    Controller.Instance.AudioSignal.RailwaySelectedPath();
-                }
-                
+                }                
             }
         }
 
@@ -371,7 +370,7 @@ namespace TrainDispatcherSimulator.Helpers
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed && mouseDownRailway != null)
             {
-                selectedPath = PathReservation.Instance.Highlight(mouseDownRailway, railway);
+                selectedPath = PathReservation.Instance.Highlight(mouseDownRailway, railway);                
             }
         }
 
@@ -393,6 +392,11 @@ namespace TrainDispatcherSimulator.Helpers
         private void OnGlobalMouseUp(object sender, MouseButtonEventArgs e)
         {
             mouseDownRailway = null;
+            if (selectedPath != null)
+            {
+                Controller.Instance.AudioSignal.RailwaySelectedPath();
+                Log("Path selected", LogType.Info);
+            }
         }
 
 

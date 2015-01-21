@@ -115,6 +115,8 @@ namespace TrainDispatcherSimulator.Controls
 
             TrainNameLeftPanelVisibility = Visibility.Collapsed;
             TrainNameRightPanelVisibility = Visibility.Collapsed;
+
+            Controller.Instance.Log(train.Name + " has enetered the railway", LogType.Info);
             
         }
 
