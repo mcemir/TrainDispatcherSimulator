@@ -206,7 +206,7 @@
 
 
 
-            <Grid x:Name="logGrid" Background="Black">
+            <Grid x:Name="logGrid" Background="Black" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="1*"/>
@@ -224,21 +224,20 @@
                            FontWeight="Bold"
                            ></TextBlock>
 
-
                 <DataGrid AutoGenerateColumns="False"
-                          HeadersVisibility="None"
-                          ScrollViewer.CanContentScroll="True"
-                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                          RowBackground="Black"
-                          RowHeaderWidth="0"
-                          Background="Black"
-                          GridLinesVisibility="None"
-                          FontSize="18"
-                          Grid.Column="0"
-                          Grid.Row="1"
-                          IsEnabled="False"
-                          x:Name="logDataGrid"
-                          >
+                            HeadersVisibility="None"
+                            ScrollViewer.CanContentScroll="True"
+                            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                            RowBackground="Black"
+                            RowHeaderWidth="0"
+                            Background="Black"
+                            GridLinesVisibility="None"
+                            FontSize="18"
+                            Grid.Column="0"                   
+                            Grid.Row="1"                              
+                            IsEnabled="False"
+                            x:Name="logDataGrid"
+                            >
                     <DataGrid.LayoutTransform>
                         <TransformGroup>
                             <RotateTransform Angle="180" />
@@ -284,7 +283,6 @@
                     </DataGrid.Columns>
 
                 </DataGrid>
-
             </Grid>
 
 
@@ -629,7 +627,7 @@
                 <StackPanel Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10">
                     <TextBlock Text="Layers:" Foreground="White" FontSize="14"/>
                     <CheckBox x:Name="commandPanelCheckBox" Content="Command panel" IsChecked="True" Foreground="White" FontSize="14"/>
-                    <CheckBox x:Name="notificationPanelCheckBox" Content="Notification panel" IsChecked="True" Foreground="White" FontSize="14"/>
+                    <CheckBox x:Name="notificationPanelCheckBox" Content="Alarms panel" IsChecked="True" Foreground="White" FontSize="14"/>
                     <CheckBox x:Name="railwayNamesCheckBox" Content="Railway names" IsChecked="True" Foreground="White" FontSize="14" Checked="railwayNamesCheckBox_CheckedChanged" Unchecked="railwayNamesCheckBox_CheckedChanged"/>
                     <CheckBox x:Name="platofmsCheckBox" Content="Platforms" IsChecked="True" Foreground="White" FontSize="14"/>
                     <CheckBox x:Name="scaleCheckBox" Content="Scales" IsChecked="True" Foreground="White" FontSize="14"/>

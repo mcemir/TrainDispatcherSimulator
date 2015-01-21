@@ -392,7 +392,7 @@ namespace TrainDispatcherSimulator.Helpers
         private void OnGlobalMouseUp(object sender, MouseButtonEventArgs e)
         {
             mouseDownRailway = null;
-            if (selectedPath != null)
+            if (selectedPath != null && selectedPath.Count > 0)
             {
                 Controller.Instance.AudioSignal.RailwaySelectedPath();
                 Log("Path selected", LogType.Info);
