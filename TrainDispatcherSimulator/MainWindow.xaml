@@ -531,13 +531,13 @@
                             Grid.Column="2"/>
 
                         <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Margin="3">
-                            <Button Content="LZS" Style="{StaticResource CommandButtonStyle}"/>
-                            <Button Content="TA" Style="{StaticResource CommandButtonStyle}"/>
-                            <Button Content="TGCP" Style="{StaticResource CommandButtonStyle}"/>
+                            <ToggleButton Content="LZS" Style="{StaticResource CommandToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked"/>
+                            <ToggleButton x:Name="taAlarmToggleButton" Content="TA" Style="{StaticResource CommandToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked"/>
+                            <ToggleButton Content="TGCP" Style="{StaticResource CommandToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked"/>
                         </StackPanel>
 
                         <TextBlock 
-                            Text="Railway"
+                            Text=""
                             FontSize="14"
                             FontWeight="Bold"
                             HorizontalAlignment="Center"
@@ -547,9 +547,8 @@
                             Grid.Column="4"/>
 
                         <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="1" Margin="3">
-                            <Button Content="TOPV" Style="{StaticResource CommandButtonStyle}"/>
-                            <Button Content="TM" Style="{StaticResource CommandButtonStyle}"/>
-                            <Button Content="TPS" Style="{StaticResource CommandButtonStyle}"/>
+                            <ToggleButton x:Name="lightAlarmToggleButton" Content="Light" Style="{StaticResource CommandToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked"/>
+                            <ToggleButton Content="Heat" Style="{StaticResource CommandToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked"/>
                         </StackPanel>
 
                     </Grid>
@@ -622,18 +621,8 @@
                         <Button Content="Reset" Style="{StaticResource CommandButtonStyle}" Click="resetRailwayButton_Click"/>
                     </StackPanel>
 
-                    <TextBlock 
-                            Text="Other controls"
-                            FontSize="14"
-                            FontWeight="Bold"
-                            Foreground="White"
-                            Margin="10,0,0,0"
-                            Grid.Row="0"
-                            Grid.Column="4"/>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="1" Margin="3">
-                        <ToggleButton Content="Light" Style="{StaticResource CommandToggleButtonStyle}"  />
-                        <ToggleButton Content="Heat" Style="{StaticResource CommandToggleButtonStyle}"/>
-                    </StackPanel>
+                    
+                    
                 </Grid>
 
 

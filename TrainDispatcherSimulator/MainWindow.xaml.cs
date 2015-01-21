@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -40,6 +41,13 @@ namespace TrainDispatcherSimulator
             logDataGrid.ItemsSource = Controller.Instance.logger.logs;
             scheduleDataGrid.ItemsSource = Controller.Instance.ScheduleList;
             scheduleDataGrid.SelectedItem = scheduleDataGrid.Items[3];
+
+
+            // Init alarms
+            check = false;
+            taAlarmToggleButton.IsChecked = true;
+            check = false;
+            lightAlarmToggleButton.IsChecked = true;
 
         }
         #endregion INITIALIZATION
@@ -102,7 +110,21 @@ namespace TrainDispatcherSimulator
         {
             Controller.Instance.Reset();
         }
+
+        bool check = true;
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (check)
+            {
+                check = false;
+                (sender as ToggleButton).IsChecked = !((bool)(sender as ToggleButton).IsChecked);
+            }
+            else
+                check = true;
+        }
         #endregion EVENT HANDLERS
+
+        
 
 
     }
