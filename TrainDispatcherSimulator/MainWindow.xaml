@@ -40,6 +40,12 @@
                 <Setter Property="BrokenLineThickness" Value="2" />
             </Style>
 
+            <Style x:Key="Pomocna" TargetType="oxy:LineSeries">
+                <Setter Property="Color" Value="LightGray"/>
+                <Setter Property="StrokeThickness" Value="1"/>
+                <Setter Property="BrokenLineThickness" Value="1"/>
+            </Style>
+
             <Style x:Key="Odlazni" TargetType="oxy:LineSeries">
                 <Setter Property="Color" Value="Green"/>
                 <Setter Property="BrokenLineThickness" Value="2" />
@@ -166,7 +172,7 @@
 
 
 
-            <Grid x:Name="graphGrid" Background="Black">
+            <Grid x:Name="graphGrid" Background="Black" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="1*"/>
@@ -187,9 +193,21 @@
 
                 <oxy:Plot Grid.Row="1" Title="{Binding Title}" Background="Gray" IsEnabled="False" >
                     <oxy:PlotView.Series>
+                        <oxy:LineSeries ItemsSource="{Binding pomocnaLinija1}" Style="{StaticResource Pomocna}" />
+                        <oxy:LineSeries ItemsSource="{Binding pomocnaLinija2}" Style="{StaticResource Pomocna}" />
+                        <oxy:LineSeries ItemsSource="{Binding pomocnaLinija3}" Style="{StaticResource Pomocna}" />
+                        <oxy:LineSeries ItemsSource="{Binding pomocnaLinija4}" Style="{StaticResource Pomocna}" />
+                        <oxy:LineSeries ItemsSource="{Binding pomocnaLinija5}" Style="{StaticResource Pomocna}" />
                         <oxy:LineSeries ItemsSource="{Binding Linija1}" Style="{StaticResource Odlazni}" />
                         <oxy:LineSeries ItemsSource="{Binding Linija2}" Style="{StaticResource Odlazni}" />
                         <oxy:LineSeries ItemsSource="{Binding Linija3}" Style="{StaticResource Dolazni}" />
+                        <oxy:LineSeries ItemsSource="{Binding Linija4}" Style="{StaticResource Odlazni}" />
+                        <oxy:LineSeries ItemsSource="{Binding Linija5}" Style="{StaticResource Dolazni}" />
+                        <oxy:LineSeries ItemsSource="{Binding Linija7}" Style="{StaticResource Odlazni}" />
+                        <oxy:LineSeries ItemsSource="{Binding Linija8}" Style="{StaticResource Dolazni}" />
+                        <oxy:LineSeries ItemsSource="{Binding Linija9}" Style="{StaticResource Odlazni}" />
+                        <oxy:LineSeries ItemsSource="{Binding Linija10}" Style="{StaticResource Dolazni}" />
+                       
 
                     </oxy:PlotView.Series>
                     <oxy:Plot.Axes>
@@ -206,7 +224,7 @@
 
 
 
-            <Grid x:Name="logGrid" Background="Black" Visibility="Collapsed">
+            <Grid x:Name="logGrid" Background="Black">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="1*"/>

@@ -53,6 +53,7 @@ namespace TrainDispatcherSimulator.Helpers
 
         public void RailwaySectionDeparture()
         {
+            
             mplayer.Stream = Properties.Resources.RailwaySectionDeparture;
             mplayer.Play();
         }

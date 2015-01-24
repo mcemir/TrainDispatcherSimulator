@@ -56,11 +56,10 @@ namespace TrainDispatcherSimulator.Data
 
             this.Linija2 = new List<DataPoint>
                     {
-                        new DataPoint(18.87, 8),
-                        new DataPoint(19.35, 3),
+                        new DataPoint(18.00, 8),
+                        new DataPoint(19.10, 3),
                         new DataPoint(19.46, 3),
-                        new DataPoint(19.54, 1),
-                        new DataPoint(19.55, 0),
+                        new DataPoint(20.10, 0),
            
                     };
 
@@ -69,8 +68,97 @@ namespace TrainDispatcherSimulator.Data
                         new DataPoint(9.76, 8),
                         new DataPoint(9.38, 3),
                         new DataPoint(9.32, 3),
-                        new DataPoint(9.20, 1),
-                        new DataPoint(9.17, 0),
+                        new DataPoint(9, 0),
+                    };
+
+            this.Linija4 = new List<DataPoint>
+                    {
+                        new DataPoint(8, 8),
+                        new DataPoint(8.53, 3),
+                        new DataPoint(9.50, 3),
+                        new DataPoint(10.50, 0),
+                    };
+
+            this.Linija5 = new List<DataPoint>
+                    {
+                        new DataPoint(21, 8),
+                        new DataPoint(20.20, 1),
+                        new DataPoint(19.20, 1),
+                        new DataPoint(19, 0),
+                    };
+
+            this.Linija6 = new List<DataPoint>
+                    {
+                        new DataPoint(12, 0),
+                        new DataPoint(13, 3),
+                        new DataPoint(14, 3),
+                        new DataPoint(15, 8),
+                    };
+
+            this.Linija7 = new List<DataPoint>
+                    {
+                        new DataPoint(14, 8),
+                        new DataPoint(14.50, 7),
+                        new DataPoint(15, 7),
+                        new DataPoint(16.30, 2),
+                        new DataPoint(17, 2),
+                        new DataPoint(17.50, 2),
+                        new DataPoint(18.17, 0)
+                    };
+
+            this.Linija8 = new List<DataPoint>
+                    {
+                        new DataPoint(12.76, 8),
+                        new DataPoint(11.38, 3),
+                        new DataPoint(11.05, 3),
+                        new DataPoint(10.50, 1),
+                        new DataPoint(10.17, 0),
+                    };
+
+            this.Linija9 = new List<DataPoint>
+                    {
+                        new DataPoint(11, 8),
+                        new DataPoint(11.10, 7),
+                        new DataPoint(12.05, 7),
+                        new DataPoint(13.50, 0),
+                    };
+
+            this.Linija10 = new List<DataPoint>
+                    {
+                        new DataPoint(17.50, 8),
+                        new DataPoint(16.50, 3),
+                        new DataPoint(15.50, 3),
+                        new DataPoint(14.50, 0),
+                    };
+
+            this.pomocnaLinija1 = new List<DataPoint>
+                    {
+                        new DataPoint(6, 7.1),
+                        new DataPoint(22, 7.1)
+
+                    };
+            this.pomocnaLinija2 = new List<DataPoint>
+                    {
+                        new DataPoint(6, 6.9),
+                        new DataPoint(22, 6.9)
+                    };
+
+            this.pomocnaLinija3 = new List<DataPoint>
+                    {
+                        new DataPoint(6, 3.1),
+                        new DataPoint(22, 3.1)
+                    };
+
+            this.pomocnaLinija4 = new List<DataPoint>
+                    {
+                       new DataPoint(6, 2.9),
+                        new DataPoint(22, 2.9)
+                    };
+
+            this.pomocnaLinija5 = new List<DataPoint>
+                    {
+                        new DataPoint(6, 6.8),
+                        new DataPoint(22, 6.8)
                     };
 
             this.Stations = new List<String>
@@ -94,5 +182,29 @@ namespace TrainDispatcherSimulator.Data
         public IList<DataPoint> Linija2 { get; private set; }
         public IList<DataPoint> Linija3 { get; private set; }
 
+
+        public List<DataPoint> Linija4 { get; set; }
+
+        public List<DataPoint> Linija5 { get; set; }
+
+        public List<DataPoint> Linija6 { get; set; }
+
+        public List<DataPoint> Linija7 { get; set; }
+
+        public List<DataPoint> Linija8 { get; set; }
+
+        public List<DataPoint> Linija9 { get; set; }
+
+        public List<DataPoint> Linija10 { get; set; }
+
+        public List<DataPoint> pomocnaLinija1 { get; set; }
+
+        public List<DataPoint> pomocnaLinija2 { get; set; }
+
+        public List<DataPoint> pomocnaLinija3 { get; set; }
+
+        public List<DataPoint> pomocnaLinija4 { get; set; }
+
+        public List<DataPoint> pomocnaLinija5 { get; set; }
     }
 }
