@@ -191,7 +191,7 @@
                            >
                 </TextBlock>
 
-                <oxy:Plot Grid.Row="1" Title="{Binding Title}" Background="Gray" IsEnabled="False" >
+                <oxy:Plot Grid.Row="1" Title="{Binding Title}" Background="White" IsEnabled="False" >
                     <oxy:PlotView.Series>
                         <oxy:LineSeries ItemsSource="{Binding pomocnaLinija1}" Style="{StaticResource Pomocna}" />
                         <oxy:LineSeries ItemsSource="{Binding pomocnaLinija2}" Style="{StaticResource Pomocna}" />
