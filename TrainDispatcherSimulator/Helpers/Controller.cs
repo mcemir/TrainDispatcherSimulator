@@ -299,7 +299,9 @@ namespace TrainDispatcherSimulator.Helpers
         {
             Log e = new Log(content, type, DateTime.Now);
             logger.Add(e);
-            LogDataGrid.Items.Refresh();
+
+            if (LogDataGrid != null)
+                LogDataGrid.Items.Refresh();
         }
         #endregion PUBLIC METHODS
 

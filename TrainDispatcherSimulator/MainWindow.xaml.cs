@@ -106,7 +106,21 @@ namespace TrainDispatcherSimulator
             Controller.Instance.Reset();
         }
 
+        private void alarmButtonChecked(object sender, RoutedEventArgs e)
+        {
+            string content = (string)((sender as ToggleButton).Content);
+            Controller.Instance.Log("Alarm " + content + " activated", LogType.Info);
+        }
+
+        private void alarmButtonUnchecked(object sender, RoutedEventArgs e)
+        {
+            string content = (string)((sender as ToggleButton).Content);
+            Controller.Instance.Log("Alarm " + content + " deactivated", LogType.Info);
+        }
+
         #endregion EVENT HANDLERS
+
+        
 
         
 
