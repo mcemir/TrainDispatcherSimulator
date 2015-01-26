@@ -37,7 +37,7 @@
 
             <Style x:Key="Dolazni" TargetType="oxy:LineSeries">
                 <Setter Property="Color" Value="Red"/>
-                <Setter Property="BrokenLineThickness" Value="2" />
+                <Setter Property="StrokeThickness" Value="4" />
             </Style>
 
             <Style x:Key="Pomocna" TargetType="oxy:LineSeries">
@@ -48,7 +48,7 @@
 
             <Style x:Key="Odlazni" TargetType="oxy:LineSeries">
                 <Setter Property="Color" Value="Green"/>
-                <Setter Property="BrokenLineThickness" Value="2" />
+                <Setter Property="StrokeThickness" Value="4" />
             </Style>
             <Style x:Key="FocusVisual">
                 <Setter Property="Control.Template">
