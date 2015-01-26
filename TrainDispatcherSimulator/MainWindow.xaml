@@ -241,6 +241,15 @@
                            FontSize="26"
                            FontWeight="Bold"
                            ></TextBlock>
+                
+                <Button 
+                    Content="Export" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Margin="20"
+                    Width="150"
+                    Height="100"
+                    Click="exportLogButton_Click"/>
 
                 <DataGrid AutoGenerateColumns="False"
                             HeadersVisibility="None"

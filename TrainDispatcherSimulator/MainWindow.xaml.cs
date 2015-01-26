@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,6 +74,39 @@ namespace TrainDispatcherSimulator
 
 
 
+        #region PRIVATE METHODS
+        private void exportLog()
+        {
+            var dialog = new System.Windows.Forms.FolderBrowserDialog();
+            System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = dialog.SelectedPath + "\\log.txt";
+                
+                // Create a file to write to. 
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                }
+
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    List<Log> logs = Controller.Instance.logger.logs;
+                    for (int i = logs.Count - 1; i >= 0; i--)
+                    {
+                        sw.WriteLine(logs[i].Timestamp + "\t" + logs[i].LogType.ToString() + "\t" + logs[i].Content);
+                    }
+                    
+                }
+
+                MessageBox.Show("The log has beeen sucessfully exported to the selected location.", "Export successful", MessageBoxButton.OK, MessageBoxImage.None);
+            }
+        }
+        #endregion PRIVATE METHODS
+
+
+
+
 
 
         #region EVENT HANDLERS
@@ -118,7 +152,14 @@ namespace TrainDispatcherSimulator
             Controller.Instance.Log("Alarm " + content + " deactivated", LogType.Info);
         }
 
+        private void exportLogButton_Click(object sender, RoutedEventArgs e)
+        {
+            exportLog();
+        }
+
         #endregion EVENT HANDLERS
+
+        
 
         
 
