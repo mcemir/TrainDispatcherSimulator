@@ -547,9 +547,9 @@
                             Grid.Column="2"/>
 
                         <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Margin="3">
-                            <ToggleButton Content="LZS" Style="{StaticResource CommandToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked"/>
-                            <ToggleButton x:Name="taAlarmToggleButton" Content="TA" Style="{StaticResource CommandToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked"/>
-                            <ToggleButton Content="TGCP" Style="{StaticResource CommandToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked"/>
+                            <ToggleButton Content="LZS" Style="{StaticResource CommandToggleButtonStyle}"/>
+                            <ToggleButton Content="TA" IsChecked="True" Style="{StaticResource CommandToggleButtonStyle}"/>
+                            <ToggleButton Content="TGCP" Style="{StaticResource CommandToggleButtonStyle}" />
                         </StackPanel>
 
                         <TextBlock 
@@ -563,8 +563,8 @@
                             Grid.Column="4"/>
 
                         <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="4" Grid.Row="1" Margin="3">
-                            <ToggleButton x:Name="lightAlarmToggleButton" Content="Light" Style="{StaticResource CommandToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked"/>
-                            <ToggleButton Content="Heat" Style="{StaticResource CommandToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked"/>
+                            <ToggleButton Content="Light" IsChecked="True" Style="{StaticResource CommandToggleButtonStyle}"/>
+                            <ToggleButton Content="Heat" Style="{StaticResource CommandToggleButtonStyle}" />
                         </StackPanel>
 
                     </Grid>
