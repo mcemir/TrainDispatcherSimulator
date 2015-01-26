@@ -412,17 +412,20 @@ namespace TrainDispatcherSimulator.Helpers
                 case "C":
                     PathReservation.Instance.Reset(selectedPath);
                     break;
+                case "Q":
+                    this.Reset();
+                    break;
                 case "D1":
                     showRailway();
                     break;
                 case "D2":
-                    showGraph();
+                    showLogger();
                     break;
                 case "D3":
                     showTableGrid();
                     break;
                 case "D4":
-                    showLogger();
+                    showGraph();
                     break;
             }
         }
